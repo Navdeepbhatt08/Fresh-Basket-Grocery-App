@@ -13,7 +13,7 @@ export default function Products() {
       <h2>All Products</h2>
       <br />
       {products.map(p => (
-        <div key={p.id} className="product-card">
+        <div key={p.id} className="product-card" >
           <h3>{p.name}</h3>
           <p>Price: ₹{p.price}</p>
           <p>Stock: {p.stock}</p>
