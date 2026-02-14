@@ -12,10 +12,10 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <input placeholder="Email" onChange={e => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-      <button onClick={login}>Login</button>
+    <div className=" bg-gray-200 rounded-lg w-[100%]  drop-shadow-black justify-center grid ">
+      <input placeholder="Email" onChange={e => setEmail(e.target.value)} /> <br />
+      <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} /><br/>
+      <button className=" bg-cyan-700 text-white rounded " onClick={login}>Login</button>
     </div>
   )
 }
