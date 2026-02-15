@@ -16,7 +16,7 @@ export default function Login() {
 
   {/* Background Glow */}
   <div className="absolute `w-[500px]` `h-[500px]` bg-cyan-500/20 rounded-full blur-[120px] -top-40 -left-40"></div>
-  <div className="absolute w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[120px] bottom-0 right-0"></div>
+  <div className="absolute `w-[400px]` `h-[400px]` bg-purple-600/20 rounded-full blur-[120px] bottom-0 right-0"></div>
 
   {/* Card */}
   <div className="relative z-10 `w-[580px]` p-8 rounded-2xl

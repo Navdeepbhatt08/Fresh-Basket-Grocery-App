@@ -10,7 +10,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className=" bg-[#0f172a] ">
       <nav className="navbar">
         <h2 className="logo">Grocery SaaS</h2>
 
