@@ -14,11 +14,9 @@ export default function Login() {
   return (
  <div className="min-h-screen flex items-center justify-center bg-[#0f172a] relative overflow-hidden">
 
-  {/* Background Glow */}
   <div className="absolute `w-[500px]` `h-[500px]` bg-cyan-500/20 rounded-full blur-[120px] -top-40 -left-40"></div>
   <div className="absolute `w-[400px]` `h-[400px]` bg-purple-600/20 rounded-full blur-[120px] bottom-0 right-0"></div>
 
-  {/* Card */}
   <div className="relative z-10 `w-[580px]` p-8 rounded-2xl
     bg-white/5 backdrop-blur-xl 
     border border-white/10 
@@ -28,7 +26,6 @@ export default function Login() {
       Sign In
     </h2>
 
-    {/* Email */}
     <div className="mb-6">
       <input
         type="email"
