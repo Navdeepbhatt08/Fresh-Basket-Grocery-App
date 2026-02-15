@@ -16,10 +16,7 @@ export default function Products() {
         <div
           key={p.id}
           className="
-   gap-4 h-110  p-3    group relative rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]
-hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
-  "
-        >
+   gap-4 h-110  p-3    group relative rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]">
           <img
             src={`https://picsum.photos/400/300?randomfood=${p.id}`}
             alt="product"
@@ -35,11 +32,7 @@ hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
 
           </span>
           <button className="
-      mt-6 w-full bg-cyan-700 hover:bg-white/30 transition py-2 rounded-xl font-semibold backdrop-blur-lg text-white">
-            Add to Cart
-          </button>
-
-
+      mt-6 w-full bg-cyan-700 hover:bg-white/30 transition py-2 rounded-xl font-semibold backdrop-blur-lg text-white"> Add to Cart </button>
         </div>
 
       ))}
