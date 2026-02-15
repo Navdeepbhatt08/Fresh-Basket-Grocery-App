@@ -8,7 +8,7 @@ export default function Products() {
     API.get("/products").then(res => setProducts(res.data))
   }, [])
 
-  return ( 
+  return (
     <div className="min-h-screen bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900 p-10 flex justify-center">
       <h2 className=" text-3xl text-white font-bold">All Products</h2>
       <br />
@@ -35,12 +35,7 @@ hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
 
           </span>
           <button className="
-      mt-6 w-full bg-cyan-700 hover:bg-white/30 transition py-2
-      rounded-xl
-      font-semibold
-      backdrop-blur-lg
-      text-white
-    ">
+      mt-6 w-full bg-cyan-700 hover:bg-white/30 transition py-2 rounded-xl font-semibold backdrop-blur-lg text-white">
             Add to Cart
           </button>
 
