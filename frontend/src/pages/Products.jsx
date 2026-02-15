@@ -35,10 +35,7 @@ hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
 
           </span>
           <button className="
-      mt-6 w-full
-     bg-cyan-700
-      hover:bg-white/30
-      transition
+      mt-6 w-full bg-cyan-700 hover:bg-white/30 transition
       py-2
       rounded-xl
       font-semibold
