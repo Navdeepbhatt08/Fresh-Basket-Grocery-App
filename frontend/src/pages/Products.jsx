@@ -8,7 +8,7 @@ export default function Products() {
     API.get("/products").then(res => setProducts(res.data))
   }, [])
 
-  return (
+  return ( 
     <div className=" min-h-screen bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900 p-10 flex justify-center">
       <h2 className=" text-3xl text-white font-bold">All Products</h2>
       <br />
@@ -20,11 +20,11 @@ export default function Products() {
 hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
   "
         >
-          <img 
-  src={`https://picsum.photos/400/300?randomfood=${p.id}`}
-  alt="product"
-  className=" rounded-2xl w-full h-52 object-cover group-hover:scale-110 transition-transform duration-700"
-/>
+          <img
+            src={`https://picsum.photos/400/300?randomfood=${p.id}`}
+            alt="product"
+            className=" rounded-2xl w-full h-52 object-cover group-hover:scale-110 transition-transform duration-700"
+          />
 
           <h2 className="text-xl font-bold mb-3 text-white">{p.name}</h2>
           <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">
@@ -45,7 +45,7 @@ hover:shadow-[0_20px_60px_rgba(0,0,0,0.7)]
       font-semibold
       backdrop-blur-lg
       text-white
-    "> 
+    ">
             Add to Cart
           </button>
 
