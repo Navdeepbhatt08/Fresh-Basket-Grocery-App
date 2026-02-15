@@ -9,7 +9,7 @@ export default function Products() {
   }, [])
 
   return ( 
-    <div className=" min-h-screen bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900 p-10 flex justify-center">
+    <div className="min-h-screen bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900 p-10 flex justify-center">
       <h2 className=" text-3xl text-white font-bold">All Products</h2>
       <br />
       {products.map(p => (
