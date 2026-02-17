@@ -9,7 +9,7 @@ export default function Products() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-4 py-10 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900 px-4 py-10 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-2">
           All Products

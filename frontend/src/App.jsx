@@ -12,7 +12,7 @@ function App() {
   return (
     <div className=" bg-[#0f172a] ">
       <nav className="navbar">
-        <h2 className="logo">Grocery SaaS</h2>
+        <h2 className="logo"><img src="logo.png" width={250} alt="Image" /></h2>
 
         <div className="nav-links">
           <Link to="/">Products</Link>
