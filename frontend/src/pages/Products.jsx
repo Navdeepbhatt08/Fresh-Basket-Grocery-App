@@ -17,13 +17,13 @@ export default function Products() {
         <p className="text-slate-400 text-sm sm:text-base mb-8">
           Browse and add items to your cart
         </p>
-
-        <div className="flex flex-nowrap gap-6 overflow-x-auto pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 [scrollbar-width:thin]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map(p => (
             <div
               key={p.id}
-              className="group relative flex flex-col flex-shrink-0 w-72 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:border-white/25"
+              className="group relative flex flex-col rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:border-white/25"
             >
+
               <div className="relative aspect-[4/3] overflow-hidden bg-slate-800/50">
                 <img
                   src={`https://picsum.photos/400/300?randomfood=${p.id}`}
