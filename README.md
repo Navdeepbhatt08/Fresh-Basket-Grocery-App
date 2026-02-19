@@ -1,6 +1,6 @@
-# 🛒 FreshBasket – Multi-Vendor Grocery Delivery Platform
+# 🛒 **FreshBasket – Multi-Vendor Grocery Delivery Platform**
 
-A Full Stack SaaS-based Multi-Vendor Grocery Application built using **PERN Stack (PostgreSQL, Express, React, Node.js)**.
+### A Full Stack SaaS-based Multi-Vendor Grocery Application built using **PERN Stack (PostgreSQL, Express, React, Node.js)**.
 
 FreshBasket allows multiple vendors to create and manage their own grocery stores, customers to place orders, and delivery partners to manage deliveries — all controlled by an admin panel.
 
@@ -19,32 +19,32 @@ FreshBasket is designed as a scalable multi-vendor grocery delivery platform whe
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
+## Frontend
 
 - React.js
 - Tailwind CSS
 - Axios
 - React Router DOM
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 - Prisma ORM
 
-### Database
+## Database
 
 - PostgreSQL
 
-### Authentication
+## Authentication
 
 - Clerk Authentication
 
 ---
 
-## 🧠 Data Structures & Algorithms Used
+# 🧠 Data Structures & Algorithms Used
 
 | Feature                 | DSA Concept                    |
 | ----------------------- | ------------------------------ |
@@ -80,29 +80,29 @@ PostgreSQL relational schema with proper indexing and relationships.
 
 ---
 
-## 🔐 Roles & Permissions
+# 🔐 Roles & Permissions
 
-### 👨‍💼 Admin
+## 👨‍💼 Admin
 
 - Manage users
 - Approve vendors
 - Monitor orders
 - View analytics
 
-### 🏪 Vendor
+## 🏪 Vendor
 
 - Manage products
 - Update inventory
 - View store orders
 
-### 👤 Customer
+## 👤 Customer
 
 - Browse stores
 - Add to cart
 - Place orders
 - Track delivery
 
-### 🚚 Delivery Partner
+## 🚚 Delivery Partner
 
 - View assigned orders
 - Update delivery status
@@ -114,7 +114,7 @@ PostgreSQL relational schema with proper indexing and relationships.
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/freshbasket.git
-cd freshbasket
+git clone https://github.com/Navdeepbhatt08/Fresh-Basket-Grocery-App.git
+cd Fresh-Basket-Grocery-App
 
 ```
