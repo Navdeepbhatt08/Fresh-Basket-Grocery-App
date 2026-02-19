@@ -1,6 +1,7 @@
 import { useState } from "react"
 import API from "../api/axios"
 
+
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -22,26 +23,21 @@ export default function Login() {
       className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0a0e17]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.15),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_80%_50%,rgba(124,58,237,0.12),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_20%_80%,rgba(34,211,238,0.08),transparent)]" />
+
+      <div className="absolute " />
+      <div className="absolute inset-0 " />
+      <div className="absolute inset-0 " />
+      <div className="absolute inset-0 " />
       <div
         className="absolute inset-0 opacity-[0.03]"
       />
 
-      {/* Glow orbs */}
-      <div className="absolute w-125 h-125 bg-cyan-500/20 rounded-full blur-[120px] -top-40 -left-40 animate-pulse" />
-      <div className="absolute w-100 h-100 bg-violet-600/20 rounded-full blur-[120px] bottom-0 right-0 animate-pulse" style={{ animationDelay: "1s" }} />
-
-      {/* Card */}
       <div
         className="relative z-10 w-full max-w-105 p-8 sm:p-10 rounded-2xl
           bg-white/6 backdrop-blur-2xl
           border border-white/8
           shadow-[0_0_60px_-12px_rgba(34,211,238,0.2),0_25px_50px_-12px_rgba(0,0,0,0.5)]
-          transition-all duration-500 hover:border-white/12 hover:shadow-[0_0_80px_-16px_rgba(34,211,238,0.25)]"
+          transition-all duration-500 hover:border-white/12 "
       >
         <div className="text-center mb-8">
           <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
@@ -111,10 +107,10 @@ export default function Login() {
           className="w-full mt-8 py-3.5 rounded-xl
             bg-linear-to-r from-cyan-500 to-cyan-600
             hover:from-cyan-400 hover:to-cyan-500
-            text-white font-medium tracking-wide
+            text-black text-lg font-bold tracking-wide
             transition-all duration-300
             shadow-lg shadow-cyan-500/25
-            hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]
+             active:scale-[0.98]
             disabled:opacity-70 disabled:pointer-events-none disabled:hover:scale-100"
         >
           {loading ? "Signing in…" : "Sign in"}
@@ -126,6 +122,7 @@ export default function Login() {
             Sign up
           </a>
         </p>
+  
       </div>
     </div>
   )

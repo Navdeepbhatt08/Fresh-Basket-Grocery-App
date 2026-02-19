@@ -24,7 +24,7 @@ export default function Products() {
               className="group relative flex flex-col rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 shadow-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] hover:border-white/25"
             >
 
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-800/50">
+              <div className="relative  overflow-hidden bg-slate-800/50">
                 <img
                   src={`https://picsum.photos/400/300?randomfood=${p.id}`}
                   alt={p.name}
