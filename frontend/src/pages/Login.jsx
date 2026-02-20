@@ -20,7 +20,7 @@ export default function Login() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center p-5 relative overflow-hidden"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
 
