@@ -30,7 +30,6 @@ export default function Login() {
       <div
         className="absolute inset-0 opacity-[0.03]"
       />
-
       <div
         className="relative z-10 w-full max-w-105 p-8 sm:p-10 rounded-2xl
           bg-white/6 backdrop-blur-2xl
@@ -94,7 +93,7 @@ export default function Login() {
               />
             </div>
             <a href="#" className="inline-block text-xs text-cyan-400 hover:text-cyan-300 mt-2 transition-colors">
-              Forgot password ?
+              Forgot password?
             </a>
           </div>
         </div>
