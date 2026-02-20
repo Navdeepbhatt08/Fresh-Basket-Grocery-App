@@ -96,7 +96,7 @@ export default function Login() {
               />
             </div>
             <a href="#" className="inline-block text-xs text-cyan-400 hover:text-cyan-300 mt-2 transition-colors">
-              Forgot password?
+              Forgot password ?
             </a>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function Login() {
             Sign up
           </a>
         </p>
-  
+
       </div>
     </div>
   )
