@@ -46,7 +46,6 @@ export default function Login() {
             Sign in to continue
           </p>
         </div>
-
         <div className="space-y-5">
           <div className="group">
             <label className="block text-xs font-medium text-slate-400 mb-2">
