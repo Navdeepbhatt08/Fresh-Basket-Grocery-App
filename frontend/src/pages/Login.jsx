@@ -23,7 +23,6 @@ export default function Login() {
       className="min-h-screen flex items-center justify-center p-5 relative overflow-hidden"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
-
       <div className="absolute " />
       <div className="absolute inset-0 " />
       <div className="absolute inset-0 " />
