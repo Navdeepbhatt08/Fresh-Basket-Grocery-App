@@ -55,7 +55,7 @@ FreshBasket is designed as a scalable multi-vendor grocery delivery platform whe
 | Cart Optimization       | Hash Map                       |
 
 ---
-
+ 
 ## 🏗️ System Architecture
 
 Client (React) → Express API → Prisma ORM → PostgreSQL Database
