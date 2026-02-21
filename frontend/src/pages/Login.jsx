@@ -20,7 +20,7 @@ export default function Login() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-5 relative overflow-hidden"
+      className="min-h-screen  flex items-center justify-center p-5 relative overflow-hidden"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
       <div className="absolute " />
@@ -36,7 +36,8 @@ export default function Login() {
           border border-white/8
           shadow-[0_0_60px_-12px_rgba(34,211,238,0.2),0_25px_50px_-12px_rgba(0,0,0,0.5)]
           transition-all duration-500 hover:border-white/12 "
-      >
+      > 
+      
         <div className="text-center mb-8">
           <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
             Welcome back
