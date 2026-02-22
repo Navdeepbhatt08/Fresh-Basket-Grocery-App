@@ -16,7 +16,7 @@ function App() {
         <h2 className="logo text-xl font-black ">Fresh-Basket</h2>
 
         <div className="nav-links">
-          <Link to="/">Products</Link>
+          <Link to="/products">Products</Link>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
           <button onClick={logout} className="logout-btn">Logout</button>
