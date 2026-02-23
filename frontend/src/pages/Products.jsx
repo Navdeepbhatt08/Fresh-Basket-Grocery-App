@@ -34,7 +34,8 @@ export default function Products() {
               </div>
 
               <div className="flex flex-col flex-1 p-5">
-                <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2 min-h-[2.5rem]">
+                <h3 className="text-lg font-semibold text-white mb-3 line-clamp-2 
+                min-h-[2.5rem]">
                   {p.name}
                 </h3>
                 <div className="flex flex-wrap gap-2 mb-4">
