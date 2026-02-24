@@ -54,7 +54,7 @@ async function main(): Promise<void> {
 
 main()
     .catch((error: unknown) => {
-      console.error("❌ Error while seeding:", error);
+      console.error(" Error while seeding:", error);
       process.exit(1);
     })
     .finally(async (): Promise<void> => {
