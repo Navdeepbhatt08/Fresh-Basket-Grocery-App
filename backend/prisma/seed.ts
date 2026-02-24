@@ -22,7 +22,7 @@ async function main(): Promise<void> {
       name: "Store Owner",
       email: "store@example.com",
       password: "store123",
-      role: Role.STORE,   // ✅ Enum usage
+      role: Role.STORE,   
     },
   });
 
