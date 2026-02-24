@@ -1,4 +1,3 @@
-// prisma/seed.ts
 
 import { PrismaClient, Role } from "@prisma/client";
 
@@ -7,7 +6,7 @@ const prisma = new PrismaClient();
 async function main(): Promise<void> {
   console.log("🌱 Seeding started...");
 
-  // Create Admin User
+ 
   const admin = await prisma.user.create({
     data: {
       name: "Admin User",
