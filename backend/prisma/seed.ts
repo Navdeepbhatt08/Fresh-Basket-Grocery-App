@@ -12,11 +12,11 @@ async function main(): Promise<void> {
       name: "Admin User",
       email: "admin@example.com",
       password: "admin123",
-      role: Role.ADMIN,   // ✅ Better than string
+      role: Role.ADMIN,   
     },
   });
 
-  // Create Store Owner
+
   const store = await prisma.user.create({
     data: {
       name: "Store Owner",
