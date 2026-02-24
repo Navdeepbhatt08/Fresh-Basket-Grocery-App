@@ -26,7 +26,7 @@ export default function Products() {
 
               <div className="relative  overflow-hidden bg-slate-800/50">
                 <img
-                  src={`https://picsum.photos/400/300?randomfood=${p.id}`}
+                  src={`https://picsum.photos/400/300?randomfood=${p.id}`} 
                   alt={p.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
