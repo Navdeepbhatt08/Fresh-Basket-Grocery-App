@@ -26,7 +26,6 @@ async function main(): Promise<void> {
     },
   });
 
-  // Create Products
   await prisma.product.createMany({
     data: [
       {
