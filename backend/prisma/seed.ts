@@ -9,7 +9,7 @@ async function main(): Promise<void> {
  
   const admin = await prisma.user.create({
     data: {
-      name: "Admin User",
+      name: "Admin User", 
       email: "admin@example.com",
       password: "admin123",
       role: Role.ADMIN,   
