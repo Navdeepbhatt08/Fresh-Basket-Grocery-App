@@ -27,7 +27,7 @@ export default function Products() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent tracking-tight">
+          <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-rfrom-white via-slate-200 to-slate-400 bg-clip-text text-transparent tracking-tight">
             All Products
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-slate-400 leading-relaxed">
