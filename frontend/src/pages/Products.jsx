@@ -97,7 +97,7 @@ function ProductCard({ product }) {
           className={`
             flex-1 flex items-center justify-center mt-auto p-4
             text-lg font-bold text-white
-            bg-gradient-to-r from-cyan-500 via-cyan-600 to-blue-600
+            bg-gradient-to-rfrom-cyan-500 via-cyan-600 to-blue-600
             rounded-2xl shadow-xl shadow-cyan-500/30
             transition-all duration-300
             hover:from-cyan-600 hover:via-cyan-700 hover:to-blue-700
@@ -112,7 +112,7 @@ function ProductCard({ product }) {
       </div>
 
       {/* Hover Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/20 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-rfrom-cyan-500/0 via-cyan-500/20 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </div>
   );
 }
