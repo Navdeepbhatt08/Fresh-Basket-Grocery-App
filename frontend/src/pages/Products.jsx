@@ -63,7 +63,7 @@ function ProductCard({ product }) {
     <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.6)] hover:border-white/40 hover:bg-white/20">
       {/* Image Placeholder - Replace with real image */}
       <div className="relative h-64 bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-tfrom-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-6xl opacity-20 group-hover:opacity-30 transition-opacity duration-500">📱</div>
         </div>
@@ -78,7 +78,7 @@ function ProductCard({ product }) {
 
         {/* Price & Stock Badges */}
         <div className="flex flex-wrap gap-3 mb-6">
-          <span className="inline-flex px-4 py-2 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 text-emerald-300 text-lg font-bold rounded-2xl border border-emerald-400/40 shadow-lg">
+          <span className="inline-flex px-4 py-2 bg-gradient-to-rfrom-emerald-500/20 to-emerald-600/20 text-emerald-300 text-lg font-bold rounded-2xl border border-emerald-400/40 shadow-lg">
             ₹{product.price.toLocaleString()}
           </span>
           <span className={`inline-flex px-4 py-2 text-sm font-semibold rounded-2xl border shadow-lg ${
