@@ -81,19 +81,18 @@ function ProductCard({ product }) {
           <span className="inline-flex px-4 py-2 bg-gradient-to-rfrom-emerald-500/20 to-emerald-600/20 text-emerald-300 text-lg font-bold rounded-2xl border border-emerald-400/40 shadow-lg">
             ₹{product.price.toLocaleString()}
           </span>
-          <span className={`inline-flex px-4 py-2 text-sm font-semibold rounded-2xl border shadow-lg ${
-            product.stock > 10 
-              ? 'bg-sky-500/20 text-sky-300 border-sky-400/40' 
-              : product.stock > 0 
-              ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 animate-pulse' 
-              : 'bg-red-500/20 text-red-300 border-red-400/40'
-          }`}>
+          <span className={`inline-flex px-4 py-2 text-sm font-semibold rounded-2xl border shadow-lg ${product.stock > 10
+              ? 'bg-sky-500/20 text-sky-300 border-sky-400/40'
+              : product.stock > 0
+                ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 animate-pulse'
+                : 'bg-red-500/20 text-red-300 border-red-400/40'
+            }`}>
             {product.stock > 0 ? `Stock: ${product.stock}` : 'Out of Stock'}
           </span>
         </div>
 
         {/* Action Button */}
-        <button 
+        <button
           className={`
             flex-1 flex items-center justify-center mt-auto p-4
             text-lg font-bold text-white
