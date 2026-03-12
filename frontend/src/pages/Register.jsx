@@ -20,7 +20,6 @@ export default function Register() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0b1120] relative overflow-hidden">
 
-  {/* Background glow elements */}
   <div className="absolute w-[450px] h-[450px] bg-indigo-600/20 rounded-full blur-[120px] -top-40 -right-40"></div>
   <div className="absolute w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-[120px] bottom-0 -left-40"></div>
 

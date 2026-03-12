@@ -98,7 +98,7 @@ export default function Login() {
           onClick={login}
           disabled={loading}
           className="w-full mt-8 py-3.5 rounded-xl
-            bg-gradient-to-r from-cyan-500 to-blue-500
+            bg-gradient-to-rfrom-cyan-500 to-blue-500
             hover:from-cyan-400 hover:to-blue-400
             text-black font-semibold text-lg
             transition-all duration-300
