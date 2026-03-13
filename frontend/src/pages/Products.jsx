@@ -35,7 +35,6 @@ export default function Products() {
           </p>
         </div>
 
-        {/* Products Grid */}
         {products.length === 0 ? (
           <div className="text-center py-20">
             <div className="w-24 h-24 mx-auto mb-4 bg-slate-700 rounded-2xl flex items-center justify-center">
