@@ -69,14 +69,12 @@ function ProductCard({ product }) {
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-8 flex flex-col h-80">
-        {/* Title */}
+    
         <h3 className="mb-4 text-xl font-bold text-white leading-tight line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
           {product.name}
         </h3>
 
-        {/* Price & Stock Badges */}
         <div className="flex flex-wrap gap-3 mb-6">
           <span className="inline-flex px-4 py-2 bg-gradient-to-rfrom-emerald-500/20 to-emerald-600/20 text-emerald-300 text-lg font-bold rounded-2xl border border-emerald-400/40 shadow-lg">
             ₹{product.price.toLocaleString()}
