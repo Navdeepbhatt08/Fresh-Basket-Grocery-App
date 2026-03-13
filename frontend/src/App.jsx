@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify"
 function App() {
   const logout = () => {
     localStorage.removeItem("token")
-    alert("Logged Out")
+    alert("Logged Out");
   }
 
   return (

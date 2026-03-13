@@ -22,18 +22,15 @@ export default function Login() {
       className="min-h-screen flex items-center justify-center relative  via-slate-900 to-slate-950 px-4"
       style={{ fontFamily: "'Outfit', sans-serif" }}
     >
-      <div  />
-      <div  />
+      <div />
+      <div />
 
-      {/* Card */}
       <div className="relative w-full max-w-md p-10 rounded-3xl
         bg-white/5 backdrop-blur-xl
         border border-white/10
         shadow-2xl shadow-black/40
         transition-all duration-500"
       >
-
-        {/* Heading */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-semibold text-white tracking-tight">
             Welcome Back 👋
