@@ -40,7 +40,6 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Form */}
         <div className="space-y-6">
 
           {/* Email */}
