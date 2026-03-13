@@ -37,7 +37,7 @@ function App() {
             Fresh-Basket — Your Daily Grocery App
           </h3>
           <h3 className="text-slate-400 text-sm hover:text-cyan-400 transition-colors duration-300">
-            © 2026 FreshBasket Team
+            © 2026 FreshBasket-Team
           </h3>
         </div>
       </footer>
