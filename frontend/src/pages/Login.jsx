@@ -41,8 +41,6 @@ export default function Login() {
         </div>
 
         <div className="space-y-6">
-
-          {/* Email */}
           <div>
             <label className="block text-sm text-slate-400 mb-2">
               Email
