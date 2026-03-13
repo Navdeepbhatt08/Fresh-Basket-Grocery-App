@@ -25,7 +25,7 @@ export default function Products() {
   return (
     <div className="min-h-screen px-4 py-12 sm:px-6 lg:px-8 bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900">
       <div className="max-w-7xl mx-auto">
- 
+
         <div className="text-center mb-12">
           <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-rfrom-white via-slate-200 to-slate-400 bg-clip-text text-transparent tracking-tight">
             All Products
@@ -60,7 +60,7 @@ export default function Products() {
 function ProductCard({ product }) {
   return (
     <div className="group relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_35px_70px_-15px_rgba(0,0,0,0.6)] hover:border-white/40 hover:bg-white/20">
-    
+
       <div className="relative h-64 bg-gradient-to-brfrom-slate-700 via-slate-600 to-slate-800 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tfrom-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -69,7 +69,7 @@ function ProductCard({ product }) {
       </div>
 
       <div className="p-8 flex flex-col h-80">
-    
+
         <h3 className="mb-4 text-xl font-bold text-white leading-tight line-clamp-2 group-hover:text-cyan-300 transition-colors duration-300">
           {product.name}
         </h3>
@@ -79,10 +79,10 @@ function ProductCard({ product }) {
             ₹{product.price.toLocaleString()}
           </span>
           <span className={`inline-flex px-4 py-2 text-sm font-semibold rounded-2xl border shadow-lg ${product.stock > 10
-              ? 'bg-sky-500/20 text-sky-300 border-sky-400/40'
-              : product.stock > 0
-                ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 animate-pulse'
-                : 'bg-red-500/20 text-red-300 border-red-400/40'
+            ? 'bg-sky-500/20 text-sky-300 border-sky-400/40'
+            : product.stock > 0
+              ? 'bg-amber-500/20 text-amber-300 border-amber-400/40 animate-pulse'
+              : 'bg-red-500/20 text-red-300 border-red-400/40'
             }`}>
             {product.stock > 0 ? `Stock: ${product.stock}` : 'Out of Stock'}
           </span>
