@@ -25,7 +25,7 @@ export default function Products() {
   return (
     <div className="min-h-screen px-4 py-12 sm:px-6 lg:px-8 bg-gradient-to-brfrom-slate-900 via-slate-800 to-slate-900">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+ 
         <div className="text-center mb-12">
           <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-rfrom-white via-slate-200 to-slate-400 bg-clip-text text-transparent tracking-tight">
             All Products
