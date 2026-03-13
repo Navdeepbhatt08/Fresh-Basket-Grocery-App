@@ -101,7 +101,6 @@ export default function Login() {
           {loading ? "Signing in..." : "Sign In"}
         </button>
 
-        {/* Footer */}
         <p className="text-center text-slate-500 text-sm mt-8">
           Don't have an account?{" "}
           <a
