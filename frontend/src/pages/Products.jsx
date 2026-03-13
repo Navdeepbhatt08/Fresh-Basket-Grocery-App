@@ -88,7 +88,6 @@ function ProductCard({ product }) {
           </span>
         </div>
 
-        {/* Action Button */}
         <button
           className={`
             flex-1 flex items-center justify-center mt-auto p-4
