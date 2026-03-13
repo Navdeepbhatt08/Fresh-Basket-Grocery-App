@@ -59,7 +59,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm text-slate-400 mb-2">
               Password
