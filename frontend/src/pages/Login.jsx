@@ -86,7 +86,6 @@ export default function Login() {
           </div>
         </div>
 
-        {/* Button */}
         <button
           onClick={login}
           disabled={loading}
