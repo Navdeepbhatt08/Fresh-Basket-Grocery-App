@@ -6,8 +6,8 @@ export default function Input({ className = "", ...props }) {
   return (
     <input
       className={cx(
-        "w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500",
-        "focus:outline-none focus:ring-2 focus:ring-emerald-400/30 focus:border-emerald-300/40",
+        "w-full rounded-2xl border border-slate-200/70 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400",
+        "focus:outline-none focus:ring-2 focus:ring-amber-300/50 focus:border-amber-300",
         className
       )}
       {...props}

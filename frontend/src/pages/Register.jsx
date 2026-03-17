@@ -34,11 +34,11 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="mb-6">
-          <div className="text-sm text-slate-400">FreshBasket</div>
-          <h1 className="text-3xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">FreshBasket</div>
+          <h1 className="text-3xl font-extrabold text-slate-950 tracking-tight">
             Create account
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Demo registration (frontend only).
           </p>
         </div>
@@ -77,11 +77,11 @@ export default function Register() {
             <div className="flex items-center justify-between text-sm">
               <Link
                 to="/login"
-                className="text-emerald-200 hover:text-emerald-100 font-semibold"
+                className="text-emerald-700 hover:text-emerald-800 font-extrabold"
               >
                 Back to login
               </Link>
-              <Link to="/" className="text-slate-300 hover:text-white">
+              <Link to="/" className="text-slate-700 hover:text-slate-950">
                 Skip
               </Link>
             </div>
@@ -95,7 +95,7 @@ export default function Register() {
 function Field({ label, children }) {
   return (
     <div>
-      <div className="mb-2 text-sm font-semibold text-slate-200">{label}</div>
+      <div className="mb-2 text-sm font-semibold text-slate-800">{label}</div>
       {children}
     </div>
   )

@@ -15,11 +15,11 @@ export default function BuyerOrders() {
     <div className="space-y-4">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <div className="text-sm text-slate-400">Buyer</div>
-          <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Buyer</div>
+          <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
             Orders
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Order history UI (demo data).
           </p>
         </div>
@@ -31,14 +31,14 @@ export default function BuyerOrders() {
           <Card key={o.id} className="p-6">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-white font-semibold">{o.id}</div>
-                <div className="mt-1 text-sm text-slate-400">
+                <div className="text-slate-950 font-extrabold">{o.id}</div>
+                <div className="mt-1 text-sm text-slate-600">
                   {o.date} • {o.items} items
                 </div>
               </div>
               <Status status={o.status} />
             </div>
-            <div className="mt-4 text-2xl font-semibold text-white">₹{o.total}</div>
+            <div className="mt-4 text-2xl font-extrabold text-slate-950">₹{o.total}</div>
             <div className="mt-5 flex gap-2">
               <Button variant="subtle">Details</Button>
               <Button variant="subtle">Invoice</Button>
@@ -53,10 +53,10 @@ export default function BuyerOrders() {
 function Status({ status }) {
   const cls =
     status === "Delivered"
-      ? "border-emerald-400/20 bg-emerald-500/10 text-emerald-200"
+      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
       : status === "Cancelled"
-        ? "border-rose-400/20 bg-rose-500/10 text-rose-200"
-        : "border-amber-400/20 bg-amber-500/10 text-amber-200"
+        ? "border-rose-200 bg-rose-50 text-rose-800"
+        : "border-amber-200 bg-amber-50 text-amber-900"
   return (
     <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${cls}`}>
       {status}

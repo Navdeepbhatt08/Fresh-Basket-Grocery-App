@@ -11,11 +11,11 @@ export default function AdminSellers() {
   return (
     <div className="space-y-4">
       <div>
-        <div className="text-sm text-slate-400">Admin</div>
-        <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+        <div className="text-sm text-slate-600">Admin</div>
+        <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
           Sellers
         </h1>
-        <p className="mt-2 text-slate-300">
+        <p className="mt-2 text-slate-700">
           Approvals and seller management (demo).
         </p>
       </div>
@@ -25,13 +25,13 @@ export default function AdminSellers() {
           <Card key={s.id} className="p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-white font-semibold">{s.name}</div>
-                <div className="mt-1 text-sm text-slate-400">Owner: {s.owner}</div>
-                <div className="mt-1 text-sm text-slate-400">
+                <div className="text-slate-950 font-extrabold">{s.name}</div>
+                <div className="mt-1 text-sm text-slate-600">Owner: {s.owner}</div>
+                <div className="mt-1 text-sm text-slate-600">
                   Rating: {s.rating ? `⭐ ${s.rating}` : "—"}
                 </div>
               </div>
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200">
+              <span className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 {s.status}
               </span>
             </div>

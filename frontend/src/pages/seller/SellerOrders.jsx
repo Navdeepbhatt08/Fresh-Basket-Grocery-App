@@ -24,11 +24,11 @@ export default function SellerOrders() {
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-sm text-slate-400">Seller</div>
-          <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Seller</div>
+          <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
             Orders
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Update order status (demo UI).
           </p>
         </div>
@@ -42,15 +42,15 @@ export default function SellerOrders() {
           <Card key={o.id} className="p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <div className="text-white font-semibold">{o.id}</div>
-                <div className="mt-1 text-sm text-slate-400">
+                <div className="text-slate-950 font-extrabold">{o.id}</div>
+                <div className="mt-1 text-sm text-slate-600">
                   Buyer: {o.buyer} • {o.time}
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-white font-semibold">{moneyINR(o.total)}</div>
+                <div className="text-slate-950 font-extrabold">{moneyINR(o.total)}</div>
                 <div className="mt-1">
-                  <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200">
+                  <span className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                     {o.status}
                   </span>
                 </div>

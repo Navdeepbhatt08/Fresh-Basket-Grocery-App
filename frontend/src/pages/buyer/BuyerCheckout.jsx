@@ -33,9 +33,9 @@ export default function BuyerCheckout() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <Card className="p-6 lg:col-span-2">
-        <div className="text-sm text-slate-400">Buyer</div>
-        <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">Checkout</h1>
-        <p className="mt-2 text-slate-300">
+        <div className="text-sm text-slate-600">Buyer</div>
+        <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">Checkout</h1>
+        <p className="mt-2 text-slate-700">
           Enter delivery details and place order (frontend demo).
         </p>
 
@@ -90,14 +90,14 @@ export default function BuyerCheckout() {
       </Card>
 
       <Card className="p-6">
-        <div className="text-sm font-semibold text-white">Order summary</div>
+        <div className="text-sm font-extrabold text-slate-950">Order summary</div>
         <div className="mt-4 space-y-2">
           {items.map((it) => (
             <div key={it.id} className="flex items-center justify-between text-sm">
-              <div className="text-slate-300">
+              <div className="text-slate-700">
                 {it.name} <span className="text-slate-500">× {it.qty}</span>
               </div>
-              <div className="text-slate-100 font-semibold">
+              <div className="text-slate-950 font-extrabold">
                 {moneyINR(it.price * it.qty)}
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function BuyerCheckout() {
 function Field({ label, className = "", children }) {
   return (
     <div className={className}>
-      <div className="mb-2 text-sm font-semibold text-slate-200">{label}</div>
+      <div className="mb-2 text-sm font-semibold text-slate-800">{label}</div>
       {children}
     </div>
   )
@@ -127,10 +127,10 @@ function Field({ label, className = "", children }) {
 function Row({ label, value, strong }) {
   return (
     <div className="flex items-center justify-between">
-      <div className={strong ? "text-slate-200 font-semibold" : "text-slate-400"}>
+      <div className={strong ? "text-slate-800 font-semibold" : "text-slate-600"}>
         {label}
       </div>
-      <div className={strong ? "text-white font-semibold" : "text-slate-200"}>
+      <div className={strong ? "text-slate-950 font-extrabold" : "text-slate-800"}>
         {value}
       </div>
     </div>
@@ -146,11 +146,11 @@ function PayOpt({ active, title, desc, onClick }) {
         "rounded-2xl border p-4 text-left transition",
         active
           ? "border-emerald-400/30 bg-emerald-500/10"
-          : "border-white/10 bg-white/5 hover:bg-white/10"
+          : "border-slate-200/70 bg-white hover:bg-slate-50"
       ].join(" ")}
     >
-      <div className="text-sm font-semibold text-white">{title}</div>
-      <div className="mt-1 text-sm text-slate-400">{desc}</div>
+      <div className="text-sm font-extrabold text-slate-950">{title}</div>
+      <div className="mt-1 text-sm text-slate-600">{desc}</div>
     </button>
   )
 }

@@ -27,11 +27,11 @@ export default function AdminUsers() {
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-sm text-slate-400">Admin</div>
-          <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Admin</div>
+          <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
             Users
           </h1>
-          <p className="mt-2 text-slate-300">Search and manage user accounts (demo).</p>
+          <p className="mt-2 text-slate-700">Search and manage user accounts (demo).</p>
         </div>
         <div className="flex gap-2 w-full sm:w-auto">
           <div className="w-full sm:w-80">
@@ -45,7 +45,7 @@ export default function AdminUsers() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-xs uppercase tracking-wider text-slate-400">
+              <tr className="text-xs uppercase tracking-wider text-slate-500">
                 <th className="py-3">Name</th>
                 <th className="py-3">Email</th>
                 <th className="py-3">Role</th>
@@ -55,12 +55,12 @@ export default function AdminUsers() {
             </thead>
             <tbody className="text-sm">
               {filtered.map((u) => (
-                <tr key={u.id} className="border-t border-white/10">
-                  <td className="py-4 text-white font-semibold">{u.name}</td>
-                  <td className="py-4 text-slate-300">{u.email}</td>
-                  <td className="py-4 text-slate-200">{u.role}</td>
+                <tr key={u.id} className="border-t border-slate-200/70">
+                  <td className="py-4 text-slate-950 font-extrabold">{u.name}</td>
+                  <td className="py-4 text-slate-700">{u.email}</td>
+                  <td className="py-4 text-slate-800">{u.role}</td>
                   <td className="py-4">
-                    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200">
+                    <span className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                       {u.status}
                     </span>
                   </td>
@@ -78,7 +78,7 @@ export default function AdminUsers() {
               ))}
               {filtered.length === 0 ? (
                 <tr>
-                  <td className="py-6 text-slate-400" colSpan={5}>
+                  <td className="py-6 text-slate-600" colSpan={5}>
                     No users matched.
                   </td>
                 </tr>

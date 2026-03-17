@@ -28,7 +28,7 @@ import ProductsLegacy from "./pages/Products"
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(1200px_700px_at_20%_-10%,rgba(52,211,153,0.18),transparent_55%),radial-gradient(900px_600px_at_85%_0%,rgba(132,204,22,0.12),transparent_52%),linear-gradient(to_bottom,rgba(2,6,23,1),rgba(2,6,23,1))]">
+    <div className="min-h-screen bg-[radial-gradient(1200px_700px_at_20%_-10%,rgba(250,204,21,0.35),transparent_55%),radial-gradient(900px_600px_at_85%_0%,rgba(34,197,94,0.18),transparent_52%),linear-gradient(to_bottom,rgba(246,247,249,1),rgba(246,247,249,1))]">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -64,10 +64,10 @@ export default function App() {
       </Routes>
 
       <ToastContainer
-        theme="dark"
+        theme="light"
         position="bottom-right"
         toastClassName={() =>
-          "bg-slate-900/90 text-slate-100 border border-white/10 backdrop-blur-xl rounded-2xl shadow-2xl"
+          "bg-white text-slate-900 border border-slate-200/70 backdrop-blur-xl rounded-2xl shadow-2xl"
         }
       />
     </div>

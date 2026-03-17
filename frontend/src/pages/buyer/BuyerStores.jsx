@@ -6,7 +6,7 @@ import { stores } from "../../lib/mockData"
 
 function Badge({ children }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200">
+    <span className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
       {children}
     </span>
   )
@@ -25,11 +25,11 @@ export default function BuyerStores() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-sm text-slate-400">Buyer</div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Buyer</div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
             Nearby stores
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Pick a store to browse products and schedule delivery.
           </p>
         </div>
@@ -48,14 +48,14 @@ export default function BuyerStores() {
             <Card className="p-6 hover:bg-white/[0.06] transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-lg font-semibold text-white group-hover:text-emerald-200 transition">
+                  <div className="text-lg font-extrabold text-slate-950 group-hover:text-emerald-800 transition">
                     {s.name}
                   </div>
-                  <div className="mt-1 text-sm text-slate-400">
+                  <div className="mt-1 text-sm text-slate-600">
                     {s.distanceKm} km • {s.etaMin} min ETA • ⭐ {s.rating}
                   </div>
                 </div>
-                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/20 to-lime-400/10 flex items-center justify-center text-xl">
+                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-400/15 to-lime-400/10 flex items-center justify-center text-xl">
                   🛒
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function BuyerStores() {
                 ))}
               </div>
 
-              <div className="mt-5 text-sm font-semibold text-emerald-200">
+              <div className="mt-5 text-sm font-extrabold text-emerald-800">
                 Browse →
               </div>
             </Card>

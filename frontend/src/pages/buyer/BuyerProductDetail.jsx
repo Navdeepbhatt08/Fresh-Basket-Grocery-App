@@ -16,10 +16,10 @@ export default function BuyerProductDetail() {
   if (!product) {
     return (
       <Card className="p-6">
-        <div className="text-white font-semibold">Product not found</div>
+        <div className="text-slate-950 font-extrabold">Product not found</div>
         <div className="mt-3">
           <Link
-            className="text-emerald-200 hover:text-emerald-100"
+            className="text-emerald-700 hover:text-emerald-800 font-semibold"
             to="/buyer/stores"
           >
             Back to stores
@@ -33,19 +33,19 @@ export default function BuyerProductDetail() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm text-slate-400">Product</div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Product</div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
             {product.name}
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Category: {product.category} • Unit: {product.unit}
           </p>
           {store ? (
-            <p className="mt-2 text-slate-400 text-sm">
+            <p className="mt-2 text-slate-600 text-sm">
               Sold by{" "}
               <Link
                 to={`/buyer/stores/${store.id}`}
-                className="text-emerald-200 hover:text-emerald-100"
+                className="text-emerald-700 hover:text-emerald-800 font-semibold"
               >
                 {store.name}
               </Link>
@@ -64,16 +64,16 @@ export default function BuyerProductDetail() {
         <Card className="p-6 lg:col-span-2">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="text-sm text-slate-400">Details</div>
-              <div className="mt-2 text-white font-semibold">
+              <div className="text-sm text-slate-600">Details</div>
+              <div className="mt-2 text-slate-950 font-extrabold">
                 Fresh, carefully packed, and delivered fast.
               </div>
-              <div className="mt-2 text-slate-300">
+              <div className="mt-2 text-slate-700">
                 This is a frontend demo card. Replace with real product description, images,
                 nutrition info, and reviews from your API.
               </div>
             </div>
-            <div className="h-14 w-14 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 to-lime-400/10 flex items-center justify-center text-2xl">
+            <div className="h-14 w-14 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-500/15 to-lime-400/10 flex items-center justify-center text-2xl">
               🧺
             </div>
           </div>
@@ -87,23 +87,23 @@ export default function BuyerProductDetail() {
             ].map((it) => (
               <div
                 key={it.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                className="rounded-2xl border border-slate-200/70 bg-white p-4"
               >
-                <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
                   {it.label}
                 </div>
-                <div className="mt-2 text-lg font-semibold text-white">{it.value}</div>
+                <div className="mt-2 text-lg font-extrabold text-slate-950">{it.value}</div>
               </div>
             ))}
           </div>
         </Card>
 
         <Card className="p-6">
-          <div className="text-sm text-slate-400">Price</div>
-          <div className="mt-2 text-3xl font-semibold text-white">
+          <div className="text-sm text-slate-600">Price</div>
+          <div className="mt-2 text-3xl font-extrabold text-slate-950">
             {moneyINR(product.price)}
           </div>
-          <div className="mt-2 text-sm text-slate-400">
+          <div className="mt-2 text-sm text-slate-600">
             Free delivery above ₹599 (demo rule).
           </div>
 

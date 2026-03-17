@@ -36,11 +36,11 @@ export default function SellerProducts() {
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-sm text-slate-400">Seller</div>
-          <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Seller</div>
+          <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
             Products
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             Manage catalog (demo UI: edit/toggle/restock).
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function SellerProducts() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-xs uppercase tracking-wider text-slate-400">
+              <tr className="text-xs uppercase tracking-wider text-slate-500">
                 <th className="py-3">Product</th>
                 <th className="py-3">Category</th>
                 <th className="py-3">Price</th>
@@ -67,18 +67,18 @@ export default function SellerProducts() {
             </thead>
             <tbody className="text-sm">
               {filtered.map((r) => (
-                <tr key={r.id} className="border-t border-white/10">
-                  <td className="py-4 text-white font-semibold">{r.name}</td>
-                  <td className="py-4 text-slate-300">{r.category}</td>
-                  <td className="py-4 text-white">{moneyINR(r.price)}</td>
-                  <td className="py-4 text-slate-200">{r.stock}</td>
+                <tr key={r.id} className="border-t border-slate-200/70">
+                  <td className="py-4 text-slate-950 font-extrabold">{r.name}</td>
+                  <td className="py-4 text-slate-700">{r.category}</td>
+                  <td className="py-4 text-slate-950 font-semibold">{moneyINR(r.price)}</td>
+                  <td className="py-4 text-slate-800 font-semibold">{r.stock}</td>
                   <td className="py-4">
                     <span
                       className={[
                         "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold",
                         r.active
-                          ? "border-emerald-400/20 bg-emerald-500/10 text-emerald-200"
-                          : "border-slate-400/20 bg-slate-500/10 text-slate-200"
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                          : "border-slate-200 bg-slate-50 text-slate-700"
                       ].join(" ")}
                     >
                       {r.active ? "Active" : "Paused"}
@@ -101,7 +101,7 @@ export default function SellerProducts() {
               ))}
               {filtered.length === 0 ? (
                 <tr>
-                  <td className="py-6 text-slate-400" colSpan={6}>
+                  <td className="py-6 text-slate-600" colSpan={6}>
                     No products matched.
                   </td>
                 </tr>

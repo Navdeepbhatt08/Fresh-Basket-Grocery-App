@@ -31,10 +31,10 @@ export default function BuyerStoreDetail() {
   if (!store) {
     return (
       <Card className="p-6">
-        <div className="text-white font-semibold">Store not found</div>
+        <div className="text-slate-950 font-extrabold">Store not found</div>
         <div className="mt-3">
           <Link
-            className="text-emerald-200 hover:text-emerald-100"
+            className="text-emerald-700 hover:text-emerald-800 font-semibold"
             to="/buyer/stores"
           >
             Back to stores
@@ -48,18 +48,18 @@ export default function BuyerStoreDetail() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm text-slate-400">Store</div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Store</div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
             {store.name}
           </h1>
-          <p className="mt-2 text-slate-300">
+          <p className="mt-2 text-slate-700">
             {store.distanceKm} km • {store.etaMin} min ETA • ⭐ {store.rating}
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {store.tags.map((t) => (
               <span
                 key={t}
-                className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200"
+                className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700"
               >
                 {t}
               </span>
@@ -81,19 +81,19 @@ export default function BuyerStoreDetail() {
               <div>
                 <Link
                   to={`/buyer/products/${p.id}`}
-                  className="text-lg font-semibold text-white hover:text-emerald-200 transition"
+                  className="text-lg font-extrabold text-slate-950 hover:text-emerald-800 transition"
                 >
                   {p.name}
                 </Link>
-                <div className="mt-1 text-sm text-slate-400">{p.category}</div>
+                <div className="mt-1 text-sm text-slate-600">{p.category}</div>
               </div>
-              <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 to-lime-400/10 flex items-center justify-center text-xl">
+              <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-500/15 to-lime-400/10 flex items-center justify-center text-xl">
                 🥬
               </div>
             </div>
 
             <div className="mt-4 flex items-center justify-between">
-              <div className="text-xl font-semibold text-white">{moneyINR(p.price)}</div>
+              <div className="text-xl font-extrabold text-slate-950">{moneyINR(p.price)}</div>
               <StockPill stock={p.stock} />
             </div>
 

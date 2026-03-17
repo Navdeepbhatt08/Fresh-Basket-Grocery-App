@@ -18,11 +18,11 @@ export default function BuyerProfile() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <Card className="p-6 lg:col-span-2">
-        <div className="text-sm text-slate-400">Buyer</div>
-        <h1 className="mt-1 text-2xl font-semibold text-white tracking-tight">
+        <div className="text-sm text-slate-600">Buyer</div>
+        <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
           Profile
         </h1>
-        <p className="mt-2 text-slate-300">
+        <p className="mt-2 text-slate-700">
           Update details (frontend demo; stored in localStorage).
         </p>
 
@@ -47,14 +47,14 @@ export default function BuyerProfile() {
       </Card>
 
       <Card className="p-6">
-        <div className="text-sm font-semibold text-white">Addresses</div>
-        <div className="mt-2 text-sm text-slate-400">
+        <div className="text-sm font-extrabold text-slate-950">Addresses</div>
+        <div className="mt-2 text-sm text-slate-600">
           Add address management UI here.
         </div>
         <div className="mt-5 space-y-2">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div className="text-sm font-semibold text-white">Home</div>
-            <div className="mt-1 text-sm text-slate-400">
+          <div className="rounded-2xl border border-slate-200/70 bg-white p-4">
+            <div className="text-sm font-extrabold text-slate-950">Home</div>
+            <div className="mt-1 text-sm text-slate-600">
               Sector 17, Chandigarh
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function BuyerProfile() {
 function Field({ label, children }) {
   return (
     <div>
-      <div className="mb-2 text-sm font-semibold text-slate-200">{label}</div>
+      <div className="mb-2 text-sm font-semibold text-slate-800">{label}</div>
       {children}
     </div>
   )

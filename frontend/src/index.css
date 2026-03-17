@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 * {
-  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 body {
-  background: #070a13;
-  color: #e5e7eb;
+  background: #f6f7f9;
+  color: #0f172a;
 }
 
 html,
@@ -17,7 +18,7 @@ body,
 
 /* Small global tweaks */
 :focus-visible {
-  outline: 2px solid rgba(52, 211, 153, 0.75);
+  outline: 2px solid rgba(22, 163, 74, 0.55);
   outline-offset: 2px;
 }
 

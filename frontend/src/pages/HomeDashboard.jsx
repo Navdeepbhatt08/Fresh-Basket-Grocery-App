@@ -8,10 +8,10 @@ import { moneyINR } from "../lib/format"
 function Stat({ label, value }) {
   return (
     <Card className="p-5">
-      <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         {label}
       </div>
-      <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
+      <div className="mt-2 text-2xl font-extrabold text-slate-950">{value}</div>
     </Card>
   )
 }
@@ -36,15 +36,15 @@ export default function HomeDashboard() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <div className="text-sm text-slate-400">Welcome</div>
-          <h1 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+          <div className="text-sm text-slate-600">Welcome</div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
             {user?.role === "admin"
               ? "Overview & controls"
               : user?.role === "seller"
                 ? "Your store performance"
                 : "What do you need today?"}
           </h1>
-          <p className="mt-2 max-w-2xl text-slate-300">
+          <p className="mt-2 max-w-2xl text-slate-700">
             A modern grocery delivery frontend with Buyer/Seller/Admin flows,
             dark theme, and reusable components.
           </p>
@@ -75,10 +75,10 @@ export default function HomeDashboard() {
         <Card className="p-6 lg:col-span-2">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm font-semibold text-white">
+              <div className="text-sm font-extrabold text-slate-950">
                 Delivery trends (demo)
               </div>
-              <div className="mt-1 text-sm text-slate-400">
+              <div className="mt-1 text-sm text-slate-600">
                 Placeholder chart area (ready to be wired to real analytics).
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function HomeDashboard() {
             {[22, 38, 30, 45, 28, 52, 44, 58, 40, 62, 49, 70].map((v, idx) => (
               <div
                 key={idx}
-                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/40 to-lime-400/15 border border-white/10"
+                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/35 to-lime-400/15 border border-slate-200/70"
                 style={{ height: `${v}%` }}
               />
             ))}
@@ -98,8 +98,8 @@ export default function HomeDashboard() {
         </Card>
 
         <Card className="p-6">
-          <div className="text-sm font-semibold text-white">Quick actions</div>
-          <div className="mt-1 text-sm text-slate-400">
+          <div className="text-sm font-extrabold text-slate-950">Quick actions</div>
+          <div className="mt-1 text-sm text-slate-600">
             Jump to common screens.
           </div>
           <div className="mt-5 grid grid-cols-1 gap-2">

@@ -14,12 +14,12 @@ export default function Button({
 
   const variants = {
     primary:
-      "rounded-2xl bg-emerald-400 text-slate-950 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20",
+      "rounded-2xl bg-amber-300 text-slate-950 hover:bg-amber-200 shadow-lg shadow-amber-400/30",
     subtle:
-      "rounded-2xl border border-white/10 bg-white/5 text-white hover:bg-white/10",
+      "rounded-2xl border border-slate-200/70 bg-white text-slate-900 hover:bg-slate-50",
     danger:
-      "rounded-2xl border border-rose-400/20 bg-rose-500/15 text-rose-100 hover:bg-rose-500/20",
-    ghost: "rounded-2xl text-slate-200 hover:bg-white/10"
+      "rounded-2xl border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100",
+    ghost: "rounded-2xl text-slate-700 hover:bg-slate-100"
   }
 
   const sizes = {
