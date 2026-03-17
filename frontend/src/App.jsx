@@ -28,7 +28,7 @@ import ProductsLegacy from "./pages/Products"
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[radial-gradient(1200px_700px_at_20%_-10%,rgba(34,211,238,0.18),transparent_55%),radial-gradient(900px_600px_at_80%_0%,rgba(99,102,241,0.18),transparent_52%),linear-gradient(to_bottom,rgba(2,6,23,1),rgba(2,6,23,1))]">
+    <div className="min-h-screen bg-[radial-gradient(1200px_700px_at_20%_-10%,rgba(52,211,153,0.18),transparent_55%),radial-gradient(900px_600px_at_85%_0%,rgba(132,204,22,0.12),transparent_52%),linear-gradient(to_bottom,rgba(2,6,23,1),rgba(2,6,23,1))]">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

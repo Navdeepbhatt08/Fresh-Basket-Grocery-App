@@ -55,18 +55,25 @@ export default function AppShell() {
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
+      {sidebarOpen ? (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      ) : null}
+      <div className="mx-auto max-w-[1400px] px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
         <div className="rounded-[28px] border border-white/10 bg-white/[0.03] backdrop-blur-xl shadow-[0_20px_80px_-30px_rgba(0,0,0,0.8)] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] min-h-[calc(100vh-3rem)]">
             {/* Sidebar */}
             <aside
               className={cx(
                 "border-r border-white/10 bg-gradient-to-b from-white/[0.05] to-transparent",
-                "lg:block",
+                "lg:block lg:static",
+                "fixed inset-y-0 left-0 z-50 w-[320px] max-w-[85vw] overflow-y-auto",
                 sidebarOpen ? "block" : "hidden"
               )}
             >
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="text-sm font-semibold text-slate-300">
@@ -92,7 +99,7 @@ export default function AppShell() {
                         {user?.name || "Demo User"}
                       </div>
                     </div>
-                    <span className="inline-flex items-center rounded-xl border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+                    <span className="inline-flex items-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-200">
                       {roleLabel}
                     </span>
                   </div>
@@ -153,7 +160,7 @@ export default function AppShell() {
                           >
                             <span>{it.label}</span>
                             {it.to === "/buyer/cart" ? (
-                              <span className="rounded-full bg-cyan-500/15 px-2 py-0.5 text-xs font-semibold text-cyan-200 border border-cyan-400/20">
+                              <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-200 border border-emerald-400/20">
                                 ₹{totals.subtotal.toLocaleString()}
                               </span>
                             ) : null}
@@ -272,7 +279,7 @@ export default function AppShell() {
                     </button>
                     <button
                       onClick={() => navigate("/buyer/cart")}
-                      className="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
+                      className="inline-flex items-center justify-center rounded-xl bg-emerald-400 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-emerald-300"
                     >
                       Cart • {totals.itemsCount}
                     </button>
@@ -287,7 +294,7 @@ export default function AppShell() {
               <footer className="border-t border-white/10 px-6 py-6">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="text-sm text-slate-400">
-                    FreshBasket — Grocery delivery UI (frontend demo)
+                    FreshBasket — Team (@Navdeep @Divyansh @Neeraj)
                   </div>
                   <div className="text-sm text-slate-500">© 2026</div>
                 </div>

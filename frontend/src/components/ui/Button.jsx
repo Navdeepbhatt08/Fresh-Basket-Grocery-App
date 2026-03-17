@@ -14,7 +14,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "rounded-2xl bg-cyan-500 text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-500/20",
+      "rounded-2xl bg-emerald-400 text-slate-950 hover:bg-emerald-300 shadow-lg shadow-emerald-500/20",
     subtle:
       "rounded-2xl border border-white/10 bg-white/5 text-white hover:bg-white/10",
     danger:
