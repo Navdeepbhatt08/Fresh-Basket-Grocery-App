@@ -11,10 +11,10 @@ export default function BuyerCheckout() {
   const { items, totals, clearCart } = useCart()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
-    name: "Demo User",
+    name: "Navdeep Bhatt",
     phone: "9999999999",
-    address: "Sector 17, Chandigarh",
-    payment: "cod"
+    address: "Lane no. 6, Rishikesh",
+    payment: "UPI"
   })
 
   const canPlace = useMemo(() => items.length > 0 && !loading, [items.length, loading])
@@ -67,12 +67,21 @@ export default function BuyerCheckout() {
                 active={form.payment === "cod"}
                 title="Cash on delivery"
                 desc="Pay at doorstep"
+                logos={[
+                  { label: "₹ Cash", bg: "bg-emerald-600", text: "text-white" }
+                ]}
                 onClick={() => setForm((f) => ({ ...f, payment: "cod" }))}
               />
               <PayOpt
                 active={form.payment === "upi"}
                 title="UPI"
                 desc="Fast & secure"
+                logos={[
+                  { label: "UPI", bg: "bg-slate-900", text: "text-white" },
+                  { label: "GPay", bg: "bg-white", text: "text-slate-900", ring: true },
+                  { label: "PhonePe", bg: "bg-[#5f259f]", text: "text-white" },
+                  { label: "Paytm", bg: "bg-[#00baf2]", text: "text-white" }
+                ]}
                 onClick={() => setForm((f) => ({ ...f, payment: "upi" }))}
               />
             </div>
@@ -137,7 +146,7 @@ function Row({ label, value, strong }) {
   )
 }
 
-function PayOpt({ active, title, desc, onClick }) {
+function PayOpt({ active, title, desc, logos = [], onClick }) {
   return (
     <button
       onClick={onClick}
@@ -149,8 +158,29 @@ function PayOpt({ active, title, desc, onClick }) {
           : "border-slate-200/70 bg-white hover:bg-slate-50"
       ].join(" ")}
     >
-      <div className="text-sm font-extrabold text-slate-950">{title}</div>
-      <div className="mt-1 text-sm text-slate-600">{desc}</div>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="text-sm font-extrabold text-slate-950">{title}</div>
+          <div className="mt-1 text-sm text-slate-600">{desc}</div>
+        </div>
+        {logos.length ? (
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            {logos.map((l) => (
+              <span
+                key={l.label}
+                className={[
+                  "inline-flex items-center justify-center rounded-xl px-2.5 py-1 text-[11px] font-extrabold",
+                  l.ring ? "ring-1 ring-slate-200" : "",
+                  l.bg,
+                  l.text
+                ].join(" ")}
+              >
+                {l.label}
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
     </button>
   )
 }

@@ -1,5 +1,6 @@
 import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
+import LineChart from "../components/ui/LineChart"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../state/auth"
 import { adminDemo, sellerDemo, stores } from "../lib/mockData"
@@ -86,15 +87,7 @@ export default function HomeDashboard() {
               Reports
             </Button>
           </div>
-          <div className="mt-6 grid grid-cols-12 gap-2 items-end h-40">
-            {[22, 38, 30, 45, 28, 52, 44, 58, 40, 62, 49, 70].map((v, idx) => (
-              <div
-                key={idx}
-                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/35 to-lime-400/15 border border-slate-200/70"
-                style={{ height: `${v}%` }}
-              />
-            ))}
-          </div>
+          <LineChart values={[22, 38, 30, 45, 28, 52, 44, 58, 40, 62, 49, 70]} />
         </Card>
 
         <Card className="p-6">

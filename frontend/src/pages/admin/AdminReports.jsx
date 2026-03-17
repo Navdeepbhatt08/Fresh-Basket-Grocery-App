@@ -1,5 +1,6 @@
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
+import LineChart from "../../components/ui/LineChart"
 
 export default function AdminReports() {
   return (
@@ -23,15 +24,7 @@ export default function AdminReports() {
           <div className="mt-1 text-sm text-slate-600">
             Placeholder chart.
           </div>
-          <div className="mt-6 grid grid-cols-12 gap-2 items-end h-44">
-            {[34, 40, 25, 48, 54, 44, 60, 58, 52, 66, 63, 72].map((v, idx) => (
-              <div
-                key={idx}
-                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/35 to-lime-400/15 border border-slate-200/70"
-                style={{ height: `${v}%` }}
-              />
-            ))}
-          </div>
+          <LineChart values={[34, 40, 25, 48, 54, 44, 60, 58, 52, 66, 63, 72]} height={200} />
         </Card>
 
         <Card className="p-6">
