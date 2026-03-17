@@ -48,14 +48,14 @@ export default function BuyerStores() {
             <Card className="p-6 hover:bg-white/[0.06] transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-lg font-semibold text-white group-hover:text-cyan-200 transition">
+                  <div className="text-lg font-semibold text-white group-hover:text-emerald-200 transition">
                     {s.name}
                   </div>
                   <div className="mt-1 text-sm text-slate-400">
                     {s.distanceKm} km • {s.etaMin} min ETA • ⭐ {s.rating}
                   </div>
                 </div>
-                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-500/20 to-indigo-500/10 flex items-center justify-center text-xl">
+                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-400/20 to-lime-400/10 flex items-center justify-center text-xl">
                   🛒
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function BuyerStores() {
                 ))}
               </div>
 
-              <div className="mt-5 text-sm font-semibold text-cyan-200">
+              <div className="mt-5 text-sm font-semibold text-emerald-200">
                 Browse →
               </div>
             </Card>

@@ -33,7 +33,10 @@ export default function BuyerStoreDetail() {
       <Card className="p-6">
         <div className="text-white font-semibold">Store not found</div>
         <div className="mt-3">
-          <Link className="text-cyan-200 hover:text-cyan-100" to="/buyer/stores">
+          <Link
+            className="text-emerald-200 hover:text-emerald-100"
+            to="/buyer/stores"
+          >
             Back to stores
           </Link>
         </div>
@@ -78,13 +81,13 @@ export default function BuyerStoreDetail() {
               <div>
                 <Link
                   to={`/buyer/products/${p.id}`}
-                  className="text-lg font-semibold text-white hover:text-cyan-200 transition"
+                  className="text-lg font-semibold text-white hover:text-emerald-200 transition"
                 >
                   {p.name}
                 </Link>
                 <div className="mt-1 text-sm text-slate-400">{p.category}</div>
               </div>
-              <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 flex items-center justify-center text-xl">
+              <div className="h-12 w-12 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 to-lime-400/10 flex items-center justify-center text-xl">
                 🥬
               </div>
             </div>

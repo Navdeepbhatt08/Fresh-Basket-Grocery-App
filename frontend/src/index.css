@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 * {
-  font-family: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "EB Garamond", Garamond, Georgia, serif;
 }
 
 body {

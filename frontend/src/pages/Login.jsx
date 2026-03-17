@@ -8,7 +8,7 @@ import { useAuth } from "../state/auth"
 export default function Login() {
   const navigate = useNavigate()
   const { login } = useAuth()
-  const [email, setEmail] = useState("demo@freshbasket.app")
+  const [email, setEmail] = useState("navdeep@freshbasket.app")
   const [password, setPassword] = useState("password")
   const [role, setRole] = useState("buyer")
   const [loading, setLoading] = useState(false)
@@ -19,7 +19,7 @@ export default function Login() {
     setLoading(true)
     try {
       await new Promise((r) => setTimeout(r, 350))
-      login({ name: "Demo User", email, role, token: "demo-token" })
+      login({ name: "Navdeep(Default)", email, role, token: "demo-token" })
       navigate("/", { replace: true })
     } finally {
       setLoading(false)
@@ -56,7 +56,9 @@ export default function Login() {
                     onClick={() => setRole(r)}
                     className={[
                       "rounded-2xl border px-3 py-3 text-sm font-semibold transition",
-                      role === r ? "border-cyan-400/30 bg-cyan-500/10 text-white" : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+                      role === r
+                        ? "border-emerald-400/30 bg-emerald-500/10 text-white"
+                        : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
                     ].join(" ")}
                   >
                     {r[0].toUpperCase() + r.slice(1)}
@@ -75,7 +77,10 @@ export default function Login() {
               <Link to="/" className="text-slate-300 hover:text-white">
                 Continue as guest
               </Link>
-              <Link to="/register" className="text-cyan-200 hover:text-cyan-100 font-semibold">
+              <Link
+                to="/register"
+                className="text-emerald-200 hover:text-emerald-100 font-semibold"
+              >
                 Create account
               </Link>
             </div>

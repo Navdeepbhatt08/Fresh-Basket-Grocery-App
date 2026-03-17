@@ -18,7 +18,10 @@ export default function BuyerProductDetail() {
       <Card className="p-6">
         <div className="text-white font-semibold">Product not found</div>
         <div className="mt-3">
-          <Link className="text-cyan-200 hover:text-cyan-100" to="/buyer/stores">
+          <Link
+            className="text-emerald-200 hover:text-emerald-100"
+            to="/buyer/stores"
+          >
             Back to stores
           </Link>
         </div>
@@ -42,7 +45,7 @@ export default function BuyerProductDetail() {
               Sold by{" "}
               <Link
                 to={`/buyer/stores/${store.id}`}
-                className="text-cyan-200 hover:text-cyan-100"
+                className="text-emerald-200 hover:text-emerald-100"
               >
                 {store.name}
               </Link>
@@ -70,7 +73,7 @@ export default function BuyerProductDetail() {
                 nutrition info, and reviews from your API.
               </div>
             </div>
-            <div className="h-14 w-14 rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/20 to-cyan-500/10 flex items-center justify-center text-2xl">
+            <div className="h-14 w-14 rounded-2xl border border-white/10 bg-gradient-to-br from-emerald-500/20 to-lime-400/10 flex items-center justify-center text-2xl">
               🧺
             </div>
           </div>

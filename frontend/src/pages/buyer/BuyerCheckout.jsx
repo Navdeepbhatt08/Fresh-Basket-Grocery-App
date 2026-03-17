@@ -144,7 +144,9 @@ function PayOpt({ active, title, desc, onClick }) {
       type="button"
       className={[
         "rounded-2xl border p-4 text-left transition",
-        active ? "border-cyan-400/30 bg-cyan-500/10" : "border-white/10 bg-white/5 hover:bg-white/10"
+        active
+          ? "border-emerald-400/30 bg-emerald-500/10"
+          : "border-white/10 bg-white/5 hover:bg-white/10"
       ].join(" ")}
     >
       <div className="text-sm font-semibold text-white">{title}</div>

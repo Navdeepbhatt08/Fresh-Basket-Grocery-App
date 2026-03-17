@@ -75,7 +75,10 @@ export default function Register() {
             </div>
 
             <div className="flex items-center justify-between text-sm">
-              <Link to="/login" className="text-cyan-200 hover:text-cyan-100 font-semibold">
+              <Link
+                to="/login"
+                className="text-emerald-200 hover:text-emerald-100 font-semibold"
+              >
                 Back to login
               </Link>
               <Link to="/" className="text-slate-300 hover:text-white">

@@ -27,7 +27,7 @@ export default function AdminReports() {
             {[34, 40, 25, 48, 54, 44, 60, 58, 52, 66, 63, 72].map((v, idx) => (
               <div
                 key={idx}
-                className="col-span-1 rounded-xl bg-gradient-to-t from-indigo-500/40 to-cyan-500/20 border border-white/10"
+                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/35 to-lime-400/15 border border-white/10"
                 style={{ height: `${v}%` }}
               />
             ))}

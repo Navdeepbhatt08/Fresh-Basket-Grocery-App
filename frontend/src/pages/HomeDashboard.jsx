@@ -90,7 +90,7 @@ export default function HomeDashboard() {
             {[22, 38, 30, 45, 28, 52, 44, 58, 40, 62, 49, 70].map((v, idx) => (
               <div
                 key={idx}
-                className="col-span-1 rounded-xl bg-gradient-to-t from-cyan-500/40 to-indigo-500/20 border border-white/10"
+                className="col-span-1 rounded-xl bg-gradient-to-t from-emerald-500/40 to-lime-400/15 border border-white/10"
                 style={{ height: `${v}%` }}
               />
             ))}
