@@ -1,96 +1,99 @@
-import { useState } from "react"
-import API from "../api/axios"
+import { useMemo, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import Card from "../components/ui/Card"
+import Button from "../components/ui/Button"
+import Input from "../components/ui/Input"
+import { useAuth } from "../state/auth"
 
 export default function Register() {
+  const navigate = useNavigate()
+  const { login } = useAuth()
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: ""
   })
+  const [loading, setLoading] = useState(false)
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  const canSubmit = useMemo(() => {
+    return form.name.trim() && form.email.trim() && form.password.trim() && !loading
+  }, [form, loading])
 
   const register = async () => {
-    await API.post("/auth/register", form)
-    alert("Registered Successfully")
+    setLoading(true)
+    try {
+      await new Promise((r) => setTimeout(r, 450))
+      login({ name: form.name, email: form.email, role: "buyer", token: "demo-token" })
+      navigate("/", { replace: true })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0b1120] relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-md">
+        <div className="mb-6">
+          <div className="text-sm text-slate-400">FreshBasket</div>
+          <h1 className="text-3xl font-semibold text-white tracking-tight">
+            Create account
+          </h1>
+          <p className="mt-2 text-slate-300">
+            Demo registration (frontend only).
+          </p>
+        </div>
 
-  <div className="absolute w-[450px] h-[450px] bg-indigo-600/20 rounded-full blur-[120px] -top-40 -right-40"></div>
-  <div className="absolute w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-[120px] bottom-0 -left-40"></div>
+        <Card className="p-6">
+          <div className="space-y-4">
+            <Field label="Full name">
+              <Input
+                value={form.name}
+                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                placeholder="Your name"
+              />
+            </Field>
+            <Field label="Email">
+              <Input
+                value={form.email}
+                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                placeholder="you@example.com"
+              />
+            </Field>
+            <Field label="Password">
+              <Input
+                value={form.password}
+                onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
+                type="password"
+                placeholder="••••••••"
+              />
+            </Field>
 
-  {/* Glass Card */}
-  <div className="relative z-10 w-[400px] px-10 py-12 
-    bg-white/5 backdrop-blur-2xl 
-    border border-white/10 
-    rounded-2xl shadow-[0_0_60px_rgba(0,255,255,0.08)]">
+            <div className="pt-2">
+              <Button className="w-full" disabled={!canSubmit} onClick={register}>
+                {loading ? "Creating…" : "Create account"}
+              </Button>
+            </div>
 
-    <h2 className="text-3xl font-semibold text-white mb-10 tracking-wide">
-      Create Account
-    </h2>
-
-    {/* Name */}
-    <div className="mb-7">
-      <input
-        name="name"
-        placeholder="Full Name"
-        onChange={handleChange}
-        className="w-full bg-transparent border-b border-gray-600
-        text-white placeholder-gray-500
-        py-3 focus:outline-none
-        focus:border-indigo-400
-        transition duration-300"
-      />
+            <div className="flex items-center justify-between text-sm">
+              <Link to="/login" className="text-cyan-200 hover:text-cyan-100 font-semibold">
+                Back to login
+              </Link>
+              <Link to="/" className="text-slate-300 hover:text-white">
+                Skip
+              </Link>
+            </div>
+          </div>
+        </Card>
+      </div>
     </div>
+  )
+}
 
-    {/* Email */}
-    <div className="mb-7">
-      <input
-        name="email"
-        placeholder="Email Address"
-        onChange={handleChange}
-        className="w-full bg-transparent border-b border-gray-600
-        text-white placeholder-gray-500
-        py-3 focus:outline-none
-        focus:border-indigo-400
-        transition duration-300"
-      />
+function Field({ label, children }) {
+  return (
+    <div>
+      <div className="mb-2 text-sm font-semibold text-slate-200">{label}</div>
+      {children}
     </div>
-
-    {/* Password */}
-    <div className="mb-10">
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        onChange={handleChange}
-        className="w-full bg-transparent border-b border-gray-600
-        text-white placeholder-gray-500
-        py-3 focus:outline-none
-        focus:border-indigo-400
-        transition duration-300"
-      />
-    </div>
-
-    {/* Button */}
-    <button
-      onClick={register}
-      className="w-full py-3 rounded-lg bg-indigo-900
-      hover:from-indigo-400 hover:to-cyan-400
-      text-white font-medium tracking-wide
-      transition duration-300
-      shadow-lg shadow-indigo-500/20
-      hover:shadow-indigo-500/40
-      transform hover:scale-[1.02]">
-      Create Account →
-    </button>
-
-  </div>
-</div>
-
   )
 }

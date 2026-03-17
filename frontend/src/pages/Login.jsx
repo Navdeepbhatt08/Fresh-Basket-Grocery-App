@@ -1,116 +1,96 @@
-import { useState } from "react"
-import API from "../api/axios"
+import { useMemo, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import Card from "../components/ui/Card"
+import Button from "../components/ui/Button"
+import Input from "../components/ui/Input"
+import { useAuth } from "../state/auth"
 
 export default function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+  const { login } = useAuth()
+  const [email, setEmail] = useState("demo@freshbasket.app")
+  const [password, setPassword] = useState("password")
+  const [role, setRole] = useState("buyer")
   const [loading, setLoading] = useState(false)
 
-  const login = async () => {
+  const canSubmit = useMemo(() => email.trim() && password.trim() && !loading, [email, password, loading])
+
+  const onLogin = async () => {
     setLoading(true)
     try {
-      const res = await API.post("/auth/login", { email, password })
-      localStorage.setItem("token", res.data.token)
-      alert("Logged In")
+      await new Promise((r) => setTimeout(r, 350))
+      login({ name: "Demo User", email, role, token: "demo-token" })
+      navigate("/", { replace: true })
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center relative  via-slate-900 to-slate-950 px-4"
-      style={{ fontFamily: "'Outfit', sans-serif" }}
-    >
-      <div />
-      <div />
-
-      <div className="relative w-full max-w-md p-10 rounded-3xl
-        bg-white/5 backdrop-blur-xl
-        border border-white/10
-        shadow-2xl shadow-black/40
-        transition-all duration-500"
-      >
-        <div className="text-center mb-10">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-md">
+        <div className="mb-6">
+          <div className="text-sm text-slate-400">FreshBasket</div>
           <h1 className="text-3xl font-semibold text-white tracking-tight">
-            Welcome Back 👋
+            Sign in
           </h1>
-          <p className="text-slate-400 text-sm mt-2">
-            Sign in to continue to Fresh-Basket
+          <p className="mt-2 text-slate-300">
+            Choose a role to preview Buyer/Seller/Admin flows.
           </p>
         </div>
 
-        <div className="space-y-6">
-          <div>
-            <label className="block text-sm text-slate-400 mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl
-                bg-white/5 border border-white/10
-                text-white placeholder-slate-500
-                focus:outline-none focus:ring-2 focus:ring-cyan-500/40
-                focus:border-cyan-400
-                transition-all duration-300"
-            />
-          </div>
+        <Card className="p-6">
+          <div className="space-y-4">
+            <Field label="Email">
+              <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
+            </Field>
+            <Field label="Password">
+              <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="••••••••" />
+            </Field>
+            <Field label="Role">
+              <div className="grid grid-cols-3 gap-2">
+                {["buyer", "seller", "admin"].map((r) => (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setRole(r)}
+                    className={[
+                      "rounded-2xl border px-3 py-3 text-sm font-semibold transition",
+                      role === r ? "border-cyan-400/30 bg-cyan-500/10 text-white" : "border-white/10 bg-white/5 text-slate-200 hover:bg-white/10"
+                    ].join(" ")}
+                  >
+                    {r[0].toUpperCase() + r.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </Field>
 
-          <div>
-            <label className="block text-sm text-slate-400 mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl
-                bg-white/5 border border-white/10
-                text-white placeholder-slate-500
-                focus:outline-none focus:ring-2 focus:ring-cyan-500/40
-                focus:border-cyan-400
-                transition-all duration-300"
-            />
-            <div className="text-right mt-2">
-              <a
-                href="#"
-                className="text-xs text-cyan-400 hover:text-cyan-300 transition"
-              >
-                Forgot password?
-              </a>
+            <div className="pt-2">
+              <Button className="w-full" disabled={!canSubmit} onClick={onLogin}>
+                {loading ? "Signing in…" : "Sign in"}
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-between text-sm">
+              <Link to="/" className="text-slate-300 hover:text-white">
+                Continue as guest
+              </Link>
+              <Link to="/register" className="text-cyan-200 hover:text-cyan-100 font-semibold">
+                Create account
+              </Link>
             </div>
           </div>
-        </div>
-
-        <button
-          onClick={login}
-          disabled={loading}
-          className="w-full mt-8 py-3.5 rounded-xl
-            bg-gradient-to-rfrom-cyan-500 to-blue-500
-            hover:from-cyan-400 hover:to-blue-400
-            text-black font-semibold text-lg
-            transition-all duration-300
-            shadow-lg shadow-cyan-500/20
-            active:scale-95
-            disabled:opacity-60 disabled:pointer-events-none"
-        >
-          {loading ? "Signing in..." : "Sign In"}
-        </button>
-
-        <p className="text-center text-slate-500 text-sm mt-8">
-          Don't have an account?{" "}
-          <a
-            href="#"
-            className="text-cyan-400 hover:text-cyan-300 font-medium transition"
-          >
-            Sign up
-          </a>
-        </p>
+        </Card>
       </div>
+    </div>
+  )
+}
+
+function Field({ label, children }) {
+  return (
+    <div>
+      <div className="mb-2 text-sm font-semibold text-slate-200">{label}</div>
+      {children}
     </div>
   )
 }
