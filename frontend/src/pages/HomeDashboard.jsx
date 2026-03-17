@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../state/auth"
 import { adminDemo, sellerDemo, stores } from "../lib/mockData"
 import { moneyINR } from "../lib/format"
+import { downloadReportsPdf } from "../lib/reports/downloadReportsPdf"
+import { REPORTS_KPIS, REPORTS_ORDERS_SERIES } from "../lib/reports/reportData"
 
 function Stat({ label, value }) {
   return (
@@ -83,7 +85,21 @@ export default function HomeDashboard() {
                 Placeholder chart area (ready to be wired to real analytics).
               </div>
             </div>
-            <Button variant="subtle" onClick={() => navigate("/admin/reports")}>
+            <Button
+              variant="subtle"
+              onClick={() => {
+                const ok = window.confirm("Download Reports PDF?\n\nOK = Download\nCancel = Open Reports page")
+                if (ok) {
+                  downloadReportsPdf({
+                    title: "FreshBasket Reports",
+                    ordersSeries: REPORTS_ORDERS_SERIES,
+                    kpis: REPORTS_KPIS
+                  })
+                } else {
+                  navigate("/admin/reports")
+                }
+              }}
+            >
               Reports
             </Button>
           </div>
