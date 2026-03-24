@@ -14,7 +14,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "rounded-2xl bg-amber-300 text-slate-950 hover:bg-amber-200 shadow-lg shadow-amber-400/30",
+      "rounded-2xl bg-amber-300 text-slate-950 hover:bg-red-200 shadow-lg shadow-amber-400/30",
     subtle:
       "rounded-2xl border border-slate-200/70 bg-white text-slate-900 hover:bg-slate-50",
     danger:

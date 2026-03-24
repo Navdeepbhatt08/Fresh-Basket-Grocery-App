@@ -76,9 +76,9 @@ export default function AppShell() {
               <div className="p-5 sm:p-6">
                 <div className="flex items-center justify-between">
                   <div>
-             
+
                     <div className="text-2xl font-extrabold tracking-tight text-slate-950">
-                   FreshBasket 
+                      FreshBasket
                     </div>
                     <div className=" text-sm font-bold">(Your daily store)</div>
                   </div>
