@@ -1,7 +1,7 @@
-import express from "express"
-import { register, login } from "../controllers/auth.controller.js"
+import express from "express";
+import { register, login } from "../controllers/auth.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
@@ -9,7 +9,7 @@ router.post("/register", async (req, res) => {
 
     const userExists = await pool.query(
       "SELECT * FROM Users WHERE email = $1",
-      [email]
+      [email],
     );
 
     if (userExists.rows.length > 0) {
@@ -21,21 +21,19 @@ router.post("/register", async (req, res) => {
 
     const newUser = await pool.query(
       "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *",
-      [name, email, hashedPassword]
+      [name, email, hashedPassword],
     );
 
     res.status(201).json({
       message: "User registered successfully",
       user: newUser.rows[0],
     });
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
 });
 
+router.post("/login", login);
 
-router.post("/login", login)
-
-export default router
+export default router;

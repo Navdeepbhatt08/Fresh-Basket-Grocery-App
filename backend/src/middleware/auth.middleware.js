@@ -1,14 +1,36 @@
-import jwt from "jsonwebtoken"
+// src/middleware/auth.middleware.js
+const jwt = require("jsonwebtoken");
+const prisma = require("../config/prisma");
 
-export const verifyToken = (req, res, next) => {
-  const header = req.headers.authorization
-  if (!header) return res.status(401).json({ message: "No token" })
+const protect = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "No token provided" });
+    }
 
-  const token = header.split(" ")[1]
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(403).json({ message: "Invalid token" })
-    req.user = decoded
-    next()
-  })
-}
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+      select: { id: true, name: true, email: true, role: true, isVerified: true },
+    });
+
+    if (!user) return res.status(401).json({ message: "User not found" });
+
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid or expired token" });
+  }
+};
+
+const adminOnly = (req, res, next) => {
+  if (req.user?.role !== "ADMIN") {
+    return res.status(403).json({ message: "Admin access required" });
+  }
+  next();
+};
+
+module.exports = { protect, adminOnly };

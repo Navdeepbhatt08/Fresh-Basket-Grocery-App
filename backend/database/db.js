@@ -1,15 +1,21 @@
-import pkg from "pg";
-const { Pool } = pkg;
-import dotenv from "dotenv";
 
-dotenv.config();
+const prisma = require("../src/config/prisma");
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
 
-export default pool;
+async function connectDB() {
+  try {
+    await prisma.$connect();
+    console.log("✅  PostgreSQL connected via Prisma");
+  } catch (error) {
+    console.error("  Database connection failed:", error.message);
+    process.exit(1);
+  }
+}
+
+
+async function disconnectDB() {
+  await prisma.$disconnect();
+  console.log("🔌  PostgreSQL disconnected");
+}
+
+module.exports = { connectDB, disconnectDB };

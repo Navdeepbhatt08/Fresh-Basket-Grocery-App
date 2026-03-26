@@ -29,11 +29,11 @@ export default function HomeDashboard() {
       : user?.role === "seller"
         ? sellerDemo.kpis
         : [
-            { label: "Saved time", value: "42m" },
-            { label: "Free delivery", value: "₹599+" },
-            { label: "Nearby stores", value: stores.length },
-            { label: "Support", value: "24×7" }
-          ]
+          { label: "Saved time", value: "42m" },
+          { label: "Free delivery", value: "₹599+" },
+          { label: "Nearby stores", value: stores.length },
+          { label: "Support", value: "24×7" }
+        ]
 
   return (
     <div className="space-y-6">
@@ -48,9 +48,7 @@ export default function HomeDashboard() {
                 : "What do you need today?"}
           </h1>
           <p className="mt-2 max-w-2xl text-slate-700">
-            A modern grocery delivery frontend with Buyer/Seller/Admin flows,
-            dark theme, and reusable components.
-          </p>
+            A modern grocery delivery App with Multiple Feature.        </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="subtle" onClick={() => navigate("/buyer/stores")}>

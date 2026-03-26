@@ -170,19 +170,10 @@ export default function AppShell() {
                   ))}
                 </div>
 
-                <div className="mt-10 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-amber-50 to-white p-4">
-                  <div className="text-sm font-semibold text-slate-950">
-                    Quick tip
-                  </div>
-                  <div className="mt-1 text-sm text-slate-600">
-                    Switch roles above to preview Buyer/Seller/Admin dashboards.
-                  </div>
-                </div>
               </div>
             </aside>
 
-            {/* Main */}
-            <main className="min-w-0">
+            <main className="min-w-0 flex flex-col">
               <header className="sticky top-0 z-10 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
                 <div className="flex items-center justify-between gap-4 px-6 py-4">
                   <div className="flex items-center gap-3">
@@ -286,16 +277,17 @@ export default function AppShell() {
                 </div>
               </header>
 
-              <div className="px-6 py-6">
+              {/* grow-1 pushes the footer down to the bottom */}
+              <div className="flex-1 px-6 py-6">
                 <Outlet />
               </div>
 
               <footer className="border-t border-slate-200/70 px-6 py-6">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="text-sm text-slate-600">
+                <div className="flex justify-end flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="text-sm font-bold text-slate-600">
                     FreshBasket — Team (@Navdeep @Divyansh @Neeraj)
                   </div>
-                  <div className="text-sm text-slate-500">© 2026</div>
+                  <div className="text-sm font-bold text-slate-500">© 2026</div>
                 </div>
               </footer>
             </main>
@@ -305,4 +297,3 @@ export default function AppShell() {
     </div>
   )
 }
-
