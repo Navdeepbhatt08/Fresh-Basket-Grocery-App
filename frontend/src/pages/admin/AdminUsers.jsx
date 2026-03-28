@@ -21,8 +21,9 @@ export default function AdminUsers() {
         u.email.toLowerCase().includes(term) ||
         u.role.toLowerCase().includes(term)
     )
-  }, [q])
+  }, [q]) 
 
+  
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
