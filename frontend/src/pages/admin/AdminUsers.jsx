@@ -4,10 +4,10 @@ import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
 
 const demoUsers = [
-  { id: "u_1", name: "Navdeep", email: "navdeep@example.com", role: "buyer", status: "Active" },
-  { id: "u_2", name: "Simran", email: "simran@example.com", role: "buyer", status: "Active" },
-  { id: "u_3", name: "Aman", email: "aman@example.com", role: "seller", status: "Pending" },
-  { id: "u_4", name: "Mehak", email: "mehak@example.com", role: "seller", status: "Active" }
+  { id: "u_1", name: "Navdeep", email: "navdeep@example.com", role: "Admin", status: "Active" },
+  { id: "u_2", name: "Divyansh", email: "divyansh@example.com", role: "Seller", status: "Active" },
+  { id: "u_3", name: "Aman", email: "aman@example.com", role: "Buyer", status: "Pending" },
+  { id: "u_4", name: "Neeraj", email: "neeraj@example.com", role: "seller", status: "Active" }
 ]
 
 export default function AdminUsers() {
