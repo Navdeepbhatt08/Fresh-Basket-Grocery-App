@@ -61,13 +61,13 @@ export default function AppShell() {
           onClick={() => setSidebarOpen(false)}
         />
       ) : null}
-      <div className="mx-auto max-w-[1400px] px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="mx-auto `max-w-[1400px]` px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
         <div className="rounded-[28px] border border-slate-200/70 bg-white/70 backdrop-blur-xl shadow-[0_20px_70px_-30px_rgba(2,6,23,0.25)] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] min-h-[calc(100vh-3rem)]">
             {/* Sidebar */}
             <aside
               className={cx(
-                "border-r border-slate-200/70 bg-gradient-to-b from-white to-amber-50/50",
+                "border-r border-slate-200/70 bg-gradient-to-bfrom-white to-amber-50/50",
                 "lg:block lg:static",
                 "fixed inset-y-0 left-0 z-50 w-[320px] max-w-[85vw] overflow-y-auto",
                 sidebarOpen ? "block" : "hidden"
