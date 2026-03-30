@@ -34,11 +34,11 @@ export default function App() {
         <Route path="/register" element={<Register />} />
 
         <Route element={<AppShell />}>
-          {/* Default landing: Stores */}
+
           <Route path="/" element={<Navigate to="/buyer/stores" replace />} />
           <Route path="/dashboard" element={<HomeDashboard />} />
 
-          {/* Buyer */}
+
           <Route path="/buyer/stores" element={<BuyerStores />} />
           <Route path="/buyer/stores/:storeId" element={<BuyerStoreDetail />} />
           <Route path="/buyer/products/:productId" element={<BuyerProductDetail />} />
