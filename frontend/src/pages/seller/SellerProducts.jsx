@@ -2,7 +2,7 @@ import { useMemo, useState } from "react"
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
-import { products as allProducts } from "../../lib/mockData"
+import { products as allProducts } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 
 export default function SellerProducts() {

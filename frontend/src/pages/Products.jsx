@@ -1,5 +1,3 @@
-// Legacy page kept for compatibility with older routes.
-// The new app uses `src/pages/buyer/*` and dashboards.
 import { Link } from "react-router-dom"
 
 export default function Products() {

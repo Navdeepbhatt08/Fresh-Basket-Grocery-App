@@ -2,7 +2,7 @@ import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import Card from "../../components/ui/Card"
 import Input from "../../components/ui/Input"
-import { stores } from "../../lib/mockData"
+import { stores } from "../../lib/storeData"
 
 function Badge({ children }) {
   return (
@@ -55,7 +55,7 @@ export default function BuyerStores() {
                     {s.distanceKm} km • {s.etaMin} min ETA • ⭐ {s.rating}
                   </div>
                 </div>
-                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-400/15 to-lime-400/10 flex items-center justify-center text-xl">
+                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 b to-lime-400/10 flex items-center justify-center text-xl">
                   🛒
                 </div>
               </div>

@@ -20,7 +20,16 @@ export default function Login() {
     try {
       await new Promise((r) => setTimeout(r, 350))
       login({ name: "Navdeep(Default)", email, role, token: "demo-token" })
-      navigate("/", { replace: true })
+      {
+        if (role === "buyer") {
+          navigate("/buyer/stores", { replace: true })
+        } else if (role === "seller") {
+          navigate("/seller", { replace: true })
+        } else if (role === "admin") {
+          navigate("/admin", { replace: true })
+        }
+
+      }
     } finally {
       setLoading(false)
     }
@@ -74,7 +83,8 @@ export default function Login() {
             </div>
 
             <div className="flex items-center justify-between text-sm">
-              <Link to="/" className="text-slate-700 hover:text-slate-950">
+              <Link
+                to="/buyer/stores" className="text-slate-700 hover:text-slate-950">
                 Continue as guest
               </Link>
               <Link

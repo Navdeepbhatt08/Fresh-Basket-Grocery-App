@@ -35,7 +35,7 @@ export default function App() {
 
         <Route element={<AppShell />}>
 
-          <Route path="/" element={<Navigate to="/buyer/stores" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/dashboard" element={<HomeDashboard />} />
 
 
@@ -47,18 +47,18 @@ export default function App() {
           <Route path="/buyer/orders" element={<BuyerOrders />} />
           <Route path="/buyer/profile" element={<BuyerProfile />} />
 
-          {/* Seller */}
+
           <Route path="/seller" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/seller/orders" element={<SellerOrders />} />
 
-          {/* Admin */}
+
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/sellers" element={<AdminSellers />} />
           <Route path="/admin/reports" element={<AdminReports />} />
 
-          {/* Legacy */}
+
           <Route path="/products" element={<ProductsLegacy />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />

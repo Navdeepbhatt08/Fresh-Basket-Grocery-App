@@ -30,54 +30,6 @@ export const stores = [
     rating: 4.7,
     tags: ["Organic", "Fruits", "Greens"],
     distanceKm: 4.2
-  },
-  {
-    id: "store_5",
-    name: "Spice Street",
-    etaMin: 28,
-    rating: 4.5,
-    tags: ["Masala", "Dry Fruits", "Essentials"],
-    distanceKm: 5.1
-  },
-  {
-    id: "store_6",
-    name: "DailyNeeds",
-    etaMin: 16,
-    rating: 4.3,
-    tags: ["Staples", "Atta", "Rice"],
-    distanceKm: 2.8
-  },
-  {
-    id: "store_7",
-    name: "Snack Station",
-    etaMin: 14,
-    rating: 4.1,
-    tags: ["Chips", "Chocolate", "Cold Drinks"],
-    distanceKm: 1.9
-  },
-  {
-    id: "store_8",
-    name: "Meat & More",
-    etaMin: 35,
-    rating: 4.4,
-    tags: ["Chicken", "Fish", "Frozen"],
-    distanceKm: 6.4
-  },
-  {
-    id: "store_9",
-    name: "Household Hub",
-    etaMin: 20,
-    rating: 4.2,
-    tags: ["Cleaning", "Personal Care", "Home"],
-    distanceKm: 3.3
-  },
-  {
-    id: "store_10",
-    name: "Bakery Bliss",
-    etaMin: 18,
-    rating: 4.6,
-    tags: ["Cakes", "Bread", "Snacks"],
-    distanceKm: 2.6
   }
 ]
 

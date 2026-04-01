@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
-import { products, stores } from "../../lib/mockData"
+import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
 

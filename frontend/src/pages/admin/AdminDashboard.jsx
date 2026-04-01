@@ -1,6 +1,6 @@
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
-import { adminDemo } from "../../lib/mockData"
+import { adminDemo } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useNavigate } from "react-router-dom"
 
