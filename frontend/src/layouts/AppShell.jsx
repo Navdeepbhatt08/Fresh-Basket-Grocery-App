@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom"
-import { useMemo } from "react"
+import { useMemo ,useState} from "react"
 import { useAuth } from "../state/auth"
 import { useCart } from "../state/cart"
 import Button from "../components/ui/Button"
@@ -39,6 +39,7 @@ const navSections = [
 
 export default function AppShell() {
   const { user, setRole, logout } = useAuth()
+  const [mobileOpen, setMobileOpen] = useState(false)
   const { totals } = useCart()
   const navigate = useNavigate()
 
@@ -54,6 +55,7 @@ export default function AppShell() {
 
   const currentNav = navSections.find(
   (section) => section.label.toLowerCase() === user?.role
+  
 )
 
   return (
@@ -63,7 +65,6 @@ export default function AppShell() {
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-green-50 shadow-sm rounded-2xl mt-3 mx-5">
         <div className="flex items-center justify-between px-6 py-4">
 
-          {/* Left: Logo + Nav */}
           <div className="flex items-center gap-6">
             <div>
               <div className="text-xl font-extrabold text-slate-900">
@@ -87,8 +88,17 @@ export default function AppShell() {
       }
     >
       {it.label}
+      
     </NavLink>
   ))}
+
+  {/* Mobile Menu Button */}
+<button
+  className="md:hidden p-2 rounded-lg border border-slate-300"
+  onClick={() => setMobileOpen(!mobileOpen)}
+>
+  ☰
+</button>
 </nav>
           </div>
 
@@ -128,7 +138,58 @@ export default function AppShell() {
           </div>
         </div>
       </header>
+{mobileOpen && (
+  <div className="md:hidden px-4 pb-4">
+    
+    {/* Role Select */}
+    <div className="mb-3">
+      <select
+        value={user?.role || "buyer"}
+        onChange={(e) => handleRoleChange(e.target.value)}
+        className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm font-semibold"
+      >
+        <option value="buyer">Buyer</option>
+        <option value="seller">Seller</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
 
+    {/* Nav Links */}
+    <div className="flex flex-col gap-2">
+      {currentNav?.items.map((it) => (
+        <NavLink
+          key={it.to}
+          to={it.to}
+          onClick={() => setMobileOpen(false)}
+          className={({ isActive }) =>
+            cx(
+              "px-4 py-2 rounded-lg text-sm font-semibold transition",
+              isActive
+                ? "bg-blue-100 text-blue-700"
+                : "text-slate-700 hover:bg-slate-100"
+            )
+          }
+        >
+          {it.label}
+        </NavLink>
+      ))}
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2">
+      <Button onClick={() => navigate("/buyer/cart")}>
+        Cart • {totals.itemsCount}
+      </Button>
+
+      <button
+        onClick={onLogout}
+        className="px-3 py-2 rounded-lg bg-red-50 text-red-600 text-sm font-semibold border border-red-200"
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+)}
 
       <main className="flex-1 px-16 py-6 ">
         <div className="mb-4">
