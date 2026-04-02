@@ -140,7 +140,7 @@ export default function AppShell() {
   })
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100">
+  <div className="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-900 transition-colors">
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/40 bg-white/70 backdrop-blur-xl shadow-sm">
 
         <div className="flex items-center justify-between px-3 md:px-6 py-2.5 md:py-4">
