@@ -3,6 +3,7 @@ import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
 import { useAuth } from "../../state/auth"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function BuyerProfile() {
   const { user, login } = useAuth()
@@ -10,6 +11,8 @@ export default function BuyerProfile() {
     name: user?.name || "Demo User",
     email: user?.email || "demo@freshbasket.app"
   })
+  const navigate = useNavigate()
+
 
   const save = () => {
     login({ name: form.name, email: form.email, role: user?.role })
@@ -55,12 +58,15 @@ export default function BuyerProfile() {
           <div className="rounded-2xl border border-slate-200/70 bg-white p-4">
             <div className="text-sm font-extrabold text-slate-950">Home</div>
             <div className="mt-1 text-sm text-slate-600">
-              Sector 17, Chandigarh
+              Rishikesh , Dehradun ~ India
             </div>
           </div>
-          <Button variant="subtle" className="w-full">
+          <button
+            onClick={() => navigate("/buyer/add-address")}
+            className="w-full mt-4 px-4 py-3 rounded-xl border text-sm font-semibold hover:bg-slate-100"
+          >
             Add new address
-          </Button>
+          </button>
         </div>
       </Card>
     </div>

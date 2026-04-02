@@ -26,13 +26,16 @@ import AdminReports from "./pages/admin/AdminReports"
 
 import ProductsLegacy from "./pages/Products"
 
+
+import AddAddress from "./pages/AddAddress"
+
 export default function App() {
   return (
     <div className="min-h-screen bg-[radial-gradient(1200px_700px_at_20%_-10%,rgba(250,204,21,0.35),transparent_55%),radial-gradient(900px_600px_at_85%_0%,rgba(34,197,94,0.18),transparent_52%),linear-gradient(to_bottom,rgba(246,247,249,1),rgba(246,247,249,1))]">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+<Route path="/buyer/add-address" element={<AddAddress />} />
         <Route element={<AppShell />}>
 
           <Route path="/" element={<Navigate to="/login" replace />} />
