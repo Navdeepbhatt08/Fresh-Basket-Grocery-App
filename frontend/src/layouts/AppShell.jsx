@@ -170,7 +170,6 @@ export default function AppShell() {
        
           <div className="flex items-center gap-2 md:gap-3">
 
-            {/* 🔍 Search (hidden on mobile) */}
             <div className="relative hidden md:block">
               <input
                 value={query}
@@ -196,7 +195,6 @@ export default function AppShell() {
               )}
             </div>
 
-            {/* Role (hide on small mobile) */}
             <select
               value={user?.role || "buyer"}
               onChange={(e) => handleRoleChange(e.target.value)}
@@ -207,12 +205,9 @@ export default function AppShell() {
               <option value="admin">Admin</option>
             </select>
 
-            {/* 🔥 Compact Cart */}
             <Button onClick={onCart} className="px-2 py-1.5 text-sm">
               🛒 {totals.itemsCount}
             </Button>
-
-            {/* Logout (icon on mobile) */}
             <button
               onClick={onLogout}
               className="text-red-500 text-sm px-2 py-1.5"
@@ -223,7 +218,6 @@ export default function AppShell() {
           </div>
         </div>
 
-        {/* 🔽 Mobile Menu */}
         {mobileOpen && (
           <div className="md:hidden px-3 pb-4 border-t">
 
