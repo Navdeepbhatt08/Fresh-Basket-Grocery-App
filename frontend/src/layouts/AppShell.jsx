@@ -220,8 +220,6 @@ export default function AppShell() {
 
         {mobileOpen && (
           <div className="md:hidden px-3 pb-4 border-t">
-
-            {/* Search */}
             <input
               value={query}
               onChange={(e) => handleSearch(e.target.value)}
@@ -229,7 +227,6 @@ export default function AppShell() {
               className="w-full mt-3 px-3 py-2 rounded-lg border"
             />
 
-            {/* Links */}
             <div className="mt-3 flex flex-col gap-2">
               {currentNav?.items.map((it) => (
                 <NavLink
@@ -250,11 +247,60 @@ export default function AppShell() {
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className=" px-10 py-3 bg-white text-xs sm:text-sm text-slate-600 flex justify-between">
-        <div>FreshBasket - Team </div>
-        <div>© 2026</div>
-      </footer>
+   <footer className="mx-2 md:mx-5 mb-2 md:mb-3 rounded-xl md:rounded-2xl border border-white/40 bg-white/70 backdrop-blur-xl shadow-sm">
+  <div className="px-4 md:px-8 py-6 md:py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-sm text-slate-700">
+
+
+    <div>
+      <h2 className="text-lg font-bold text-slate-900">FreshBasket</h2>
+      <p className="mt-2 text-xs text-slate-500">
+        Your daily grocery partner. Fresh, fast, and reliable delivery at your doorstep.
+      </p>
+
+    </div>
+
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Quick Links</h3>
+      <ul className="space-y-1">
+        <li><NavLink to="/buyer/stores" className="hover:text-blue-600">Stores</NavLink></li>
+        <li><NavLink to="/buyer/profile" className="hover:text-blue-600">Profile</NavLink></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Support</h3>
+      <ul className="space-y-1">
+        <li className="hover:text-blue-600 cursor-pointer">Help Center</li>
+        <li className="hover:text-blue-600 cursor-pointer">Contact Us</li>
+      </ul>
+    </div>
+
+
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Stay Updated</h3>
+      <p className="text-xs text-slate-500 mb-3">
+        Get offers & updates directly in your inbox.
+      </p>
+
+      <div className="flex gap-2">
+        <input
+          type="email"
+          placeholder="Enter email"
+          className="w-full px-3 py-2 rounded-lg border text-xs focus:outline-none"
+        />
+        <button className="px-3 py-2 bg-blue-600 text-white text-xs rounded-lg hover:bg-blue-700">
+          Join
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div className="border-t border-gray-200 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+    <span>© 2026 FreshBasket. All rights reserved.</span>
+    <span className="mt-2 sm:mt-0">Made with ❤️ by Team FreshBasket</span>
+  </div>
+</footer>
     </div>
   )
 }
