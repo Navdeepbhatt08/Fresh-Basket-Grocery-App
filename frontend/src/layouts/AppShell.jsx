@@ -3,7 +3,6 @@ import { useMemo, useState } from "react"
 import { useAuth } from "../state/auth"
 import { useCart } from "../state/cart"
 import Button from "../components/ui/Button"
-import { useEffect } from "react"
 
 class TrieNode {
   constructor() {
@@ -103,17 +102,6 @@ export default function AppShell() {
     )
   }, [user?.role])
 
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("theme", "light")
-    }
-  }, [darkMode])
-
   const handleRoleChange = (role) => {
     setRole(role)
     if (role === "buyer") navigate("/buyer/stores")
@@ -133,14 +121,11 @@ export default function AppShell() {
   }
 
   const onCart = () => {
-    navigate("/buyer/cart")
-  }
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark"
-  })
+  navigate("/buyer/cart")
+}
 
   return (
-  <div className="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-900 transition-colors">
+    <div className="min-h-screen flex flex-col bg-slate-100">
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/40 bg-white/70 backdrop-blur-xl shadow-sm">
 
         <div className="flex items-center justify-between px-3 md:px-6 py-2.5 md:py-4">
@@ -152,7 +137,7 @@ export default function AppShell() {
             >
               ☰
             </button>
-
+    
             <div>
               <div className="text-sm sm:text-sm md:text-xl font-bold text-slate-900 leading-tight">
                 FreshBasket
@@ -182,7 +167,7 @@ export default function AppShell() {
             ))}
           </nav>
 
-
+       
           <div className="flex items-center gap-2 md:gap-3">
 
             <div className="relative hidden md:block">
@@ -227,15 +212,8 @@ export default function AppShell() {
               onClick={onLogout}
               className="text-red-500 text-sm px-2 py-1.5"
             >
-
               <span className="hidden sm:inline">Logout</span>
               <span className="sm:hidden text-sm  ">Logout</span>
-            </button>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="px-2 py-1.5 rounded-lg border text-sm"
-            >
-              {darkMode ? "🌙" : "☀️"}
             </button>
           </div>
         </div>
@@ -269,60 +247,60 @@ export default function AppShell() {
         <Outlet />
       </main>
 
-      <footer className="   mx-2 md:mx-5 mb-2 md:mb-3 rounded-xl md:rounded-2xl border border-white/40 bg-black text-white backdrop-blur-xl shadow-sm">
-        <div className="px-4 text-white md:px-8 py-6 md:py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-sm ">
+   <footer className="   mx-2 md:mx-5 mb-2 md:mb-3 rounded-xl md:rounded-2xl border border-white/40 bg-white/70 backdrop-blur-xl shadow-sm">
+  <div className="px-4 md:px-8 py-6 md:py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-sm text-slate-700">
 
 
-          <div>
-            <h2 className="text-lg font-bold text-white">FreshBasket</h2>
-            <p className="mt-2 text-xs text-white-500">
-              Your daily grocery partner. Fresh, fast, and reliable delivery at your doorstep.
-            </p>
+    <div>
+      <h2 className="text-lg font-bold text-slate-900">FreshBasket</h2>
+      <p className="mt-2 text-xs text-slate-500">
+        Your daily grocery partner. Fresh, fast, and reliable delivery at your doorstep.
+      </p>
 
-          </div>
+    </div>
 
-          <div>
-            <h3 className="font-semibold text-white-900 mb-2">Quick Links</h3>
-            <ul className="space-y-1">
-              <li><NavLink to="/buyer/stores" className="hover:text-blue-600">Stores</NavLink></li>
-              <li><NavLink to="/buyer/profile" className="hover:text-blue-600">Profile</NavLink></li>
-            </ul>
-          </div>
-
-
-          <div>
-            <h3 className="font-semibold text-white-900 mb-2">Support</h3>
-            <ul className="space-y-1">
-              <li className="hover:text-blue-600 cursor-pointer">Help Center</li>
-              <li className="hover:text-blue-600 cursor-pointer">Contact Us</li>
-            </ul>
-          </div>
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Quick Links</h3>
+      <ul className="space-y-1">
+        <li><NavLink to="/buyer/stores" className="hover:text-blue-600">Stores</NavLink></li>
+        <li><NavLink to="/buyer/profile" className="hover:text-blue-600">Profile</NavLink></li>
+      </ul>
+    </div>
 
 
-          <div>
-            <h3 className="font-semibold text-white-900 mb-2">Stay Updated</h3>
-            <p className="text-xs text-slate-500 mb-3">
-              Get offers & updates directly in your inbox.
-            </p>
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Support</h3>
+      <ul className="space-y-1">
+        <li className="hover:text-blue-600 cursor-pointer">Help Center</li>
+        <li className="hover:text-blue-600 cursor-pointer">Contact Us</li>
+      </ul>
+    </div>
 
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter email"
-                className="w-full px-3 py-2 rounded-lg border text-xs focus:outline-none"
-              />
-              <button className="px-3 py-2 bg-blue-600 text-white text-xs rounded-lg hover:bg-blue-700">
-                Join
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <div className="border-t border-gray-200 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center text-xs text-white-500">
-          <span>© 2026 FreshBasket. All rights reserved.</span>
-          <span className="mt-2 sm:mt-0">Made with ❤️ by Team FreshBasket</span>
-        </div>
-      </footer>
+    <div>
+      <h3 className="font-semibold text-slate-900 mb-2">Stay Updated</h3>
+      <p className="text-xs text-slate-500 mb-3">
+        Get offers & updates directly in your inbox.
+      </p>
+
+      <div className="flex gap-2">
+        <input
+          type="email"
+          placeholder="Enter email"
+          className="w-full px-3 py-2 rounded-lg border text-xs focus:outline-none"
+        />
+        <button className="px-3 py-2 bg-blue-600 text-white text-xs rounded-lg hover:bg-blue-700">
+          Join
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div className="border-t border-gray-200 px-4 md:px-8 py-3 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+    <span>© 2026 FreshBasket. All rights reserved.</span>
+    <span className="mt-2 sm:mt-0">Made with ❤️ by Team FreshBasket</span>
+  </div>
+</footer>
     </div>
   )
 }
