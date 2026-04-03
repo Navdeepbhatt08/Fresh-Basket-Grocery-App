@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@clerk/react": "^6.1.4"
   }
 }
