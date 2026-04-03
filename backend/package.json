@@ -31,5 +31,9 @@
     "pg": "^8.19.0",
     "prisma": "^5.22.0"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
 }
