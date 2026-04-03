@@ -1,6 +1,7 @@
 const pool = require("./db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const registerUser = async (name, email, password, phone) => {
   const hash = await bcrypt.hash(password, 10);
   const { rows } = await pool.query(
