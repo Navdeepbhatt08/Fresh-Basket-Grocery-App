@@ -3,6 +3,10 @@ import { useMemo, useState } from "react"
 import { useAuth } from "../state/auth"
 import { useCart } from "../state/cart"
 import Button from "../components/ui/Button"
+import { useClerk } from "@clerk/clerk-react";
+
+
+
 
 class TrieNode {
   constructor() {
@@ -51,6 +55,8 @@ function cx(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
+
+
 const navSections = [
   {
     label: "buyer",
@@ -84,7 +90,7 @@ export default function AppShell() {
   const { user, setRole, logout } = useAuth()
   const { totals } = useCart()
   const navigate = useNavigate()
-
+ const { signOut } = useClerk();
   const [mobileOpen, setMobileOpen] = useState(false)
   const [query, setQuery] = useState("")
   const [results, setResults] = useState([])
@@ -115,10 +121,10 @@ export default function AppShell() {
     setResults(trie.searchPrefix(value))
   }
 
-  const onLogout = () => {
-    logout()
-    navigate("/login")
-  }
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/"); // force redirect
+  };
 
   const onCart = () => {
     navigate("/buyer/cart")
@@ -209,7 +215,7 @@ export default function AppShell() {
               🛒 {totals.itemsCount}
             </Button>
             <button
-              onClick={onLogout}
+              onClick={handleLogout}
               className="text-red-500 text-sm px-2 py-1.5"
             >
               <span className="hidden sm:inline">Logout</span>

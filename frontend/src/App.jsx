@@ -35,7 +35,7 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-<Route path="/buyer/add-address" element={<AddAddress />} />
+        <Route path="/buyer/add-address" element={<AddAddress />} />
         <Route element={<AppShell />}>
 
           <Route path="/" element={<Navigate to="/login" replace />} />
