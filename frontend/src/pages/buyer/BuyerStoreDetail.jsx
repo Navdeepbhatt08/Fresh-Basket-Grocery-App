@@ -8,14 +8,16 @@ import { useCart } from "../../state/cart"
 function StockPill({ stock }) {
   const cls =
     stock === 0
-      ? "border-rose-400/20 bg-rose-500/10 text-rose-200"
+      ? "border-rose-300/60 bg-rose-100/70 text-rose-600"
       : stock <= 10
-        ? "border-amber-400/20 bg-amber-500/10 text-amber-200"
-        : "border-emerald-400/20 bg-emerald-500/10 text-emerald-200"
+        ? "border-amber-300/60 bg-amber-100/70 text-amber-600"
+        : "border-emerald-300/60 bg-emerald-100/70 text-emerald-600"
   const label =
     stock === 0 ? "Out of stock" : stock <= 10 ? `Low stock (${stock})` : `In stock (${stock})`
   return (
-    <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${cls}`}>
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur-sm ${cls}`}
+    >
       {label}
     </span>
   )
@@ -30,92 +32,124 @@ export default function BuyerStoreDetail() {
 
   if (!store) {
     return (
-      <Card className="p-6">
-        <div className="text-slate-950 font-extrabold">Store not found</div>
-        <div className="mt-3">
-          <Link
-            className="text-emerald-700 hover:text-emerald-800 font-semibold"
-            to="/buyer/stores"
-          >
-            Back to stores
-          </Link>
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6">
+        {/* Glass card for not found */}
+        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-emerald-100/40 p-6">
+          <div className="text-slate-800 font-extrabold text-lg">Store not found</div>
+          <div className="mt-3">
+            <Link
+              className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
+              to="/buyer/stores"
+            >
+              ← Back to stores
+            </Link>
+          </div>
         </div>
-      </Card>
+      </div>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <div className="text-sm text-slate-600">Store</div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
-            {store.name}
-          </h1>
-          <p className="mt-2 text-slate-700">
-            {store.distanceKm} km • {store.etaMin} min ETA • ⭐ {store.rating}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {store.tags.map((t) => (
-              <span
-                key={t}
-                className="inline-flex items-center rounded-full border border-slate-200/70 bg-white px-3 py-1 text-xs font-semibold text-slate-700"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="subtle" onClick={() => navigate(-1)}>
-            Back
-          </Button>
-          <Button onClick={() => navigate("/buyer/cart")}>Cart</Button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-sky-50/30 to-lime-50 relative">
+      {/* Soft decorative blobs */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-200/40 blur-3xl" />
+        <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-lime-200/40 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-sky-200/30 blur-3xl" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {list.map((p) => (
-          <Card key={p.id} className="p-6">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <Link
-                  to={`/buyer/products/${p.id}`}
-                  className="text-lg font-extrabold text-slate-950 hover:text-emerald-800 transition"
+      <div className="relative space-y-6 p-4 sm:p-6 max-w-7xl mx-auto">
+        {/* Header glass card */}
+        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-emerald-100/40 p-5 sm:p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-emerald-600/80 mb-1">
+                Store
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                {store.name}
+              </h1>
+              <p className="mt-2 text-slate-500 text-sm">
+                {store.distanceKm} km &bull; {store.etaMin} min ETA &bull; ⭐ {store.rating}
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {store.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="inline-flex items-center rounded-full border border-emerald-200/70 bg-emerald-50/80 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-emerald-700"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex gap-2 flex-shrink-0">
+              {/* Glass buttons */}
+              <button
+                onClick={() => navigate(-1)}
+                className="rounded-xl border border-slate-200/70 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm hover:bg-white/80 hover:text-slate-800 transition-all duration-150"
+              >
+                Back
+              </button>
+              <button
+                onClick={() => navigate("/buyer/cart")}
+                className="rounded-xl border border-emerald-300/60 bg-emerald-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200/60 hover:bg-emerald-600 transition-all duration-150"
+              >
+                Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Product grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {list.map((p) => (
+            <div
+              key={p.id}
+              className="group rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-emerald-100/60 hover:bg-white/65 transition-all duration-200 p-5"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <Link
+                    to={`/buyer/products/${p.id}`}
+                    className="text-lg font-extrabold text-slate-900 hover:text-emerald-700 transition-colors leading-tight"
+                  >
+                    {p.name}
+                  </Link>
+                  <div className="mt-1 text-xs font-medium text-slate-400 uppercase tracking-wide">
+                    {p.category}
+                  </div>
+                </div>
+                <div className="h-12 w-12 flex-shrink-0 rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-100/80 to-lime-100/60 backdrop-blur-sm flex items-center justify-center text-xl shadow-inner">
+                  🥬
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center justify-between">
+                <div className="text-xl font-extrabold text-slate-900">{moneyINR(p.price)}</div>
+                <StockPill stock={p.stock} />
+              </div>
+
+              <div className="mt-5 flex gap-2">
+                <button
+                  disabled={p.stock === 0}
+                  onClick={() => addToCart({ id: p.id, name: p.name, price: p.price })}
+                  className="flex-1 rounded-xl border border-emerald-300/60 bg-emerald-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200/60 hover:bg-emerald-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-150"
                 >
-                  {p.name}
-                </Link>
-                <div className="mt-1 text-sm text-slate-600">{p.category}</div>
+                  Add to cart
+                </button>
+                <button
+                  onClick={() => navigate(`/buyer/products/${p.id}`)}
+                  className="rounded-xl border border-slate-200/70 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm hover:bg-white/80 hover:text-slate-800 transition-all duration-150"
+                >
+                  View
+                </button>
               </div>
-              <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-500/15 to-lime-400/10 flex items-center justify-center text-xl">
-                🥬
-              </div>
             </div>
-
-            <div className="mt-4 flex items-center justify-between">
-              <div className="text-xl font-extrabold text-slate-950">{moneyINR(p.price)}</div>
-              <StockPill stock={p.stock} />
-            </div>
-
-            <div className="mt-5 flex gap-2">
-              <Button
-                className="flex-1"
-                disabled={p.stock === 0}
-                onClick={() => addToCart({ id: p.id, name: p.name, price: p.price })}
-              >
-                Add to cart
-              </Button>
-              <Button
-                variant="subtle"
-                onClick={() => navigate(`/buyer/products/${p.id}`)}
-              >
-                View
-              </Button>
-            </div>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
 }
-
