@@ -384,7 +384,7 @@ export default function AppShell() {
       </header>
 
       {/* ── CATEGORY BAR ── */}
-      <div className="sticky top-[72px] z-40 mx-2 md:mx-5 mt-1.5">
+      <div className="  top-[72px] z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl border border-white/70 rounded-xl shadow-lg shadow-blue-100/30 ">
           <p className=" text-sm pb-1 mx-5 mt-2">Categories</p>
         <div className="rounded-xl  px-3 md:px-5 py-2 overflow-x-auto">
      
