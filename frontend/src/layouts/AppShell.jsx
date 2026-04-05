@@ -92,14 +92,14 @@ const categories = [
 ]
 
 const roleColors = {
-  buyer: "bg-cyan-100/80 text-cyan-700 border border-cyan-300/60",
-  seller: "bg-emerald-100/80 text-emerald-700 border border-emerald-300/60",
+  buyer: "bg-blue-100/80 text-blue-700 border border-blue-300/60",
+  seller: "bg-blue-100/80 text-blue-700 border border-blue-300/60",
   admin: "bg-amber-100/80 text-amber-700 border border-amber-300/60",
 }
 
 const roleGlow = {
-  buyer: "shadow-cyan-300/40",
-  seller: "shadow-emerald-300/40",
+  buyer: "shadow-blue-300/40",
+  seller: "shadow-blue-300/40",
   admin: "shadow-amber-300/40",
 }
 
@@ -168,18 +168,18 @@ export default function AppShell() {
   const currentRole = user?.role || "buyer"
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-emerald-50 via-sky-50/40 to-lime-50 relative">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-sky-50/40 to-lime-50 relative">
 
       {/* Soft decorative blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-200/40 blur-3xl" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl" />
         <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-sky-200/35 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-lime-200/35 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full bg-emerald-100/30 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full bg-blue-100/30 blur-3xl" />
       </div>
 
       {/* ── NAVBAR ── */}
-      <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-2xl shadow-xl shadow-emerald-100/50">
+      <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-2xl shadow-xl shadow-blue-100/50">
         <div className="flex items-center justify-between px-3 md:px-6 py-2.5 md:py-4">
 
           {/* Logo */}
@@ -193,7 +193,7 @@ export default function AppShell() {
             <div>
               <div className="text-sm sm:text-sm md:text-xl font-bold leading-tight">
                 <span className="text-slate-800">Fresh</span>
-                <span className="text-emerald-600">Basket</span>
+                <span className="text-blue-600">Basket</span>
               </div>
               <div className="hidden sm:block text-[10px] md:text-xs text-slate-400">
                 Your daily store
@@ -211,7 +211,7 @@ export default function AppShell() {
                   cx(
                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200",
                     isActive
-                      ? "bg-emerald-100/80 text-emerald-700 border border-emerald-300/60 backdrop-blur-sm"
+                      ? "bg-blue-100/80 text-blue-700 border border-blue-300/60 backdrop-blur-sm"
                       : "text-slate-500 hover:text-slate-800 hover:bg-white/60"
                   )
                 }
@@ -230,14 +230,14 @@ export default function AppShell() {
                 value={query}
                 onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search..."
-                className="px-3 py-1.5 rounded-lg border border-slate-200/70 bg-white/60 backdrop-blur-sm text-slate-700 placeholder-slate-400 text-sm w-40 focus:outline-none focus:border-emerald-400/60 focus:bg-white/80 transition-all"
+                className="px-3 py-1.5 rounded-lg border border-slate-200/70 bg-white/60 backdrop-blur-sm text-slate-700 placeholder-slate-400 text-sm w-40 focus:outline-none focus:border-blue-400/60 focus:bg-white/80 transition-all"
               />
               {results.length > 0 && (
-                <div className="absolute top-10 w-48 bg-white/80 backdrop-blur-xl border border-white/70 rounded-xl shadow-xl shadow-emerald-100/60 overflow-hidden">
+                <div className="absolute top-10 w-48 bg-white/80 backdrop-blur-xl border border-white/70 rounded-xl shadow-xl shadow-blue-100/60 overflow-hidden">
                   {results.map((item, i) => (
                     <div
                       key={i}
-                      className="px-3 py-2.5 text-sm text-slate-600 hover:bg-emerald-50/80 hover:text-emerald-800 cursor-pointer transition-colors"
+                      className="px-3 py-2.5 text-sm text-slate-600 hover:bg-blue-50/80 hover:text-blue-800 cursor-pointer transition-colors"
                       onClick={() => { setQuery(item); setResults([]) }}
                     >
                       {item}
@@ -250,12 +250,12 @@ export default function AppShell() {
             {/* Cart */}
             <button
               onClick={onCart}
-              className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-100/80 border border-emerald-300/60 text-emerald-700 text-sm font-medium hover:bg-emerald-200/70 hover:border-emerald-400/60 backdrop-blur-sm transition-all duration-200"
+              className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-100/80 border border-blue-300/60 text-blue-700 text-sm font-medium hover:bg-blue-200/70 hover:border-blue-400/60 backdrop-blur-sm transition-all duration-200"
             >
               🛒
               <span className="hidden sm:inline">{totals.itemsCount}</span>
               {totals.itemsCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-bold flex items-center justify-center sm:hidden">
+                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-blue-500 text-white text-[9px] font-bold flex items-center justify-center sm:hidden">
                   {totals.itemsCount}
                 </span>
               )}
@@ -267,10 +267,10 @@ export default function AppShell() {
                 onClick={() => setProfileOpen(!profileOpen)}
                 className={cx(
                   "w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-200",
-                  "bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-lg",
+                  "bg-gradient-to-br from-blue-400 to-teal-500 text-white shadow-lg",
                   profileOpen
-                    ? "ring-2 ring-emerald-400/60 scale-95"
-                    : "hover:ring-2 hover:ring-emerald-400/50 hover:scale-105",
+                    ? "ring-2 ring-blue-400/60 scale-95"
+                    : "hover:ring-2 hover:ring-blue-400/50 hover:scale-105",
                   roleGlow[currentRole]
                 )}
               >
@@ -280,13 +280,13 @@ export default function AppShell() {
               {/* Profile dropdown */}
               {profileOpen && (
                 <div
-                  className="absolute right-0 mt-2.5 bg-white/70 backdrop-blur-2xl border border-white/70 rounded-2xl shadow-2xl shadow-emerald-100/60 z-50 overflow-hidden"
+                  className="absolute right-0 mt-2.5 bg-white/70 backdrop-blur-2xl border border-white/70 rounded-2xl shadow-2xl shadow-blue-100/60 z-50 overflow-hidden"
                   style={{ width: "260px" }}
                 >
                   {/* User info */}
-                  <div className="px-4 py-4 bg-gradient-to-br from-emerald-50/80 to-teal-50/60 border-b border-white/60">
+                  <div className="px-4 py-4 bg-gradient-to-br from-blue-50/80 to-teal-50/60 border-b border-white/60">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-white flex items-center justify-center text-base font-bold shadow-lg shadow-emerald-200/60">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-teal-500 text-white flex items-center justify-center text-base font-bold shadow-lg shadow-blue-200/60">
                         {getInitials()}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -334,7 +334,7 @@ export default function AppShell() {
                       <button
                         key={path}
                         onClick={() => { navigate(path); setProfileOpen(false) }}
-                        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-slate-500 hover:text-slate-900 hover:bg-emerald-50/60 transition-all duration-150"
+                        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-slate-500 hover:text-slate-900 hover:bg-blue-50/60 transition-all duration-150"
                       >
                         <span className="text-base w-5 text-center">{icon}</span>
                         {label}
@@ -365,7 +365,7 @@ export default function AppShell() {
               value={query}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search..."
-              className="w-full mt-3 px-3 py-2 rounded-lg border border-slate-200/70 bg-white/60 backdrop-blur-sm text-slate-700 placeholder-slate-400 text-sm focus:outline-none focus:border-emerald-400/60 transition-all"
+              className="w-full mt-3 px-3 py-2 rounded-lg border border-slate-200/70 bg-white/60 backdrop-blur-sm text-slate-700 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-400/60 transition-all"
             />
             <div className="mt-3 flex flex-col gap-1">
               {currentNav?.items.map((it) => (
@@ -385,8 +385,11 @@ export default function AppShell() {
 
       {/* ── CATEGORY BAR ── */}
       <div className="sticky top-[72px] z-40 mx-2 md:mx-5 mt-1.5">
-        <div className="rounded-xl border border-white/70 bg-white/50 backdrop-blur-2xl shadow-lg shadow-emerald-100/40 px-3 md:px-5 py-2 overflow-x-auto">
+          <p className=" text-sm pb-1 mx-5 mt-2">Categories</p>
+        <div className="rounded-xl  px-3 md:px-5 py-2 overflow-x-auto">
+     
           <div className="flex items-center gap-0.5 min-w-max">
+            
             {categories.map((cat) => (
               <button
                 key={cat.label}
@@ -394,14 +397,14 @@ export default function AppShell() {
                 className={cx(
                   "flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                   activeCategory === cat.label
-                    ? "text-emerald-700 bg-emerald-100/80 border border-emerald-300/60 shadow-sm shadow-emerald-200/40 backdrop-blur-sm"
+                    ? "text-blue-700 bg-blue-100/80 border border-blue-300/60 shadow-sm shadow-blue-200/40 backdrop-blur-sm"
                     : "text-slate-500 hover:text-slate-800 hover:bg-white/70"
                 )}
               >
                 <span className="text-base leading-none">{cat.icon}</span>
                 {cat.label}
                 {activeCategory === cat.label && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 ml-0.5" />
                 )}
               </button>
             ))}
@@ -415,16 +418,16 @@ export default function AppShell() {
       </main>
 
       {/* ── FOOTER ── */}
-      <footer className="mx-2 md:mx-5 mb-2 md:mb-3 rounded-xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-lg shadow-emerald-100/30">
+      <footer className="mx-2 md:mx-5 mb-2 md:mb-3 rounded-xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-lg shadow-blue-100/30">
         <div className="px-4 md:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
           <h2 className="font-bold text-sm">
             <span className="text-slate-800">Fresh</span>
-            <span className="text-emerald-600">Basket</span>
+            <span className="text-blue-600">Basket</span>
           </h2>
           <div className="flex gap-5 text-xs">
-            <NavLink to="/buyer/stores" className="text-slate-400 hover:text-emerald-600 transition-colors">Stores</NavLink>
-            <NavLink to="/buyer/profile" className="text-slate-400 hover:text-emerald-600 transition-colors">Profile</NavLink>
-            <span className="text-slate-400 hover:text-emerald-600 cursor-pointer transition-colors">Support</span>
+            <NavLink to="/buyer/stores" className="text-slate-400 hover:text-blue-600 transition-colors">Stores</NavLink>
+            <NavLink to="/buyer/profile" className="text-slate-400 hover:text-blue-600 transition-colors">Profile</NavLink>
+            <span className="text-slate-400 hover:text-blue-600 cursor-pointer transition-colors">Support</span>
           </div>
           <span className="text-xs text-slate-400 text-center sm:text-right">© 2026 FreshBasket</span>
         </div>
