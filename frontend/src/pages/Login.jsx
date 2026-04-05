@@ -70,6 +70,7 @@ export default function Login() {
     } catch (err) {
       console.error(err);
       setError("Invalid email/username or password");
+
     } finally {
       setLoading(false);
     }
@@ -120,7 +121,6 @@ export default function Login() {
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-slate-200"></span>
               </div>
-            
             </div>
 
             {/* 🔥 Email / Password Login */}
@@ -153,7 +153,7 @@ export default function Login() {
                 {loading ? "Signing in..." : "Login"}
               </Button>
             </div>
-            
+
 
             {/* Social Login */}
             <div className="space-y-3 cursor-pointer">
