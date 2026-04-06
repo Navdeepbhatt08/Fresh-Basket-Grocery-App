@@ -30,6 +30,23 @@ export const stores = [
     rating: 4.7,
     tags: ["Organic", "Fruits", "Greens"],
     distanceKm: 4.2
+  },
+  {
+    id: "store_5",
+    name: "Healthy General Store",
+    etaMin: 12,
+    rating: 3.7,
+    tags: ["Organic", "Grocery", "Healthy"],
+    distanceKm: 1.2
+  }
+  ,
+  {
+    id: "store_6",
+    name: "Devine Sports",
+    etaMin: 20,
+    rating: 4.1,
+    tags: ["Sports", "Cricket", "Gears"],
+    distanceKm: 5.2
   }
 ]
 
@@ -87,6 +104,17 @@ export const products = [
     stock: 0,
     category: "Beverages",
     unit: "bottle"
+  }
+  ,
+
+  {
+    id: "prod_7",
+    storeId: "store_5",
+    name: "Spinach (1 bunch)",    
+    price: 30,
+    stock: 25,
+    category: "Greens",
+    unit: "bunch"
   }
 ]
 

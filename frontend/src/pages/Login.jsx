@@ -96,7 +96,7 @@ export default function Login() {
           <div className="space-y-6">
 
             {/* ROLE */}
-            <Field label="I am a...">
+            <Field label="Sign In As...">
               <div className="grid grid-cols-3 gap-2">
                 {["buyer", "seller", "admin"].map((r) => (
                   <button

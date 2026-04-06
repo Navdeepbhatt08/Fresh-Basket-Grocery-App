@@ -12,10 +12,10 @@ function Badge({ children }) {
   )
 }
 
-export default function BuyerStores() { 
-  const [q, setQ] = useState("")   
+export default function BuyerStores() {
+  const [q, setQ] = useState("")
 
-  
+
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase()
     if (!term) return stores
