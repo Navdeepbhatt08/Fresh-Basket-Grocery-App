@@ -1,21 +1,55 @@
 import prisma from "../config/prisma.js";
 
+const createSlug = (value) =>
+  value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/-+/g, "-");
+
 export const getProducts = async (req, res) => {
-  const products = await prisma.product.findMany();
-  res.json(products);
+  try {
+    const products = await prisma.product.findMany();
+    res.json(products);
+  } catch (error) {
+    console.error("Get products error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 export const addProduct = async (req, res) => {
-  const { name, price, stock } = req.body;
+  try {
+    const { name, price, stock, description, categoryId } = req.body;
+    if (!name || !price || !stock) {
+      return res
+        .status(400)
+        .json({ message: "Name, price, and stock are required" });
+    }
 
-  const product = await prisma.product.create({
-    data: {
-      name,
-      price: parseFloat(price),
-      stock: parseInt(stock),
-      ownerId: req.user.id,
-    },
-  });
+    let slug = createSlug(name);
+    const existingProduct = await prisma.product.findUnique({
+      where: { slug },
+    });
+    if (existingProduct) {
+      slug = `${slug}-${Date.now().toString().slice(-5)}`;
+    }
 
-  res.json(product);
+    const product = await prisma.product.create({
+      data: {
+        name,
+        slug,
+        description: description || "",
+        price: parseFloat(price),
+        stock: parseInt(stock, 10),
+        categoryId: categoryId || undefined,
+        sellerId: req.user.id,
+      },
+    });
+
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Add product error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };

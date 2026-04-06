@@ -5,7 +5,7 @@ export const stores = [
     etaMin: 18,
     rating: 4.6,
     tags: ["Fresh", "Vegetables", "Daily"],
-    distanceKm: 2.1
+    distanceKm: 2.1,
   },
   {
     id: "store_2",
@@ -13,7 +13,7 @@ export const stores = [
     etaMin: 25,
     rating: 4.4,
     tags: ["Dairy", "Bakery"],
-    distanceKm: 3.8
+    distanceKm: 3.8,
   },
   {
     id: "store_3",
@@ -21,7 +21,7 @@ export const stores = [
     etaMin: 12,
     rating: 4.2,
     tags: ["Fast", "Snacks", "Beverages"],
-    distanceKm: 1.4
+    distanceKm: 1.4,
   },
   {
     id: "store_4",
@@ -29,7 +29,7 @@ export const stores = [
     etaMin: 22,
     rating: 4.7,
     tags: ["Organic", "Fruits", "Greens"],
-    distanceKm: 4.2
+    distanceKm: 4.2,
   },
   {
     id: "store_5",
@@ -37,18 +37,17 @@ export const stores = [
     etaMin: 12,
     rating: 3.7,
     tags: ["Organic", "Grocery", "Healthy"],
-    distanceKm: 1.2
-  }
-  ,
+    distanceKm: 1.2,
+  },
   {
     id: "store_6",
     name: "Devine Sports",
     etaMin: 20,
     rating: 4.1,
     tags: ["Sports", "Cricket", "Gears"],
-    distanceKm: 5.2
-  }
-]
+    distanceKm: 5.2,
+  },
+];
 
 export const products = [
   {
@@ -58,7 +57,7 @@ export const products = [
     price: 48,
     stock: 62,
     category: "Vegetables",
-    unit: "kg"
+    unit: "kg",
   },
   {
     id: "prod_2",
@@ -67,7 +66,7 @@ export const products = [
     price: 36,
     stock: 91,
     category: "Vegetables",
-    unit: "kg"
+    unit: "kg",
   },
   {
     id: "prod_3",
@@ -76,7 +75,7 @@ export const products = [
     price: 62,
     stock: 34,
     category: "Dairy",
-    unit: "L"
+    unit: "L",
   },
   {
     id: "prod_4",
@@ -85,7 +84,7 @@ export const products = [
     price: 42,
     stock: 18,
     category: "Bakery",
-    unit: "pack"
+    unit: "pack",
   },
   {
     id: "prod_5",
@@ -94,7 +93,7 @@ export const products = [
     price: 58,
     stock: 9,
     category: "Fruits",
-    unit: "dozen"
+    unit: "dozen",
   },
   {
     id: "prod_6",
@@ -103,45 +102,69 @@ export const products = [
     price: 40,
     stock: 0,
     category: "Beverages",
-    unit: "bottle"
-  }
-  ,
+    unit: "bottle",
+  },
 
   {
     id: "prod_7",
     storeId: "store_5",
-    name: "Spinach (1 bunch)",    
+    name: "Spinach (1 bunch)",
     price: 30,
     stock: 25,
     category: "Greens",
-    unit: "bunch"
-  }
-]
+    unit: "bunch",
+  },
+];
 
 export const sellerDemo = {
   kpis: [
     { label: "Today Orders", value: 18 },
     { label: "Revenue", value: 12480 },
     { label: "Avg. Rating", value: 4.7 },
-    { label: "Avg. Prep Time", value: "12m" }
+    { label: "Avg. Prep Time", value: "12m" },
   ],
   recentOrders: [
-    { id: "ord_101", buyer: "Navdeep", total: 412, status: "Preparing", time: "10:12 AM" },
-    { id: "ord_102", buyer: "Aman", total: 289, status: "Out for delivery", time: "10:34 AM" },
-    { id: "ord_103", buyer: "Simran", total: 156, status: "Delivered", time: "11:05 AM" }
-  ]
-}
+    {
+      id: "ord_101",
+      buyer: "Navdeep",
+      total: 412,
+      status: "Preparing",
+      time: "10:12 AM",
+    },
+    {
+      id: "ord_102",
+      buyer: "Aman",
+      total: 289,
+      status: "Out for delivery",
+      time: "10:34 AM",
+    },
+    {
+      id: "ord_103",
+      buyer: "Simran",
+      total: 156,
+      status: "Delivered",
+      time: "11:05 AM",
+    },
+  ],
+};
 
 export const adminDemo = {
   kpis: [
     { label: "Active Buyers", value: 1284 },
     { label: "Active Sellers", value: 72 },
     { label: "Orders (24h)", value: 963 },
-    { label: "GMV (24h)", value: 241980 }
+    { label: "GMV (24h)", value: 241980 },
   ],
   alerts: [
-    { id: "al_1", title: "Stock issue", detail: "12 products low stock across 5 sellers." },
-    { id: "al_2", title: "Delivery delays", detail: "Avg ETA increased by 6 minutes in Zone B." }
-  ]
-}
-
+    {
+      id: "al_1",
+      title: "Stock issue",
+      detail: "12 products low stock across 5 sellers.",
+    },
+    {
+      id: "al_2",
+      title: "Delivery delays",
+      detail: "Avg ETA increased by 6 minutes in Zone B.",
+    },
+  ],
+};

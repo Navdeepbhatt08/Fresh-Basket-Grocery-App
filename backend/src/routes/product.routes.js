@@ -1,11 +1,10 @@
-import express from "express"
-import { getProducts } from "../../database/productQueries.js"
+import express from "express";
+import { getProducts, addProduct } from "../controllers/product.controller.js";
+import { authenticate } from "../middleware/auth.middleware.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/products", async (req, res) => {
-  const products = await getProducts()
-  res.json(products)
-})
+router.get("/", getProducts);
+router.post("/", authenticate, addProduct);
 
-export default router
+export default router;
