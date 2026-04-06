@@ -1,9 +1,11 @@
 import express from "express"
-import { getProducts, addProduct } from "../controllers/product.controller.js"
-
+import { getProducts } from "../../database/productQueries.js"
 
 const router = express.Router()
 
-router.get("/", getProducts)
+router.get("/products", async (req, res) => {
+  const products = await getProducts()
+  res.json(products)
+})
 
 export default router
