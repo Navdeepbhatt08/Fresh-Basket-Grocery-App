@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("🌱  Seeding FreshBasket database...");
 
-
   const hashedPassword = await bcrypt.hash("Admin@123", 10);
 
   const admin = await prisma.user.upsert({
@@ -26,13 +25,13 @@ async function main() {
 
   const categories = [
     { name: "Fruits & Vegetables", slug: "fruits-vegetables", sortOrder: 1 },
-    { name: "Dairy & Eggs",        slug: "dairy-eggs",        sortOrder: 2 },
-    { name: "Bakery & Bread",      slug: "bakery-bread",      sortOrder: 3 },
-    { name: "Beverages",           slug: "beverages",         sortOrder: 4 },
-    { name: "Snacks & Namkeen",    slug: "snacks-namkeen",    sortOrder: 5 },
-    { name: "Staples & Grains",    slug: "staples-grains",    sortOrder: 6 },
-    { name: "Personal Care",       slug: "personal-care",     sortOrder: 7 },
-    { name: "Cleaning & Household",slug: "cleaning-household",sortOrder: 8 },
+    { name: "Dairy & Eggs", slug: "dairy-eggs", sortOrder: 2 },
+    { name: "Bakery & Bread", slug: "bakery-bread", sortOrder: 3 },
+    { name: "Beverages", slug: "beverages", sortOrder: 4 },
+    { name: "Snacks & Namkeen", slug: "snacks-namkeen", sortOrder: 5 },
+    { name: "Staples & Grains", slug: "staples-grains", sortOrder: 6 },
+    { name: "Personal Care", slug: "personal-care", sortOrder: 7 },
+    { name: "Cleaning & Household", slug: "cleaning-household", sortOrder: 8 },
   ];
 
   for (const cat of categories) {
@@ -43,7 +42,6 @@ async function main() {
     });
   }
   console.log("📂  Categories seeded:", categories.length);
-
 
   const fruitsCategory = await prisma.category.findUnique({
     where: { slug: "fruits-vegetables" },
