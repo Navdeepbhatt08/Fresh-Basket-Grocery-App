@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useMemo, useReducer } from "react"
 
 const CartContext = createContext(null)
@@ -18,8 +17,8 @@ function reducer(state, action) {
       const existing = state.items.find((x) => x.id === action.item.id)
       const items = existing
         ? state.items.map((x) =>
-            x.id === action.item.id ? { ...x, qty: x.qty + 1 } : x
-          )
+          x.id === action.item.id ? { ...x, qty: x.qty + 1 } : x
+        )
         : [...state.items, { ...action.item, qty: 1 }]
       return { ...state, items }
     }
