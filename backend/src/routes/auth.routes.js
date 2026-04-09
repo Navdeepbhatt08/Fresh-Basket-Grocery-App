@@ -1,3 +1,4 @@
+// src/routes/auth.routes.js
 
 import express from "express"
 import bcrypt from "bcrypt"
@@ -32,7 +33,7 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    //Insert into PostgreSQL
+    // Insert into PostgreSQL 
     const result = await pool.query(
       `INSERT INTO users (name, email, phone, address, password, role)
        VALUES ($1, $2, $3, $4, $5, $6)
@@ -57,7 +58,5 @@ router.post("/register", async (req, res) => {
     res.status(500).json({ error: "Server error. Please try again." })
   }
 })
-
-
 
 export default router

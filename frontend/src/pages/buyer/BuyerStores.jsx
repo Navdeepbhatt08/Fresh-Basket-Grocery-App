@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
+import { ShoppingCart } from "lucide-react"
 import Card from "../../components/ui/Card"
 import Input from "../../components/ui/Input"
 import { stores } from "../../lib/storeData"
@@ -14,7 +15,6 @@ function Badge({ children }) {
 
 export default function BuyerStores() {
   const [q, setQ] = useState("")
-
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase()
@@ -34,6 +34,7 @@ export default function BuyerStores() {
             Pick a store to browse products and schedule delivery.
           </p>
         </div>
+
         <div className="w-full sm:w-80">
           <Input
             value={q}
@@ -52,12 +53,14 @@ export default function BuyerStores() {
                   <div className="text-lg font-extrabold text-slate-950 group-hover:text-emerald-800 transition">
                     {s.name}
                   </div>
+
                   <div className="mt-1 text-sm text-slate-600">
                     {s.distanceKm} km • {s.etaMin} min ETA • ⭐ {s.rating}
                   </div>
                 </div>
-                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 b to-lime-400/10 flex items-center justify-center text-xl">
-                  🛒
+
+                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-emerald-50 flex items-center justify-center">
+                  <ShoppingCart size={22} className="text-emerald-700" />
                 </div>
               </div>
 
@@ -67,8 +70,8 @@ export default function BuyerStores() {
                 ))}
               </div>
 
-              <div className="mt-5 text-sm font-extrabold text-emerald-800">
-                Browse →
+              <div className="mt-5 text-sm font-extrabold text-emerald-800 flex items-center gap-1">
+                Browse
               </div>
             </Card>
           </Link>
@@ -77,4 +80,3 @@ export default function BuyerStores() {
     </div>
   )
 }
-

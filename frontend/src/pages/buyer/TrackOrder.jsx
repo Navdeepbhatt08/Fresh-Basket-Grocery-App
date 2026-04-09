@@ -90,7 +90,6 @@ function TrackingStep({ title, completed, active }) {
         ✓
       </div>
 
-      {/* Step Text */}
       <div>
         <div
           className={`font-semibold ${

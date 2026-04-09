@@ -16,7 +16,9 @@ import {
   PuzzlePieceIcon,
   DevicePhoneMobileIcon,
   DeviceTabletIcon,
-  SparklesIcon
+  SparklesIcon,
+  ShieldCheckIcon,
+  BuildingStorefrontIcon
 } from "@heroicons/react/24/outline"
 
 function cx(...classes) {
@@ -95,7 +97,7 @@ export default function AppShell() {
 
     if (role === "buyer") navigate("/buyer/stores")
     else if (role === "seller") navigate("/seller")
-    else navigate("/admin")
+    else if (role === "admin") navigate("/admin")
   }
 
   const handleLogout = async () => {
@@ -105,23 +107,19 @@ export default function AppShell() {
 
   const onCart = () => navigate("/buyer/cart")
 
-  const getInitials = () => {
-    if (!user) return "U"
-    const name = user.name || user.email || ""
-    return name.slice(0, 2).toUpperCase()
-  }
-
   const currentRole = user?.role || "buyer"
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-sky-50/40 to-lime-50">
 
+      {/* HEADER */}
 
-      <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blue-xl shadow-sm">
+      <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-sm">
 
         <div className="flex items-center justify-between px-3 md:px-6 py-3">
 
           {/* LEFT */}
+
           <div className="flex items-center gap-3">
 
             <button
@@ -138,7 +136,8 @@ export default function AppShell() {
 
           </div>
 
-          {/* NAV LINKS */}
+          {/* NAV */}
+
           <nav className="hidden md:flex items-center gap-1">
 
             {currentNav?.items.map((it) => (
@@ -155,9 +154,7 @@ export default function AppShell() {
                   )
                 }
               >
-
                 {it.label}
-
               </NavLink>
 
             ))}
@@ -165,37 +162,37 @@ export default function AppShell() {
           </nav>
 
           {/* RIGHT */}
+
           <div className="flex items-center gap-3">
 
             {/* CART */}
+
             <button
               onClick={onCart}
               className="relative flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-100 text-blue-700 text-sm font-medium"
             >
-
               <ShoppingCartIcon className="w-5 h-5" />
-
               <span className="hidden sm:inline">
                 {totals.itemsCount}
               </span>
-
             </button>
 
             {/* PROFILE */}
+
             <div className="relative" ref={profileRef}>
 
-              <button
+              <img
+                src={user?.imageUrl}
+                alt="avatar"
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold bg-blue-500 text-white"
-              >
-
-                {getInitials()}
-
-              </button>
+                className="w-9 h-9 rounded-full border cursor-pointer"
+              />
 
               {profileOpen && (
 
-                <div className="absolute right-0 mt-2 bg-white border rounded-xl shadow-lg w-64">
+                <div className="absolute right-0 mt-2 bg-white border rounded-xl shadow-xl w-64">
+
+                  {/* USER INFO */}
 
                   <div className="px-4 py-4 border-b">
 
@@ -209,48 +206,108 @@ export default function AppShell() {
 
                   </div>
 
+                  {/* LINKS */}
+
                   <div>
 
                     <button
                       onClick={() => navigate("/buyer/profile")}
                       className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
-
                       <UserIcon className="w-4 h-4" />
-
                       My Profile
-
                       <ChevronRightIcon className="w-4 h-4 ml-auto" />
-
                     </button>
 
                     <button
                       onClick={() => navigate("/buyer/orders")}
                       className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
-
                       <CubeIcon className="w-4 h-4" />
-
                       My Orders
-
                       <ChevronRightIcon className="w-4 h-4 ml-auto" />
-
                     </button>
 
                     <button
                       onClick={() => navigate("/buyer/cart")}
                       className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
-
                       <ShoppingCartIcon className="w-4 h-4" />
-
                       My Cart
-
                       <ChevronRightIcon className="w-4 h-4 ml-auto" />
-
                     </button>
 
                   </div>
+
+                  {/* ROLE SWITCHER */}
+
+                  <div className="px-4 py-3 border-t">
+
+                    <p className="text-xs text-slate-400 mb-3">
+                      Switch Role
+                    </p>
+
+                    <div className="space-y-2">
+
+                      {/* BUYER */}
+
+                      <button
+                        onClick={() => handleRoleChange("buyer")}
+                        className={cx(
+                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          currentRole === "buyer"
+                            ? "bg-blue-100 text-blue-700"
+                            : "hover:bg-slate-100"
+                        )}
+                      >
+                        <UserIcon className="w-4 h-4" />
+                        Buyer
+                        <span className="ml-auto text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                          Shop
+                        </span>
+                      </button>
+
+                      {/* SELLER */}
+
+                      <button
+                        onClick={() => handleRoleChange("seller")}
+                        className={cx(
+                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          currentRole === "seller"
+                            ? "bg-green-100 text-green-700"
+                            : "hover:bg-slate-100"
+                        )}
+                      >
+                        <BuildingStorefrontIcon className="w-4 h-4" />
+                        Seller
+                        <span className="ml-auto text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                          Store
+                        </span>
+                      </button>
+
+                      {/* ADMIN PANEL */}
+
+                      <button
+                        onClick={() => handleRoleChange("admin")}
+                        className={cx(
+                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          currentRole === "admin"
+                            ? "bg-purple-100 text-purple-700"
+                            : "hover:bg-slate-100"
+                        )}
+                      >
+                        <ShieldCheckIcon className="w-4 h-4" />
+                        Admin Panel
+                        <span className="ml-auto text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
+                          Control
+                        </span>
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                  {/* LOGOUT */}
 
                   <div className="px-4 py-3 border-t">
 
@@ -258,11 +315,8 @@ export default function AppShell() {
                       onClick={handleLogout}
                       className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 text-red-600"
                     >
-
                       <ArrowRightOnRectangleIcon className="w-4 h-4" />
-
                       Sign out
-
                     </button>
 
                   </div>
@@ -279,10 +333,9 @@ export default function AppShell() {
 
       </header>
 
-
       {/* CATEGORY BAR */}
 
-      <div className="sticky top-[72px] z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl  rounded-xl shadow">
+      <div className="sticky top-[72px] z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl rounded-xl shadow">
 
         <div className="px-3 md:px-5 py-2 overflow-x-auto">
 
@@ -306,7 +359,6 @@ export default function AppShell() {
                 >
 
                   <Icon className="w-4 h-4" />
-
                   {cat.label}
 
                 </button>
@@ -321,15 +373,9 @@ export default function AppShell() {
 
       </div>
 
-
-      {/* MAIN */}
-
       <main className="flex-1 px-4 py-6">
-
         <Outlet />
-
       </main>
-
 
       {/* FOOTER */}
 
@@ -338,11 +384,8 @@ export default function AppShell() {
         <div className="px-6 py-4 flex justify-between items-center text-sm">
 
           <span className="font-bold">
-
             <span className="text-slate-800">Fresh</span>
-
             <span className="text-blue-600">Basket</span>
-
           </span>
 
           <span className="text-slate-400">

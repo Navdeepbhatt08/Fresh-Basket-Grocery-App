@@ -1,6 +1,6 @@
-const pool = require("./db");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import pool from "./db.js"; 
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"; 
 
 const registerUser = async (name, email, password, phone) => {
   const hash = await bcrypt.hash(password, 10);
@@ -31,4 +31,6 @@ const loginUser = async (email, password) => {
     user: { id: rows[0].id, name: rows[0].name, role: rows[0].role },
   };
 };
-module.exports = { registerUser, loginUser };
+
+
+export default loginUser;

@@ -43,7 +43,7 @@ export default function AdminDashboard() {
         <Card className="p-6 lg:col-span-2">
           <div className="text-sm font-extrabold text-slate-950">System alerts</div>
           <div className="mt-1 text-sm text-slate-600">
-            Operational items needing attention (demo).
+            Operational items needing attention 
           </div>
           <div className="mt-5 space-y-3">
             {adminDemo.alerts.map((a) => (

@@ -61,11 +61,12 @@ export default function Login() {
       const result = await signIn.create({
         identifier: email,
         password: password,
+        
       });
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        // useEffect will auto-trigger
+
       }
     } catch (err) {
       console.error(err);

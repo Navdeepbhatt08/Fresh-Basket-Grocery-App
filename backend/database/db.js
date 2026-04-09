@@ -1,5 +1,5 @@
-const prisma = require("../src/config/prisma");
-
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 async function connectDB() {
   try {
     await prisma.$connect();
@@ -16,4 +16,4 @@ async function disconnectDB() {
   console.log(" PostgreSQL disconnected");
 }
 
-module.exports = { connectDB, disconnectDB };
+export default { connectDB, disconnectDB };

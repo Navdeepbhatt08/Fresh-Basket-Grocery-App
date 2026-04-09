@@ -7,16 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 const pool = new Pool({
   host: "localhost",
   port: 5432,
-  database: "grocery2", 
-  user: "postgres", 
-  password: "root", 
+  database: "grocery2",
+  user: "postgres",
+  password: "root",
 });
 
-app.locals.pool = pool; 
+app.locals.pool = pool;
 
 async function initDB() {
   await pool.query(`
@@ -32,9 +31,7 @@ async function initDB() {
       created_at  TIMESTAMPTZ   DEFAULT NOW()
     );
   `);
-  console.log("✓ Table 'users' is ready");
 }
-
 
 app.use("/api", authRoutes);
 

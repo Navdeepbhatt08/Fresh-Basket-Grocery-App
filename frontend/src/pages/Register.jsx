@@ -5,7 +5,7 @@ import Button from "../components/ui/Button"
 import Input from "../components/ui/Input"
 import { useAuth } from "../state/auth"
 
-const API_URL = "http://localhost:5000/api/register"   // ← your backend URL
+const API_URL = "http://localhost:5000/api/register"   
 
 export default function Register() {
   const navigate = useNavigate()
