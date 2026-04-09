@@ -11,7 +11,7 @@ const prisma =
         : ["error"],
   });
 
-// Prevent multiple instances in development (hot reload fix)
+
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }

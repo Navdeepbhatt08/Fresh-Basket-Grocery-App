@@ -13,7 +13,7 @@ async function connectDB() {
 
 async function disconnectDB() {
   await prisma.$disconnect();
-  console.log("🔌  PostgreSQL disconnected");
+  console.log(" PostgreSQL disconnected");
 }
 
 module.exports = { connectDB, disconnectDB };

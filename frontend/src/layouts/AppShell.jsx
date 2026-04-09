@@ -83,7 +83,6 @@ const categories = [
   { label: "All", icon: "🛍️" },
   { label: "Home", icon: "🪴" },
   { label: "Toys", icon: "🧸" },
-  { label: "Fresh", icon: "🍓" },
   { label: "Electronics", icon: "🎧" },
   { label: "Mobiles", icon: "📱" },
   { label: "Fashion", icon: "👔" },
@@ -168,19 +167,17 @@ export default function AppShell() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-sky-50/40 to-lime-50 relative">
 
-      {/* Soft decorative blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl" />
         <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-sky-200/35 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-lime-200/35 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full bg-blue-100/30 blur-3xl" />
       </div>
-
-      {/* ── NAVBAR ── */}
+{/* navbar */}
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-2xl shadow-xl shadow-blue-100/50">
         <div className="flex items-center justify-between px-3 md:px-6 py-2.5 md:py-4">
 
-          {/* Logo */}
+        
           <div className="flex items-center gap-2 md:gap-4">
             <button
               className="md:hidden p-2 rounded-lg border border-slate-200/70 bg-white/60 text-slate-500 hover:text-slate-800 hover:border-slate-300/70 transition-colors"
@@ -222,28 +219,6 @@ export default function AppShell() {
           {/* Right actions */}
           <div className="flex items-center gap-2 md:gap-3">
 
-            {/* Search */}
-            <div className="relative hidden md:block">
-              <input
-                value={query}
-                onChange={(e) => handleSearch(e.target.value)}
-                placeholder="Search..."
-                className="px-3 py-1.5 rounded-lg border border-slate-200/70 bg-white/60 backdrop-blur-sm text-slate-700 placeholder-slate-400 text-sm w-40 focus:outline-none focus:border-blue-400/60 focus:bg-white/80 transition-all"
-              />
-              {results.length > 0 && (
-                <div className="absolute top-10 w-48 bg-white/80 backdrop-blur-xl border border-white/70 rounded-xl shadow-xl shadow-blue-100/60 overflow-hidden">
-                  {results.map((item, i) => (
-                    <div
-                      key={i}
-                      className="px-3 py-2.5 text-sm text-slate-600 hover:bg-blue-50/80 hover:text-blue-800 cursor-pointer transition-colors"
-                      onClick={() => { setQuery(item); setResults([]) }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
 
             {/* Cart */}
             <button

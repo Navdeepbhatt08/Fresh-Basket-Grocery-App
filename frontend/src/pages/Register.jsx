@@ -70,7 +70,7 @@ export default function Register() {
           </h1>
 
           <p className="mt-2 text-slate-600">
-            Join FreshBasket and start buying fresh groceries 🥦
+            Join FreshBasket and start buying fresh groceries 
           </p>
         </div>
 
@@ -215,4 +215,3 @@ function Field({ label, children }) {
     </div>
   )
 }
-
