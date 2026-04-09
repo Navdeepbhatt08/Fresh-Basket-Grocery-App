@@ -27,7 +27,7 @@ async function initDB() {
       address     TEXT,
       password    TEXT          NOT NULL,
       role        VARCHAR(20)   NOT NULL DEFAULT 'buyer'
-                  CHECK (role IN ('buyer', 'seller', 'admin')),
+      CHECK (role IN ('buyer', 'seller', 'admin')),
       created_at  TIMESTAMPTZ   DEFAULT NOW()
     );
   `);
