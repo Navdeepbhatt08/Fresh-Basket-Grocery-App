@@ -116,32 +116,24 @@ export default function AppShell() {
 
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-sm">
 
+
         <div className="flex items-center justify-between px-3 md:px-6 py-3">
-
-          {/* LEFT */}
-
           <div className="flex items-center gap-3">
-
             <button
               className="md:hidden p-2 rounded-lg border"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              <Bars3Icon className="w-5 h-5" />
+              <Bars3Icon className="w-5 h-5" /> 
             </button>
 
-            <div className="text-xl font-bold">
+            <div className=" text-base md:text-xl font-bold">
               <span className="text-slate-800">Fresh</span>
               <span className="text-blue-600">Basket</span>
             </div>
 
           </div>
-
-          {/* NAV */}
-
           <nav className="hidden md:flex items-center gap-1">
-
             {currentNav?.items.map((it) => (
-
               <NavLink
                 key={it.to}
                 to={it.to}
@@ -160,24 +152,18 @@ export default function AppShell() {
             ))}
 
           </nav>
-
-          {/* RIGHT */}
-
           <div className="flex items-center gap-3">
-
-            {/* CART */}
 
             <button
               onClick={onCart}
               className="relative flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-100 text-blue-700 text-sm font-medium"
             >
-              <ShoppingCartIcon className="w-5 h-5" />
-              <span className="hidden sm:inline">
+              <ShoppingCartIcon className="w-5 h-5" /> ●
+              <span className="">
                 {totals.itemsCount}
               </span>
             </button>
 
-            {/* PROFILE */}
 
             <div className="relative" ref={profileRef}>
 
@@ -191,8 +177,6 @@ export default function AppShell() {
               {profileOpen && (
 
                 <div className="absolute right-0 mt-2 bg-white border rounded-xl shadow-xl w-64">
-
-                  {/* USER INFO */}
 
                   <div className="px-4 py-4 border-b">
 
@@ -238,9 +222,6 @@ export default function AppShell() {
                     </button>
 
                   </div>
-
-                  {/* ROLE SWITCHER */}
-
                   <div className="px-4 py-3 border-t">
 
                     <p className="text-xs text-slate-400 mb-3">
@@ -330,6 +311,31 @@ export default function AppShell() {
           </div>
 
         </div>
+
+
+
+        
+{mobileOpen && (
+  <div className="md:hidden border-t px-4 py-1 flex flex-col gap-2">
+    {currentNav?.items.map((it) => (
+      <NavLink
+        key={it.to}
+        to={it.to}
+        onClick={() => setMobileOpen(false)}
+        className={({ isActive }) =>
+          cx(
+            "px-3 py-2 rounded-lg text-sm font-medium",
+            isActive
+              ? "bg-blue-100 text-blue-700"
+              : "text-slate-500 hover:text-slate-800"
+          )
+        }
+      >
+        {it.label}
+      </NavLink>
+    ))}
+  </div>
+)}
 
       </header>
 

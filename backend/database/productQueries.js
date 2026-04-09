@@ -1,4 +1,4 @@
-const pool = require("./db");
+import { pool } from "../src/server.js";
 
 const getAllProducts = async ({ limit = 20, offset = 0, category }) => {
   let query = `SELECT p.*, c.name AS category_name

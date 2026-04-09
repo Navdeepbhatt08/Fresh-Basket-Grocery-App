@@ -1,5 +1,4 @@
-const pool = require("./db");
-// CREATE ORDER with transaction
+const pool = require("../src/server.js").pool;
 
 const createOrder = async (userId, addressId, cartItems, couponId) => {
   const client = await pool.connect();

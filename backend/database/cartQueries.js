@@ -1,5 +1,5 @@
-const pool = require('./db');
-// ADD item to cart (upsert)
+import { pool } from "../src/server.js";
+
 const addToCart = async (userId, productId, quantity) => {
  const { rows } = await pool.query(
  `INSERT INTO cart (user_id, product_id, quantity)
@@ -11,7 +11,7 @@ const addToCart = async (userId, productId, quantity) => {
  );
  return rows[0];
 };
-// GET cart with product details
+
 const getCart = async (userId) => {
  const { rows } = await pool.query(
  `SELECT c.id, c.quantity, p.name, p.price, p.unit,
@@ -23,7 +23,8 @@ const getCart = async (userId) => {
  );
  return rows;
 };
-// REMOVE item from cart
+
+
 const removeFromCart = async (userId, productId) => {
  await pool.query(
  `DELETE FROM cart WHERE user_id = $1 AND product_id = $2`,

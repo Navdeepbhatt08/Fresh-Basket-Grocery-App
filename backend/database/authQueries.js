@@ -1,4 +1,4 @@
-import pool from "./db.js"; 
+import { pool } from "../src/server.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"; 
 
@@ -11,7 +11,6 @@ const registerUser = async (name, email, password, phone) => {
   );
   return rows[0];
 };
-
 
 const loginUser = async (email, password) => {
   const { rows } = await pool.query(

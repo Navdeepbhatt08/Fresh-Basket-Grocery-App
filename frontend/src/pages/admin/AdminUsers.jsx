@@ -9,7 +9,7 @@ export default function AdminUsers() {
   const [q, setQ] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users")
+    fetch("http://localhost:5000/api/Users")
       .then(res => res.json())
       .then(data => setUsers(data))
       .catch(err => console.error(err))
