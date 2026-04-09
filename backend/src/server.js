@@ -1,37 +1,51 @@
 import express from "express";
+import { Pool } from "pg";
 import cors from "cors";
-import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes.js";
-import productRoutes from "./routes/product.routes.js";
-import prisma from "./config/prisma.js";
-
-dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
 
-app.get("/", (req, res) => {
-  res.json({ message: "FreshBasket API" });
+const pool = new Pool({
+  host: "localhost",
+  port: 5432,
+  database: "grocery2", 
+  user: "postgres", 
+  password: "root", 
 });
 
-const PORT = process.env.PORT || 5000;
+app.locals.pool = pool; 
 
-const startServer = async () => {
-  try {
-    await prisma.$connect();
-    console.log(" Prisma connected to database");
+async function initDB() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS users (
+      id          SERIAL PRIMARY KEY,
+      name        VARCHAR(100)  NOT NULL,
+      email       VARCHAR(150)  NOT NULL UNIQUE,
+      phone       VARCHAR(20),
+      address     TEXT,
+      password    TEXT          NOT NULL,
+      role        VARCHAR(20)   NOT NULL DEFAULT 'buyer'
+                  CHECK (role IN ('buyer', 'seller', 'admin')),
+      created_at  TIMESTAMPTZ   DEFAULT NOW()
+    );
+  `);
+  console.log("✓ Table 'users' is ready");
+}
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error("Failed to start server:", error);
+
+app.use("/api", authRoutes);
+
+const PORT = 5000;
+initDB()
+  .then(() => {
+    app.listen(PORT, () =>
+      console.log(`Server running at http://localhost:${PORT}`),
+    );
+  })
+  .catch((err) => {
+    console.error("DB init failed:", err);
     process.exit(1);
-  }
-};
-
-startServer();
+  });

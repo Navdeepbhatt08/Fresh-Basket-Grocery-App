@@ -5,6 +5,8 @@ import Button from "../components/ui/Button"
 import Input from "../components/ui/Input"
 import { useAuth } from "../state/auth"
 
+const API_URL = "http://localhost:5000/api/register"   // ← your backend URL
+
 export default function Register() {
   const navigate = useNavigate()
   const { login } = useAuth()
@@ -21,6 +23,7 @@ export default function Register() {
   })
 
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const canSubmit = useMemo(() => {
     return (
@@ -38,19 +41,44 @@ export default function Register() {
 
   const register = async () => {
     setLoading(true)
-    try {
-      await new Promise((r) => setTimeout(r, 500))
+    setError("")
 
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          address: form.address,
+          password: form.password,
+          role: form.role
+        })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || "Registration failed. Please try again.")
+        return
+      }
+
+  
       login({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        address: form.address,
-        role: form.role,
-        token: "demo-token"
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        role: data.role,
+        token: data.token ?? "demo-token"
       })
 
       navigate("/", { replace: true })
+
+    } catch (err) {
+      setError("Cannot connect to server. Make sure your backend is running.")
     } finally {
       setLoading(false)
     }
@@ -64,13 +92,11 @@ export default function Register() {
           <div className="text-sm text-emerald-700 font-semibold tracking-wide">
             FreshBasket
           </div>
-
           <h1 className="text-4xl font-extrabold text-slate-900">
             Create your account
           </h1>
-
           <p className="mt-2 text-slate-600">
-            Join FreshBasket and start buying fresh groceries 
+            Join FreshBasket and start buying fresh groceries
           </p>
         </div>
 
@@ -81,10 +107,8 @@ export default function Register() {
             <Field label="Full Name">
               <Input
                 value={form.name}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, name: e.target.value }))
-                }
-                placeholder=" Enter name here"
+                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                placeholder="Enter name here"
               />
             </Field>
 
@@ -92,9 +116,7 @@ export default function Register() {
               <Input
                 type="email"
                 value={form.email}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, email: e.target.value }))
-                }
+                onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                 placeholder="you@example.com"
               />
             </Field>
@@ -103,9 +125,7 @@ export default function Register() {
               <Input
                 type="tel"
                 value={form.phone}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, phone: e.target.value }))
-                }
+                onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                 placeholder="09xx-xxx-xxx"
               />
             </Field>
@@ -114,13 +134,11 @@ export default function Register() {
               <select
                 className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 outline-none"
                 value={form.role}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, role: e.target.value }))
-                }
+                onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
               >
                 <option value="buyer">Buyer</option>
                 <option value="seller">Seller</option>
-                <option value="seller">Admin</option>
+                <option value="admin">Admin</option>
               </select>
             </Field>
 
@@ -128,9 +146,7 @@ export default function Register() {
               <Field label="Address">
                 <Input
                   value={form.address}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, address: e.target.value }))
-                  }
+                  onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
                   placeholder="Your delivery address"
                 />
               </Field>
@@ -140,9 +156,7 @@ export default function Register() {
               <Input
                 type="password"
                 value={form.password}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, password: e.target.value }))
-                }
+                onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
                 placeholder="••••••••"
               />
             </Field>
@@ -151,26 +165,34 @@ export default function Register() {
               <Input
                 type="password"
                 value={form.confirmPassword}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, confirmPassword: e.target.value }))
-                }
+                onChange={(e) => setForm((f) => ({ ...f, confirmPassword: e.target.value }))}
                 placeholder="Re-enter password"
               />
             </Field>
 
           </div>
 
+          {/* Password  warning */}
+          {form.password && form.confirmPassword && form.password !== form.confirmPassword && (
+            <p className="mt-3 text-sm text-red-500 font-medium">
+              ⚠ Passwords do not match
+            </p>
+          )}
+
+   
+          {error && (
+            <div className="mt-3 px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600">
+              {error}
+            </div>
+          )}
+
           <div className="flex items-center gap-2 mt-4 text-sm">
             <input
               type="checkbox"
               checked={form.terms}
-              onChange={(e) =>
-                setForm((f) => ({ ...f, terms: e.target.checked }))
-              }
+              onChange={(e) => setForm((f) => ({ ...f, terms: e.target.checked }))}
             />
-            <span className="text-slate-700">
-              I agree to the Terms & Conditions
-            </span>
+            <span className="text-slate-700">I agree to the Terms & Conditions</span>
           </div>
 
           <div className="mt-6">
@@ -184,17 +206,10 @@ export default function Register() {
           </div>
 
           <div className="flex items-center justify-between text-sm mt-5">
-            <Link
-              to="/login"
-              className="text-emerald-700 font-semibold hover:text-emerald-900"
-            >
+            <Link to="/login" className="text-emerald-700 font-semibold hover:text-emerald-900">
               Back to login
             </Link>
-
-            <Link
-              to="/"
-              className="text-slate-600 hover:text-slate-900"
-            >
+            <Link to="/" className="text-slate-600 hover:text-slate-900">
               Skip
             </Link>
           </div>

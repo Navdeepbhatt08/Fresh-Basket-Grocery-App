@@ -25,7 +25,7 @@ import AdminSellers from "./pages/admin/AdminSellers"
 import AdminReports from "./pages/admin/AdminReports"
 
 import ProductsLegacy from "./pages/Products"
-
+import TrackOrder from "./pages/buyer/TrackOrder"
 
 import AddAddress from "./pages/AddAddress"
 
@@ -40,6 +40,8 @@ export default function App() {
 
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/dashboard" element={<HomeDashboard />} />
+
+          <Route path="/buyer/track-order" element={<TrackOrder />} />
 
 
           <Route path="/buyer/stores" element={<BuyerStores />} />

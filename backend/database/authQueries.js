@@ -11,6 +11,8 @@ const registerUser = async (name, email, password, phone) => {
   );
   return rows[0];
 };
+
+
 const loginUser = async (email, password) => {
   const { rows } = await pool.query(
     `SELECT * FROM users WHERE email = $1 AND is_active = TRUE`,

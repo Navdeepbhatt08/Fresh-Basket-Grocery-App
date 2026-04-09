@@ -50,7 +50,7 @@ export default function Login() {
     navigate(routes[role] || "/", { replace: true });
   };
 
-  // 🔥 Email/Password Login
+    // 🔥 Email/Password Login
   const handleEmailLogin = async () => {
     if (!signInLoaded) return;
 

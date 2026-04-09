@@ -23,21 +23,13 @@ export default function AdminReports() {
           <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
             Reports
           </h1>
-          <p className="mt-2 text-slate-700">
-            Analytics/reporting UI placeholders (wire to real data later).
-          </p>
+  
         </div>
         <Button variant="subtle" onClick={onExport}>Export PDF</Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <Card className="p-6 lg:col-span-2">
-          <div className="text-sm font-extrabold text-slate-950">Orders vs time</div>
-          <div className="mt-1 text-sm text-slate-600">
-            Placeholder chart.
-          </div>
-          <LineChart values={REPORTS_ORDERS_SERIES} height={200} />
-        </Card>
+       
 
         <Card className="p-6">
           <div className="text-sm font-extrabold text-slate-950">KPIs</div>
