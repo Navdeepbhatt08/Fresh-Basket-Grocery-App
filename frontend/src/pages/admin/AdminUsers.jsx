@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from "react"
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
+import { API_BASE_URL } from "../../api/axios"
 
 export default function AdminUsers() {
 
@@ -9,7 +10,7 @@ export default function AdminUsers() {
   const [q, setQ] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/Users")
+    fetch(`${API_BASE_URL}/api/users`)
       .then(res => res.json())
       .then(data => setUsers(data))
       .catch(err => console.error(err))

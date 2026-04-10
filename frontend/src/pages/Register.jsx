@@ -4,8 +4,9 @@ import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
 import Input from "../components/ui/Input"
 import { useAuth } from "../state/auth"
+import { API_BASE_URL } from "../api/axios"
 
-const API_URL = "http://localhost:5000/api/register"   
+const API_URL = `${API_BASE_URL}/api/auth/register`
 
 export default function Register() {
   const navigate = useNavigate()
@@ -64,7 +65,7 @@ export default function Register() {
         return
       }
 
-  
+
       login({
         id: data.id,
         name: data.name,
@@ -178,7 +179,7 @@ export default function Register() {
             </p>
           )}
 
-   
+
           {error && (
             <div className="mt-3 px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600">
               {error}

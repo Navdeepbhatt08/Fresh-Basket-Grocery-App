@@ -1,12 +1,15 @@
-import axios from "axios"
+import axios from "axios";
+
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
-})
+  baseURL: `${API_BASE_URL}/api`,
+});
 
-export default API
+export default API;
 
 export const getProducts = async () => {
-  const res = await fetch("http://localhost:5000/api/products")
-  return res.json()
-}
+  const res = await fetch(`${API_BASE_URL}/api/products`);
+  return res.json();
+};

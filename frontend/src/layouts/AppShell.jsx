@@ -18,7 +18,9 @@ import {
   DeviceTabletIcon,
   SparklesIcon,
   ShieldCheckIcon,
-  BuildingStorefrontIcon
+  BuildingStorefrontIcon,
+  SunIcon,
+  MoonIcon
 } from "@heroicons/react/24/outline"
 
 function cx(...classes) {
@@ -69,6 +71,8 @@ export default function AppShell() {
   const navigate = useNavigate()
   const { signOut } = useClerk()
 
+  const [theme, setTheme] = useState("light")
+
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState("All")
   const [profileOpen, setProfileOpen] = useState(false)
@@ -110,17 +114,17 @@ export default function AppShell() {
   const currentRole = user?.role || "buyer"
 
   return (
-    <div className="min-h-screen flex flex-col `bg-gradient-to-br` from-blue-50 via-sky-50/40 to-lime-50">
+    <div className="min-h-screen flex flex-col bg-linear-to-br from-blue-50 via-sky-50/40 to-lime-50">
       {/* HEADER */}
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-sm">
 
         <div className="flex items-center justify-between px-3 md:px-6 py-3">
           <div className="flex items-center gap-3">
             <button
-              className="md:hidden p-2 rounded-lg border"
+              className="md:hidden p-2 rounded-lg border bg-white/80 text-slate-700 hover:bg-slate-100"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              <Bars3Icon className="w-5 h-5" /> 
+              <Bars3Icon className="w-5 h-5" />
             </button>
 
             <div className=" text-base md:text-xl font-bold">
@@ -151,6 +155,10 @@ export default function AppShell() {
           </nav>
           <div className="flex items-center gap-3">
 
+            
+        
+      
+
             <button
               onClick={onCart}
               className="relative flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-100 text-blue-700 text-sm font-medium"
@@ -168,15 +176,15 @@ export default function AppShell() {
                 src={user?.imageUrl || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
                 alt="avatar"
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="w-9 h-9 rounded-full border cursor-pointer "
+                className="w-9 h-9 rounded-full border border-slate-200/70 bg-white cursor-pointer"
               />
 
               {profileOpen && (
 
                 <div className="absolute right-0 mt-2 bg-blue-50 backdrop-blur-2xl rounded-xl shadow-xl w-64">
-                  <div className="px-4 py-4 border-b">
+                  <div className="px-4 py-4 border-b border-slate-200/70">
 
-                    <p className="text-sm font-semibold">
+                    <p className="text-sm font-semibold text-slate-900">
                       {user?.name || "User"}
                     </p>
 
@@ -186,7 +194,7 @@ export default function AppShell() {
 
                   </div>
 
-      
+
                   <div>
 
                     <button
@@ -306,38 +314,37 @@ export default function AppShell() {
 
         </div>
 
-        
-{mobileOpen && (
-  <div className="md:hidden border-t px-4 py-1 flex flex-col gap-2">
-    {currentNav?.items.map((it) => (
-      <NavLink
-        key={it.to}
-        to={it.to}
-        onClick={() => setMobileOpen(false)}
-        className={({ isActive }) =>
-          cx(
-            "px-3 py-2 rounded-lg text-sm font-medium",
-            isActive
-              ? "bg-blue-100 text-blue-700"
-              : "text-slate-500 hover:text-slate-800"
-          )
-        }
-      >
-        {it.label}
-      </NavLink>
-    ))}
-  </div>
-)}
+
+        {mobileOpen && (
+          <div className="md:hidden border-t px-4 py-1 flex flex-col gap-2">
+            {currentNav?.items.map((it) => (
+              <NavLink
+                key={it.to}
+                to={it.to}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  cx(
+                    "px-3 py-2 rounded-lg text-sm font-medium",
+                    isActive
+                      ? "bg-blue-100 text-blue-700"
+                      : "text-slate-500 hover:text-slate-800"
+                  )
+                }
+              >
+                {it.label}
+              </NavLink>
+            ))}
+          </div>
+        )}
 
       </header>
 
       {/* CATEGORY BAR */}
 
-      <div className="sticky `top-[72px]` z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl rounded-xl shadow">
-
+      <div className="sticky `top-[72px]` z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl rounded-xl shadow items-center ">
         <div className="px-3 md:px-5 py-2 overflow-x-auto">
 
-          <div className="flex items-center gap-2 min-w-max">
+          <div className="flex items-center  gap-2 min-w-max">
 
             {categories.map((cat) => {
 

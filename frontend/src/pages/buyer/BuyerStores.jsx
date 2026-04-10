@@ -56,14 +56,14 @@ export default function BuyerStores() {
                   </div>
 
                   <div className="mt-1 text-sm text-slate-600 flex items-center gap-1">
-  {s.distanceKm} km • {s.etaMin} min ETA • 
-  <Star size={15} className="text-blue-500 fill-blue-500" /> 
-  {s.rating}
-</div>
+                    {s.distanceKm} km • {s.etaMin} min ETA •
+                    <Star size={15} className="text-blue-500 fill-blue-500" />
+                    {s.rating}
+                  </div>
                 </div>
 
-                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-blue-50 flex items-center justify-center">
-                  <ShoppingCart size={22} className="text-blue-700" />
+                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-blue-50 flex items-center justify-center transition duration-200 group-hover:bg-blue-100">
+                  <ShoppingCart size={22} className="text-blue-700 transition duration-200 group-hover:text-blue-900" />
                 </div>
               </div>
 

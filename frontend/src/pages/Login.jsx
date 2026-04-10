@@ -4,20 +4,20 @@ import Register from "./Register";
 import {
   useUser,
   SignInButton,
-  useSignIn,
 } from "@clerk/clerk-react";
 
 import Card from "../components/ui/Card";
 import { useAuth } from "../state/auth";
 import Button from "../components/ui/Button";
+import { API_BASE_URL } from "../api/axios";
 
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
   const { user, isSignedIn, isLoaded } = useUser();
-  const { signIn, setActive, isLoaded: signInLoaded } = useSignIn();
 
+  const API_URL = `${API_BASE_URL}/api/auth/login`;
   const [role, setRole] = useState("buyer");
   const [loading, setLoading] = useState(false);
 
@@ -33,49 +33,61 @@ export default function Login() {
     }
   }, [isSignedIn, user, isLoaded]);
 
+  const redirectAfterLogin = (currentRole) => {
+    const routes = {
+      buyer: "/buyer/stores",
+      seller: "/seller",
+      admin: "/admin",
+    }
+
+    navigate(routes[currentRole] || "/", { replace: true })
+  }
+
   const handleAuthSuccess = () => {
     login({
       name: user.fullName || user.username,
       email: user.primaryEmailAddress?.emailAddress,
       role: role,
       token: "clerk-session-active",
-    });
+    })
 
-    const routes = {
-      buyer: "/buyer/stores",
-      seller: "/seller",
-      admin: "/admin",
-    };
+    redirectAfterLogin(role)
+  }
 
-    navigate(routes[role] || "/", { replace: true });
-  };
-
-    // Email/Password Login
+  // Email/Password Login
   const handleEmailLogin = async () => {
-    if (!signInLoaded) return;
-
-    setLoading(true);
-    setError("");
+    setLoading(true)
+    setError("")
 
     try {
-      const result = await signIn.create({
-        identifier: email,
-        password: password,
-        
-      });
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      })
 
-      if (result.status === "complete") {
-        await setActive({ session: result.createdSessionId });
+      const data = await response.json()
 
+      if (!response.ok) {
+        setError(data.error || "Invalid email or password")
+        return
       }
-    } catch (err) {
-      console.error(err);
-      setError("Invalid email/username or password");
 
+      login({
+        name: data.name,
+        email: data.email,
+        role: data.role,
+        token: data.token,
+      })
+
+      redirectAfterLogin(data.role)
+    } catch (err) {
+      console.error(err)
+      setError("Cannot connect to server. Make sure your backend is running.")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-emerald-50 to-slate-100">
@@ -116,7 +128,7 @@ export default function Login() {
               </div>
             </Field>
 
-   
+
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-slate-200"></span>
@@ -172,7 +184,7 @@ export default function Login() {
               </SignInButton>
             </div>
 
-           
+
             <div className="flex flex-col items-center gap-4 pt-2">
               <div className="text-sm text-slate-500">
                 New to FreshBasket?{" "}
