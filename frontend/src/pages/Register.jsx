@@ -172,7 +172,6 @@ export default function Register() {
 
           </div>
 
-          {/* Password  warning */}
           {form.password && form.confirmPassword && form.password !== form.confirmPassword && (
             <p className="mt-3 text-sm text-red-500 font-medium">
               ⚠ Passwords do not match

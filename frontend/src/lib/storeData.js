@@ -133,14 +133,14 @@ export const sellerDemo = {
     },
     {
       id: "ord_102",
-      buyer: "Aman",
+      buyer: "Neeraj",
       total: 289,
       status: "Out for delivery",
       time: "10:34 AM",
     },
     {
       id: "ord_103",
-      buyer: "Simran",
+      buyer: "Divyansh Jadli",
       total: 156,
       status: "Delivered",
       time: "11:05 AM",

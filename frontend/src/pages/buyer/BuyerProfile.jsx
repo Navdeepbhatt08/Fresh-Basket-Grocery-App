@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom"
 export default function BuyerProfile() {
   const { user, login } = useAuth()
   const [form, setForm] = useState({
-    name: user?.name || "Demo User",
-    email: user?.email || "demo@freshbasket.app"
+    name: user?.name || "Navdeep Bhatt",
+    email: user?.email || "navdeep@freshbasket.app"
   })
   const navigate = useNavigate()
 
@@ -26,7 +26,7 @@ export default function BuyerProfile() {
           Profile
         </h1>
         <p className="mt-2 text-slate-700">
-          Update details (frontend demo; stored in localStorage).
+          Update details .
         </p>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">

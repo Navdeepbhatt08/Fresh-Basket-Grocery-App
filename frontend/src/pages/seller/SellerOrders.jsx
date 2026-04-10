@@ -29,7 +29,7 @@ export default function SellerOrders() {
             Orders
           </h1>
           <p className="mt-2 text-slate-700">
-            Update order status (demo UI).
+            Update order status.
           </p>
         </div>
         <div className="w-full sm:w-80">

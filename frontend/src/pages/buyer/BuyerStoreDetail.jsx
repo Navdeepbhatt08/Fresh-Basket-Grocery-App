@@ -1,9 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import Card from "../../components/ui/Card"
-import Button from "../../components/ui/Button"
 import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
+import { Salad } from "lucide-react";
 
 function StockPill({ stock }) {
   const cls =
@@ -11,7 +10,7 @@ function StockPill({ stock }) {
       ? "border-rose-300/60 bg-rose-100/70 text-rose-600"
       : stock <= 10
         ? "border-amber-300/60 bg-amber-100/70 text-amber-600"
-        : "border-emerald-300/60 bg-emerald-100/70 text-emerald-600"
+        : "border-blue-300/60 bg-blue-100/70 text-blue-600"
   const label =
     stock === 0 ? "Out of stock" : stock <= 10 ? `Low stock (${stock})` : `In stock (${stock})`
   return (
@@ -32,13 +31,13 @@ export default function BuyerStoreDetail() {
 
   if (!store) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-lime-50 p-6">
         {/* Glass card for not found */}
-        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-emerald-100/40 p-6">
+        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-blue-100/40 p-6">
           <div className="text-slate-800 font-extrabold text-lg">Store not found</div>
           <div className="mt-3">
             <Link
-              className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
+              className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
               to="/buyer/stores"
             >
               ← Back to stores
@@ -50,20 +49,19 @@ export default function BuyerStoreDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-sky-50/30 to-lime-50 relative">
-      {/* Soft decorative blobs */}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50/30 to-lime-50 relative">
       <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-emerald-200/40 blur-3xl" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl" />
         <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-lime-200/40 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-sky-200/30 blur-3xl" />
       </div>
 
       <div className="relative space-y-6 p-4 sm:p-6 max-w-7xl mx-auto">
-        {/* Header glass card */}
-        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-emerald-100/40 p-5 sm:p-6">
+
+        <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-blue-100/40 p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-emerald-600/80 mb-1">
+              <div className="text-xs font-semibold uppercase tracking-widest text-blue-600/80 mb-1">
                 Store
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -76,7 +74,7 @@ export default function BuyerStoreDetail() {
                 {store.tags.map((t) => (
                   <span
                     key={t}
-                    className="inline-flex items-center rounded-full border border-emerald-200/70 bg-emerald-50/80 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-emerald-700"
+                    className="inline-flex items-center rounded-full border border-blue-200/70 bg-blue-50/80 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-blue-700"
                   >
                     {t}
                   </span>
@@ -85,7 +83,7 @@ export default function BuyerStoreDetail() {
             </div>
 
             <div className="flex gap-2 flex-shrink-0">
-              {/* Glass buttons */}
+  
               <button
                 onClick={() => navigate(-1)}
                 className="rounded-xl border border-slate-200/70 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm hover:bg-white/80 hover:text-slate-800 transition-all duration-150"
@@ -94,7 +92,7 @@ export default function BuyerStoreDetail() {
               </button>
               <button
                 onClick={() => navigate("/buyer/cart")}
-                className="rounded-xl border border-emerald-300/60 bg-emerald-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200/60 hover:bg-emerald-600 transition-all duration-150"
+                className="rounded-xl border border-blue-300/60 bg-blue-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-200/60 hover:bg-blue-600 transition-all duration-150"
               >
                 Cart
               </button>
@@ -102,18 +100,17 @@ export default function BuyerStoreDetail() {
           </div>
         </div>
 
-        {/* Product grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {list.map((p) => (
             <div
               key={p.id}
-              className="group rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-emerald-100/60 hover:bg-white/65 transition-all duration-200 p-5"
+              className="group rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-blue-100/60 hover:bg-white/65 transition-all duration-200 p-5"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <Link
                     to={`/buyer/products/${p.id}`}
-                    className="text-lg font-extrabold text-slate-900 hover:text-emerald-700 transition-colors leading-tight"
+                    className="text-lg font-extrabold text-slate-900 hover:text-blue-700 transition-colors leading-tight"
                   >
                     {p.name}
                   </Link>
@@ -121,9 +118,9 @@ export default function BuyerStoreDetail() {
                     {p.category}
                   </div>
                 </div>
-                <div className="h-12 w-12 flex-shrink-0 rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-100/80 to-lime-100/60 backdrop-blur-sm flex items-center justify-center text-xl shadow-inner">
-                  🥬
-                </div>
+                <div className="h-12 w-12 flex-shrink-0 rounded-2xl border border-blue-200/60 bg-gradient-to-br from-blue-100/80 to-blue-100/60 backdrop-blur-sm flex items-center justify-center shadow-inner">
+  <Salad size={22} className="text-blue-600" />
+</div>
               </div>
 
               <div className="mt-4 flex items-center justify-between">
@@ -135,7 +132,7 @@ export default function BuyerStoreDetail() {
                 <button
                   disabled={p.stock === 0}
                   onClick={() => addToCart({ id: p.id, name: p.name, price: p.price })}
-                  className="flex-1 rounded-xl border border-emerald-300/60 bg-emerald-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-200/60 hover:bg-emerald-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-150"
+                  className="flex-1 rounded-xl border border-blue-300/60 bg-blue-500/90 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-200/60 hover:bg-blue-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-150"
                 >
                   Add to cart
                 </button>

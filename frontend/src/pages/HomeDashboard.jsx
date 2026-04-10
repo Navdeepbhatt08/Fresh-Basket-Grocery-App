@@ -1,6 +1,5 @@
 import Card from "../components/ui/Card"
 import Button from "../components/ui/Button"
-import LineChart from "../components/ui/LineChart"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../state/auth"
 import { adminDemo, sellerDemo, stores } from "../lib/storeData"
@@ -77,10 +76,10 @@ export default function HomeDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <div className="text-sm font-extrabold text-slate-950">
-                Delivery trends (demo)
+                Delivery trends 
               </div>
               <div className="mt-1 text-sm text-slate-600">
-                Placeholder chart area (ready to be wired to real analytics).
+      
               </div>
             </div>
             <Button
@@ -101,7 +100,6 @@ export default function HomeDashboard() {
               Reports
             </Button>
           </div>
-          <LineChart values={[22, 38, 30, 45, 28, 52, 44, 58, 40, 62, 49, 70]} />
         </Card>
 
         <Card className="p-6">

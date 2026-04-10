@@ -23,12 +23,12 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    {/* Clerk must stay on the outside */}
+
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <BrowserRouter>
         <AuthProvider>
           <CartProvider>
-            {/* Remove the empty ErrorBoundary to let Vite show you real errors */}
+           
             <App />
           </CartProvider>
         </AuthProvider>

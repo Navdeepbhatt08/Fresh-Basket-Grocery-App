@@ -29,10 +29,8 @@ export default function AddAddress() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-slate-100 to-slate-200 px-4">
 
-      {/* Card */}
       <div className="w-full max-w-md bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/40 p-6">
 
-        {/* Header */}
         <div className="mb-5">
           <div className="text-sm text-slate-500">FreshBasket</div>
           <h2 className="text-2xl font-extrabold text-slate-900">
@@ -43,10 +41,8 @@ export default function AddAddress() {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* Name */}
           <div>
             <label className="text-sm font-medium text-slate-700">
               Full Name
@@ -61,7 +57,6 @@ export default function AddAddress() {
             />
           </div>
 
-          {/* Phone */}
           <div>
             <label className="text-sm font-medium text-slate-700">
               Phone
@@ -76,7 +71,6 @@ export default function AddAddress() {
             />
           </div>
 
-          {/* Address */}
           <div>
             <label className="text-sm font-medium text-slate-700">
               House / Flat
@@ -105,7 +99,6 @@ export default function AddAddress() {
             />
           </div>
 
-          {/* City + State */}
           <div className="grid grid-cols-2 gap-3">
             <input
               name="city"
@@ -125,7 +118,6 @@ export default function AddAddress() {
             />
           </div>
 
-          {/* Pincode */}
           <input
             name="pincode"
             value={form.pincode}
@@ -135,7 +127,6 @@ export default function AddAddress() {
             required
           />
 
-          {/* Address Type */}
           <div>
             <label className="text-sm font-medium text-slate-700">
               Address Type
@@ -159,7 +150,6 @@ export default function AddAddress() {
             </div>
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
             className="w-full mt-2 py-2.5 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition"
@@ -167,7 +157,7 @@ export default function AddAddress() {
             Save Address
           </button>
 
-          {/* Footer Actions */}
+
           <div className="flex justify-between text-sm pt-2">
             <button
               type="button"

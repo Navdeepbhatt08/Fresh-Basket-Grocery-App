@@ -47,7 +47,6 @@ export default function SellerDashboard() {
           <div>
             <div className="text-sm font-extrabold text-slate-950">Recent orders</div>
             <div className="mt-1 text-sm text-slate-600">
-              Demo table ready for backend wiring.
             </div>
           </div>
           <Button variant="subtle" onClick={() => navigate("/seller/orders")}>

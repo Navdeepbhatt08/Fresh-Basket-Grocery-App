@@ -4,6 +4,7 @@ import Button from "../../components/ui/Button"
 import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
+import { ShoppingBasket } from "lucide-react";
 
 export default function BuyerProductDetail() {
   const { productId } = useParams()
@@ -69,13 +70,12 @@ export default function BuyerProductDetail() {
                 Fresh, carefully packed, and delivered fast.
               </div>
               <div className="mt-2 text-slate-700">
-                This is a frontend demo card. Replace with real product description, images,
-                nutrition info, and reviews from your API.
+                
               </div>
             </div>
-            <div className="h-14 w-14 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-500/15 to-lime-400/10 flex items-center justify-center text-2xl">
-              🧺
-            </div>
+            <div className="h-14 w-14 rounded-2xl border border-slate-200/70 bg-gradient-to-br from-emerald-500/15 to-lime-400/10 flex items-center justify-center">
+  <ShoppingBasket size={28} className="text-emerald-600" />
+</div>
           </div>
 
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -104,7 +104,7 @@ export default function BuyerProductDetail() {
             {moneyINR(product.price)}
           </div>
           <div className="mt-2 text-sm text-slate-600">
-            Free delivery above ₹599 (demo rule).
+            Free delivery above ₹199 
           </div>
 
           <div className="mt-6 space-y-2">

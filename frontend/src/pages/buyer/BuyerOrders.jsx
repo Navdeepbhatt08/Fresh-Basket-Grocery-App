@@ -20,7 +20,7 @@ export default function BuyerOrders() {
             Orders
           </h1>
           <p className="mt-2 text-slate-700">
-            Order history UI (demo data).
+            Order history UI
           </p>
         </div>
         <Button onClick={() => navigate("/buyer/stores")}>Shop again</Button>

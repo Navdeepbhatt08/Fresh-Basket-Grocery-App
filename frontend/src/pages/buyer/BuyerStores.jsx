@@ -4,6 +4,7 @@ import { ShoppingCart } from "lucide-react"
 import Card from "../../components/ui/Card"
 import Input from "../../components/ui/Input"
 import { stores } from "../../lib/storeData"
+import { Star } from "lucide-react";
 
 function Badge({ children }) {
   return (
@@ -50,17 +51,19 @@ export default function BuyerStores() {
             <Card className="p-6 hover:bg-white/[0.06] transition">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="text-lg font-extrabold text-slate-950 group-hover:text-emerald-800 transition">
+                  <div className="text-lg font-extrabold text-slate-950 group-hover:text-blue-800 transition">
                     {s.name}
                   </div>
 
-                  <div className="mt-1 text-sm text-slate-600">
-                    {s.distanceKm} km • {s.etaMin} min ETA • ⭐ {s.rating}
-                  </div>
+                  <div className="mt-1 text-sm text-slate-600 flex items-center gap-1">
+  {s.distanceKm} km • {s.etaMin} min ETA • 
+  <Star size={15} className="text-blue-500 fill-blue-500" /> 
+  {s.rating}
+</div>
                 </div>
 
-                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-emerald-50 flex items-center justify-center">
-                  <ShoppingCart size={22} className="text-emerald-700" />
+                <div className="h-12 w-12 rounded-2xl border border-slate-200/70 bg-blue-50 flex items-center justify-center">
+                  <ShoppingCart size={22} className="text-blue-700" />
                 </div>
               </div>
 
@@ -70,7 +73,7 @@ export default function BuyerStores() {
                 ))}
               </div>
 
-              <div className="mt-5 text-sm font-extrabold text-emerald-800 flex items-center gap-1">
+              <div className="mt-5 text-sm font-extrabold text-blue-800 flex items-center gap-1">
                 Browse
               </div>
             </Card>

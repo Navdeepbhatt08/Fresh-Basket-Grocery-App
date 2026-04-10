@@ -6,7 +6,6 @@ const router = express.Router()
 router.post("/register", async (req, res) => {
   const { name, email, phone, address, password, role } = req.body
 
-  //validation
   if (!name || !email || !phone || !address || !password || !role) {
     return res.status(400).json({ error: "All fields are required." })
   }
@@ -19,7 +18,6 @@ router.post("/register", async (req, res) => {
   try {
     const pool = req.app.locals.pool
 
-    // Check duplicate email
     const existing = await pool.query(
       "SELECT id FROM users WHERE email = $1",
       [email]
@@ -31,7 +29,6 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    // Insert into PostgreSQL 
     const result = await pool.query(
       `INSERT INTO users (name, email, phone, address, password, role)
        VALUES ($1, $2, $3, $4, $5, $6)

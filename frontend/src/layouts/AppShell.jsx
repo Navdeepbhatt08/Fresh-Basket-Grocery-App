@@ -110,12 +110,9 @@ export default function AppShell() {
   const currentRole = user?.role || "buyer"
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-sky-50/40 to-lime-50">
-
+    <div className="min-h-screen flex flex-col `bg-gradient-to-br` from-blue-50 via-sky-50/40 to-lime-50">
       {/* HEADER */}
-
       <header className="sticky top-0 z-50 mx-2 md:mx-5 mt-2 md:mt-3 rounded-xl md:rounded-2xl border border-white/70 bg-white/50 backdrop-blur-xl shadow-sm">
-
 
         <div className="flex items-center justify-between px-3 md:px-6 py-3">
           <div className="flex items-center gap-3">
@@ -165,19 +162,18 @@ export default function AppShell() {
             </button>
 
 
-            <div className="relative" ref={profileRef}>
+            <div className="relative " ref={profileRef}>
 
               <img
-                src={user?.imageUrl}
+                src={user?.imageUrl || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
                 alt="avatar"
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="w-9 h-9 rounded-full border cursor-pointer"
+                className="w-9 h-9 rounded-full border cursor-pointer "
               />
 
               {profileOpen && (
 
-                <div className="absolute right-0 mt-2 bg-white border rounded-xl shadow-xl w-64">
-
+                <div className="absolute right-0 mt-2 bg-blue-50 backdrop-blur-2xl rounded-xl shadow-xl w-64">
                   <div className="px-4 py-4 border-b">
 
                     <p className="text-sm font-semibold">
@@ -190,13 +186,12 @@ export default function AppShell() {
 
                   </div>
 
-                  {/* LINKS */}
-
+      
                   <div>
 
                     <button
                       onClick={() => navigate("/buyer/profile")}
-                      className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
+                      className="w-full cursor-pointer flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
                       <UserIcon className="w-4 h-4" />
                       My Profile
@@ -205,7 +200,7 @@ export default function AppShell() {
 
                     <button
                       onClick={() => navigate("/buyer/orders")}
-                      className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
+                      className="w-full cursor-pointer flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
                       <CubeIcon className="w-4 h-4" />
                       My Orders
@@ -214,7 +209,7 @@ export default function AppShell() {
 
                     <button
                       onClick={() => navigate("/buyer/cart")}
-                      className="w-full flex items-center gap-3 px-4 py-2 hover:bg-slate-50"
+                      className="w-full flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-slate-50"
                     >
                       <ShoppingCartIcon className="w-4 h-4" />
                       My Cart
@@ -222,7 +217,7 @@ export default function AppShell() {
                     </button>
 
                   </div>
-                  <div className="px-4 py-3 border-t">
+                  <div className="px-4 py-3 border-t ">
 
                     <p className="text-xs text-slate-400 mb-3">
                       Switch Role
@@ -235,7 +230,7 @@ export default function AppShell() {
                       <button
                         onClick={() => handleRoleChange("buyer")}
                         className={cx(
-                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          "flex items-center gap-2 cursor-pointer w-full px-3 py-2 rounded-lg text-sm",
                           currentRole === "buyer"
                             ? "bg-blue-100 text-blue-700"
                             : "hover:bg-slate-100"
@@ -253,7 +248,7 @@ export default function AppShell() {
                       <button
                         onClick={() => handleRoleChange("seller")}
                         className={cx(
-                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          "flex items-center gap-2 cursor-pointer w-full px-3 py-2 rounded-lg text-sm",
                           currentRole === "seller"
                             ? "bg-green-100 text-green-700"
                             : "hover:bg-slate-100"
@@ -271,7 +266,7 @@ export default function AppShell() {
                       <button
                         onClick={() => handleRoleChange("admin")}
                         className={cx(
-                          "flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm",
+                          "flex items-center gap-2 cursor-pointer w-full px-3 py-2 rounded-lg text-sm",
                           currentRole === "admin"
                             ? "bg-purple-100 text-purple-700"
                             : "hover:bg-slate-100"
@@ -288,13 +283,12 @@ export default function AppShell() {
 
                   </div>
 
-                  {/* LOGOUT */}
 
                   <div className="px-4 py-3 border-t">
 
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 text-red-600"
+                      className="w-full cursor-pointer flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 text-red-600"
                     >
                       <ArrowRightOnRectangleIcon className="w-4 h-4" />
                       Sign out
@@ -311,8 +305,6 @@ export default function AppShell() {
           </div>
 
         </div>
-
-
 
         
 {mobileOpen && (
@@ -341,7 +333,7 @@ export default function AppShell() {
 
       {/* CATEGORY BAR */}
 
-      <div className="sticky top-[72px] z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl rounded-xl shadow">
+      <div className="sticky `top-[72px]` z-40 mx-2 md:mx-5 mt-1.5 bg-blue-50/50 backdrop-blur-xl rounded-xl shadow">
 
         <div className="px-3 md:px-5 py-2 overflow-x-auto">
 

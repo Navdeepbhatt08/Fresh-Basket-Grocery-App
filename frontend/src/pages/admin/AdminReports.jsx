@@ -1,6 +1,5 @@
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
-import LineChart from "../../components/ui/LineChart"
 import { REPORTS_KPIS, REPORTS_ORDERS_SERIES } from "../../lib/reports/reportData"
 import { downloadReportsPdf } from "../../lib/reports/downloadReportsPdf"
 

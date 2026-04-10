@@ -26,7 +26,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // 🔥 Sync Clerk login → your app state
+  // Sync Clerk login 
   useEffect(() => {
     if (isLoaded && isSignedIn && user) {
       handleAuthSuccess();
@@ -50,7 +50,7 @@ export default function Login() {
     navigate(routes[role] || "/", { replace: true });
   };
 
-    // 🔥 Email/Password Login
+    // Email/Password Login
   const handleEmailLogin = async () => {
     if (!signInLoaded) return;
 
@@ -80,7 +80,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-emerald-50 to-slate-100">
       <div className="w-full max-w-md">
-        {/* Header */}
+
         <div className="mb-6">
           <div className="text-sm font-bold text-emerald-600 uppercase tracking-widest">
             FreshBasket
@@ -96,7 +96,6 @@ export default function Login() {
         <Card className="p-6 shadow-xl border-slate-200/50">
           <div className="space-y-6">
 
-            {/* ROLE */}
             <Field label="Sign In As...">
               <div className="grid grid-cols-3 gap-2">
                 {["buyer", "seller", "admin"].map((r) => (
@@ -117,14 +116,13 @@ export default function Login() {
               </div>
             </Field>
 
-            {/* Divider */}
+   
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t border-slate-200"></span>
               </div>
             </div>
 
-            {/* 🔥 Email / Password Login */}
             <div className="space-y-3 pt-5">
               <input
                 type="text"
@@ -155,8 +153,6 @@ export default function Login() {
               </Button>
             </div>
 
-
-            {/* Social Login */}
             <div className="space-y-3 cursor-pointer">
               <SignInButton mode="modal" >
                 <button className="w-full cursor-pointer flex items-center justify-center gap-3 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 transition">
@@ -176,7 +172,7 @@ export default function Login() {
               </SignInButton>
             </div>
 
-            {/* Footer */}
+           
             <div className="flex flex-col items-center gap-4 pt-2">
               <div className="text-sm text-slate-500">
                 New to FreshBasket?{" "}

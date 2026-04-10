@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const raw = localStorage.getItem(LS_USER)
     const parsed = raw ? safeJsonParse(raw, null) : null
-    return parsed || { name: "Demo User", email: "demo@freshbasket.app", role: "buyer" }
+    return parsed || { name: "blue Bhatt", email: "blue@freshbasket.app", role: "buyer" }
   })
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export function AuthProvider({ children }) {
   const login = ({ name, email, role, token }) => {
     if (token) localStorage.setItem(LS_TOKEN, token)
     setUser({
-      name: name || "Demo User",
-      email: email || "demo@freshbasket.app",
+      name: name || "Navdeep Bhatt",
+      email: email || "Navdeep@freshbasket.app",
       role: role || "buyer"
     })
   }
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
   const logout = () => {
     localStorage.removeItem(LS_TOKEN)
     localStorage.removeItem(LS_USER)
-    setUser({ name: "Demo User", email: "demo@freshbasket.app", role: "buyer" })
+    setUser({ name: "Navdeep Bhatt", email: "Navdeep@freshbasket.app", role: "buyer" })
   }
 
   const setRole = (role) => setUser((u) => ({ ...u, role }))

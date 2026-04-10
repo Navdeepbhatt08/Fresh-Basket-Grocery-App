@@ -27,12 +27,9 @@ export default function BuyerCheckout() {
     setLoading(true)
 
     try {
-      // simulate API call
       await new Promise((r) => setTimeout(r, 800))
-
       clearCart()
-
-      // redirect to track order page
+      
       navigate("/buyer/track-order", { replace: true })
 
     } finally {
@@ -43,7 +40,7 @@ export default function BuyerCheckout() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-      {/* Checkout Form */}
+      {/* //checkout form */}
       <Card className="p-6 lg:col-span-2">
 
         <div className="text-sm text-slate-600">Buyer</div>
@@ -53,7 +50,7 @@ export default function BuyerCheckout() {
         </h1>
 
         <p className="mt-2 text-slate-700">
-          Enter delivery details and place order (frontend demo).
+          Enter delivery details and place order.
         </p>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -54,9 +54,6 @@ export default function AdminUsers() {
               placeholder="Search users…"
             />
           </div>
-
-          <Button variant="subtle">Invite</Button>
-
         </div>
 
       </div>
