@@ -1,7 +1,7 @@
 export const stores = [
   {
     id: "store_1",
-    name: "GreenMart",
+    name: "D Mart",
     etaMin: 18,
     rating: 4.6,
     tags: ["Fresh", "Vegetables", "Daily"],
@@ -17,7 +17,7 @@ export const stores = [
   },
   {
     id: "store_3",
-    name: "QuickGrocer",
+    name: " Mega Mart",
     etaMin: 12,
     rating: 4.2,
     tags: ["Fast", "Snacks", "Beverages"],
@@ -25,7 +25,7 @@ export const stores = [
   },
   {
     id: "store_4",
-    name: "FreshFarms",
+    name: "Local Organic Store",
     etaMin: 22,
     rating: 4.7,
     tags: ["Organic", "Fruits", "Greens"],
@@ -113,6 +113,85 @@ export const products = [
     stock: 25,
     category: "Greens",
     unit: "bunch",
+  },
+
+  {
+    id: "prod_8",
+    storeId: "store_5",
+    name: "Spinach (1 bunch)",
+    price: 30,
+    stock: 25,
+    category: "Greens",
+    unit: "bunch",
+  },
+
+  {
+    id: "prod_9",
+    storeId: "store_6",
+    name: "Cricket Bat",
+    price: 3500,
+    stock: 25,
+    category: "Gears",
+    unit: "piece",
+  },
+
+  {
+    id: "prod_10",
+    storeId: "store_6",
+    name: "Gloves",
+    price: 30,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
+  },
+
+  {
+    id: "prod_11",
+    storeId: "store_6",
+    name: "Stump Pads",
+    price: 3000,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
+  },
+
+  {
+    id: "prod_12",
+    storeId: "store_6",
+    name: "Helmet",
+    price: 3000,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
+  },
+  {
+    id: "prod_13",
+    storeId: "store_6",
+    name: "Gloves",
+    price: 30,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
+  },
+
+  {
+    id: "prod_14",
+    storeId: "store_6",
+    name: "Stump Pads",
+    price: 3000,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
+  },
+
+  {
+    id: "prod_15",
+    storeId: "store_6",
+    name: "Helmet",
+    price: 3000,
+    stock: 25,
+    category: "Gears",
+    unit: "pair",
   },
 ];
 

@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
-import { Vegan } from "lucide-react";
+import { Vegan, Volleyball } from "lucide-react";
 
 function StockPill({ stock }) {
   const cls =
@@ -28,6 +28,11 @@ export default function BuyerStoreDetail() {
   const store = stores.find((s) => s.id === storeId)
   const list = products.filter((p) => p.storeId === storeId)
   const { addToCart } = useCart()
+
+  const isGroceryStore = store?.tags?.includes("Grocery") || store?.name?.toLowerCase().includes("grocery")
+  const isSportsStore = store?.tags?.includes("Sports") || store?.name?.toLowerCase().includes("devine sports")
+  const StoreIcon =  isSportsStore ? Volleyball : Vegan
+  const storeIconColor = isSportsStore ? "text-blue-600" : "text-blue-800"
 
   if (!store) {
     return (
@@ -83,7 +88,7 @@ export default function BuyerStoreDetail() {
             </div>
 
             <div className="flex gap-2 flex-shrink-0">
-  
+
               <button
                 onClick={() => navigate(-1)}
                 className="rounded-xl border border-slate-200/70 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm hover:bg-white/80 hover:text-slate-800 transition-all duration-150"
@@ -119,9 +124,8 @@ export default function BuyerStoreDetail() {
                   </div>
                 </div>
                 <div className="h-12 w-12 flex-shrink-0 rounded-2xl border border-blue-200/60 bg-gradient-to-br from-blue-100/80 to-blue-100/60 backdrop-blur-sm flex items-center justify-center shadow-inner">
-  <Vegan size={22} className="text-blue-600" />
-  
-</div>
+                  {StoreIcon ? <StoreIcon size={22} className={storeIconColor} /> : null}
+                </div>
               </div>
 
               <div className="mt-4 flex items-center justify-between">
