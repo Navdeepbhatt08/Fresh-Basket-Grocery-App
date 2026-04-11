@@ -37,7 +37,7 @@ export default function BuyerStoreDetail() {
   if (!store) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-lime-50 p-6">
-        {/* Glass card for not found */}
+
         <div className="rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-xl shadow-blue-100/40 p-6">
           <div className="text-slate-800 font-extrabold text-lg">Store not found</div>
           <div className="mt-3">
