@@ -394,7 +394,7 @@ export default function AppShell() {
 
         <div className="px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
 
-          <div className="font-bold text-slate-900 text-sm md:text-lg">
+          <div className="font-bold text-slate-900 text-sm md:text-sm">
             <span className="text-slate-800">Fresh</span>
             <span className="text-blue-600">Basket</span>
           </div>
