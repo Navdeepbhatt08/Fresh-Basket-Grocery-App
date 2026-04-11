@@ -180,7 +180,7 @@ export default function AppShell() {
               <button
                 type="button"
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-blue-500 bg-blue-100 text-sm font-semibold text-slate-900 shadow-xl hover:bg-slate-300"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-blue-500 bg-blue-100 text-sm font-semibold text-slate-900 shadow-lg hover:bg-slate-300"
               >
                 {getUserInitials(user?.name)}
               </button>
@@ -392,16 +392,23 @@ export default function AppShell() {
 
       <footer className="mx-2 md:mx-5 mb-3 rounded-xl border border-blue-100 bg-white/90 backdrop-blur-xl">
 
-        <div className="px-6 py-4 flex justify-between items-center text-sm">
+        <div className="px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
 
-          <span className="font-bold">
+          <div className="font-bold text-slate-900 text-sm md:text-lg">
             <span className="text-slate-800">Fresh</span>
             <span className="text-blue-600">Basket</span>
-          </span>
+          </div>
 
-          <span className="text-slate-400">
-            © 2026 FreshBasket
-          </span>
+          <div className="flex items-center gap-4 text-slate-500">
+            <NavLink to="/about" className="hover:text-slate-900 transition">
+              About Us
+            </NavLink>
+            <NavLink to="/contact" className="hover:text-slate-900 transition">
+              Contact Us
+            </NavLink>
+          </div>
+
+          <div className="text-slate-400">© 2026 FreshBasket</div>
 
         </div>
 

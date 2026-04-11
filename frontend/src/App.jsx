@@ -23,6 +23,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard"
 import AdminUsers from "./pages/admin/AdminUsers"
 import AdminSellers from "./pages/admin/AdminSellers"
 import AdminReports from "./pages/admin/AdminReports"
+import AboutUs from "./pages/AboutUs"
+import ContactUs from "./pages/ContactUs"
 
 import ProductsLegacy from "./pages/Products"
 import TrackOrder from "./pages/buyer/TrackOrder"
@@ -62,7 +64,8 @@ export default function App() {
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/sellers" element={<AdminSellers />} />
           <Route path="/admin/reports" element={<AdminReports />} />
-
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
 
           <Route path="/products" element={<ProductsLegacy />} />
 
