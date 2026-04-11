@@ -4,6 +4,7 @@ import Input from "../../components/ui/Input"
 import { useAuth } from "../../state/auth"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { House } from "lucide-react";
 
 export default function BuyerProfile() {
   const { user, login } = useAuth()
@@ -52,12 +53,16 @@ export default function BuyerProfile() {
       <Card className="p-6">
         <div className="text-sm font-extrabold text-slate-950">Addresses</div>
         <div className="mt-2 text-sm text-slate-600">
-          Add address management UI here.
+ 
         </div>
         <div className="mt-5 space-y-2">
           <div className="rounded-2xl border border-slate-200/70 bg-white p-4">
-            <div className="text-sm font-extrabold text-slate-950">Home</div>
-            <div className="mt-1 text-sm text-slate-600">
+          <div className="flex items-start gap-3 justify-center">
+            <House size={20} className="text-blue-600 bg-blue-100 rounded " />
+  <div className="text-sm font-extrabold text-slate-950"> Home</div>
+            </div>
+          
+            <div className="mt-1 text-sm text-slate-600 flex justify-center">
               Rishikesh , Dehradun ~ India
             </div>
           </div>

@@ -2,7 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
-import { Salad } from "lucide-react";
+import { Vegan } from "lucide-react";
 
 function StockPill({ stock }) {
   const cls =
@@ -119,7 +119,8 @@ export default function BuyerStoreDetail() {
                   </div>
                 </div>
                 <div className="h-12 w-12 flex-shrink-0 rounded-2xl border border-blue-200/60 bg-gradient-to-br from-blue-100/80 to-blue-100/60 backdrop-blur-sm flex items-center justify-center shadow-inner">
-  <Salad size={22} className="text-blue-600" />
+  <Vegan size={22} className="text-blue-600" />
+  
 </div>
               </div>
 

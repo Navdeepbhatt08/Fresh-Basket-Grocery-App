@@ -27,6 +27,16 @@ function cx(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
+function getUserInitials(name) {
+  if (!name) return "NB"
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase())
+    .slice(0, 2)
+    .join("")
+}
+
 const navSections = [
   {
     label: "buyer",
@@ -70,8 +80,6 @@ export default function AppShell() {
   const { totals } = useCart()
   const navigate = useNavigate()
   const { signOut } = useClerk()
-
-  const [theme, setTheme] = useState("light")
 
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState("All")
@@ -155,9 +163,6 @@ export default function AppShell() {
           </nav>
           <div className="flex items-center gap-3">
 
-            
-        
-      
 
             <button
               onClick={onCart}
@@ -170,14 +175,15 @@ export default function AppShell() {
             </button>
 
 
-            <div className="relative " ref={profileRef}>
+            <div className="relative" ref={profileRef}>
 
-              <img
-                src={user?.imageUrl || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
-                alt="avatar"
+              <button
+                type="button"
                 onClick={() => setProfileOpen(!profileOpen)}
-                className="w-9 h-9 rounded-full border border-slate-200/70 bg-white cursor-pointer"
-              />
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-blue-500 bg-blue-100 text-sm font-semibold text-slate-900 shadow-xl hover:bg-slate-300"
+              >
+                {getUserInitials(user?.name)}
+              </button>
 
               {profileOpen && (
 
