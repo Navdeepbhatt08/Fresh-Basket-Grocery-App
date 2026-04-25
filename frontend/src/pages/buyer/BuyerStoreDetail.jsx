@@ -3,7 +3,7 @@ import { products, stores } from "../../lib/storeData"
 import { moneyINR } from "../../lib/format"
 import { useCart } from "../../state/cart"
 import { Vegan, Volleyball } from "lucide-react";
-
+  
 function StockPill({ stock }) {
   const cls =
     stock === 0
