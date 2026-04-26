@@ -28,9 +28,17 @@ export default function Login() {
 
   // Sync Clerk login 
   useEffect(() => {
-    if (isLoaded && isSignedIn && user) {
-      handleAuthSuccess();
+    let mounted = true;
+    if (isLoaded && isSignedIn && user && mounted) {
+      // Small delay to ensure Clerk session is fully stable in deployment
+      const timer = setTimeout(() => {
+        if (mounted && isSignedIn) {
+          handleAuthSuccess();
+        }
+      }, 500);
+      return () => { mounted = false; clearTimeout(timer); };
     }
+    return () => { mounted = false; };
   }, [isSignedIn, user, isLoaded]);
 
   const redirectAfterLogin = (currentRole) => {

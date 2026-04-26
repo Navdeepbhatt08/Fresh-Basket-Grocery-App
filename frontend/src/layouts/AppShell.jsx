@@ -131,13 +131,18 @@ export default function AppShell() {
   }, [user?.role])
 
   const handleLogout = async () => {
-    logout()
     try {
-      await clerk.signOut()
+      // 1. Clear local state first so UI updates immediately if possible
+      logout()
+      
+      // 2. Sign out from Clerk and let it handle the redirect
+      // This is more reliable in production as it ensures session is dead before landing on /login
+      await clerk.signOut({ redirectUrl: '/login' })
     } catch (err) {
       console.error("Clerk signout failed", err)
+      // Fallback: force a hard reload to /login if anything goes wrong
+      window.location.href = "/login"
     }
-    navigate("/login")
   }
 
   const onCart = () => navigate("/buyer/cart")
