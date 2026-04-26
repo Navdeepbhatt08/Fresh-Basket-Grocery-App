@@ -31,6 +31,7 @@ import ProductsLegacy from "./pages/Products"
 import TrackOrder from "./pages/buyer/TrackOrder"
 
 import AddAddress from "./pages/AddAddress"
+import ProtectedRoute from "./components/auth/ProtectedRoute"
 
 export default function App() {
   return (
@@ -39,36 +40,35 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/buyer/add-address" element={<AddAddress />} />
+        
         <Route element={<AppShell />}>
-
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/dashboard" element={<HomeDashboard />} />
 
-          <Route path="/buyer/track-order" element={<TrackOrder />} />
+          {/* BUYER ROUTES */}
+          <Route path="/buyer/track-order" element={<ProtectedRoute allowedRoles={["buyer"]}><TrackOrder /></ProtectedRoute>} />
+          <Route path="/buyer/stores" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerStores /></ProtectedRoute>} />
+          <Route path="/buyer/stores/:storeId" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerStoreDetail /></ProtectedRoute>} />
+          <Route path="/buyer/products/:productId" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerProductDetail /></ProtectedRoute>} />
+          <Route path="/buyer/cart" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerCart /></ProtectedRoute>} />
+          <Route path="/buyer/checkout" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerCheckout /></ProtectedRoute>} />
+          <Route path="/buyer/orders" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerOrders /></ProtectedRoute>} />
+          <Route path="/buyer/profile" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerProfile /></ProtectedRoute>} />
 
+          {/* SELLER ROUTES */}
+          <Route path="/seller" element={<ProtectedRoute allowedRoles={["seller"]}><SellerDashboard /></ProtectedRoute>} />
+          <Route path="/seller/products" element={<ProtectedRoute allowedRoles={["seller"]}><SellerProducts /></ProtectedRoute>} />
+          <Route path="/seller/orders" element={<ProtectedRoute allowedRoles={["seller"]}><SellerOrders /></ProtectedRoute>} />
+          <Route path="/seller/shops" element={<ProtectedRoute allowedRoles={["seller"]}><SellerShops /></ProtectedRoute>} />
 
-          <Route path="/buyer/stores" element={<BuyerStores />} />
-          <Route path="/buyer/stores/:storeId" element={<BuyerStoreDetail />} />
-          <Route path="/buyer/products/:productId" element={<BuyerProductDetail />} />
-          <Route path="/buyer/cart" element={<BuyerCart />} />
-          <Route path="/buyer/checkout" element={<BuyerCheckout />} />
-          <Route path="/buyer/orders" element={<BuyerOrders />} />
-          <Route path="/buyer/profile" element={<BuyerProfile />} />
-
-
-          <Route path="/seller" element={<SellerDashboard />} />
-          <Route path="/seller/products" element={<SellerProducts />} />
-          <Route path="/seller/orders" element={<SellerOrders />} />
-          <Route path="/seller/shops" element={<SellerShops />} />
-
-
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-          <Route path="/admin/sellers" element={<AdminSellers />} />
-          <Route path="/admin/reports" element={<AdminReports />} />
+          {/* ADMIN ROUTES */}
+          <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/users" element={<ProtectedRoute allowedRoles={["admin"]}><AdminUsers /></ProtectedRoute>} />
+          <Route path="/admin/sellers" element={<ProtectedRoute allowedRoles={["admin"]}><AdminSellers /></ProtectedRoute>} />
+          <Route path="/admin/reports" element={<ProtectedRoute allowedRoles={["admin"]}><AdminReports /></ProtectedRoute>} />
+          
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
-
           <Route path="/products" element={<ProductsLegacy />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />

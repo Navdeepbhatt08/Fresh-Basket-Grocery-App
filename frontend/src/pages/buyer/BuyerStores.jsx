@@ -108,7 +108,7 @@ export default function BuyerStores() {
               {filteredStores.map((s) => (
                 <Link key={s._id} to={`/buyer/stores/${s._id}`} className="group">
                   <Card className="p-6 hover:bg-white/[0.06] transition h-full flex flex-col overflow-hidden">
-                    <div className="h-32 w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
+                    <div className="aspect-video w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
                       <img 
                         src={s.image || "https://via.placeholder.com/400x300?text=Shop"} 
                         alt={s.name}
@@ -158,7 +158,7 @@ export default function BuyerStores() {
                   key={p._id}
                   className="group rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-blue-100/60 hover:bg-white/65 transition-all duration-200 p-4 overflow-hidden flex flex-col"
                 >
-                  <div className="h-32 w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
+                  <div className="aspect-square w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
                     <img 
                       src={p.image || "https://via.placeholder.com/400?text=Product"} 
                       alt={p.name}
