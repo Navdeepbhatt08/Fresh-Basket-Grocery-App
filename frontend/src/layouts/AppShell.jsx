@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom"
+import { NavLink, Outlet, useNavigate, useSearchParams } from "react-router-dom"
 import { useMemo, useState, useRef, useEffect } from "react"
 import { useAuth } from "../state/auth"
 import { useCart } from "../state/cart"
@@ -20,7 +20,10 @@ import {
   ShieldCheckIcon,
   BuildingStorefrontIcon,
   SunIcon,
-  MoonIcon
+  MoonIcon,
+  BoltIcon,
+  CakeIcon,
+  GiftIcon
 } from "@heroicons/react/24/outline"
 
 function cx(...classes) {
@@ -50,6 +53,7 @@ const navSections = [
     label: "seller",
     items: [
       { to: "/seller", label: "Dashboard" },
+      { to: "/seller/shops", label: "Shops" },
       { to: "/seller/products", label: "Products" },
       { to: "/seller/orders", label: "Orders" }
     ]
@@ -67,11 +71,11 @@ const navSections = [
 
 const categories = [
   { label: "All", icon: ShoppingBagIcon },
-  { label: "Home", icon: HomeIcon },
-  { label: "Toys", icon: PuzzlePieceIcon },
-  { label: "Electronics", icon: DeviceTabletIcon },
-  { label: "Mobiles", icon: DevicePhoneMobileIcon },
-  { label: "Fashion", icon: SparklesIcon }
+  { label: "Vegetables", icon: BoltIcon },
+  { label: "Fruits", icon: SparklesIcon },
+  { label: "Dairy", icon: CakeIcon },
+  { label: "Bakery", icon: GiftIcon },
+  { label: "Gears", icon: PuzzlePieceIcon }
 ]
 
 export default function AppShell() {
@@ -80,9 +84,18 @@ export default function AppShell() {
   const { totals } = useCart()
   const navigate = useNavigate()
   const { signOut } = useClerk()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeCategory, setActiveCategory] = useState("All")
+  const activeCategory = searchParams.get("category") || "All"
+  const setCategory = (cat) => {
+    if (cat === "All") {
+      searchParams.delete("category")
+    } else {
+      searchParams.set("category", cat)
+    }
+    setSearchParams(searchParams)
+  }
   const [profileOpen, setProfileOpen] = useState(false)
 
   const profileRef = useRef(null)
@@ -360,7 +373,7 @@ export default function AppShell() {
 
                 <button
                   key={cat.label}
-                  onClick={() => setActiveCategory(cat.label)}
+                  onClick={() => setCategory(cat.label)}
                   className={cx(
                     "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium",
                     activeCategory === cat.label

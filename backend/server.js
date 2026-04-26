@@ -5,6 +5,9 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth");
 const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products");
+const shopsRoutes = require("./routes/shops");
+const ordersRoutes = require("./routes/orders");
+const adminRoutes = require("./routes/admin");
 
 dotenv.config();
 connectDB();
@@ -22,6 +25,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/Users", usersRoutes);
 app.use("/api/products", productsRoutes);
+app.use("/api/shops", shopsRoutes);
+app.use("/api/orders", ordersRoutes);
+app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

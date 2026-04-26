@@ -18,6 +18,7 @@ import HomeDashboard from "./pages/HomeDashboard"
 import SellerDashboard from "./pages/seller/SellerDashboard"
 import SellerProducts from "./pages/seller/SellerProducts"
 import SellerOrders from "./pages/seller/SellerOrders"
+import SellerShops from "./pages/seller/SellerShops"
 
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import AdminUsers from "./pages/admin/AdminUsers"
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/seller" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/seller/orders" element={<SellerOrders />} />
+          <Route path="/seller/shops" element={<SellerShops />} />
 
 
           <Route path="/admin" element={<AdminDashboard />} />

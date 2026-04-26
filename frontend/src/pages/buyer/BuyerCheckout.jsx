@@ -4,18 +4,21 @@ import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
 import { useCart } from "../../state/cart"
+import { useAuth } from "../../state/auth"
 import { moneyINR } from "../../lib/format"
+import axios from "axios"
 
 export default function BuyerCheckout() {
   const navigate = useNavigate()
+  const { user } = useAuth()
   const { items, totals, clearCart } = useCart()
 
   const [loading, setLoading] = useState(false)
 
   const [form, setForm] = useState({
-    name: "Navdeep Bhatt",
-    phone: "9999999999",
-    address: "Lane no. 6, Rishikesh",
+    name: user?.name || "Navdeep Bhatt",
+    phone: user?.phone || "9999999999",
+    address: user?.address || "Lane no. 6, Rishikesh",
     payment: "upi"
   })
 
@@ -24,14 +27,40 @@ export default function BuyerCheckout() {
   }, [items.length, loading])
 
   const placeOrder = async () => {
+    if (!canPlace) return
     setLoading(true)
 
     try {
-      await new Promise((r) => setTimeout(r, 800))
-      clearCart()
-      
-      navigate("/buyer/track-order", { replace: true })
+      const buyerId = user?.id || "6449f8a3c8e4a5a123456789"
+      // Assume all items from same seller for now, or pick the first one's seller
+      const sellerId = items[0]?.seller || "6449f8a3c8e4a5a123456789"
 
+      const payload = {
+        buyer: buyerId,
+        seller: sellerId,
+        items: items.map(it => ({
+          product: it.id,
+          name: it.name,
+          price: it.price,
+          qty: it.qty
+        })),
+        total: totals.total,
+        deliveryDetails: {
+          name: form.name,
+          phone: form.phone,
+          address: form.address
+        },
+        paymentMethod: form.payment
+      }
+
+      await axios.post("http://localhost:5000/api/orders", payload)
+      
+      clearCart()
+      navigate("/buyer/orders", { replace: true })
+
+    } catch (error) {
+      console.error("Error placing order:", error)
+      alert("Failed to place order. Please try again.")
     } finally {
       setLoading(false)
     }
