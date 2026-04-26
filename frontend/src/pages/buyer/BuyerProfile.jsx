@@ -4,84 +4,188 @@ import Input from "../../components/ui/Input"
 import { useAuth } from "../../state/auth"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { House } from "lucide-react";
+import { 
+  House, 
+  User, 
+  Mail, 
+  Phone, 
+  AlignLeft, 
+  Calendar,
+  ShieldCheck,
+  Camera
+} from "lucide-react";
 
 export default function BuyerProfile() {
   const { user, login } = useAuth()
   const [form, setForm] = useState({
     name: user?.name || "",
-    email: user?.email || ""
+    email: user?.email || "",
+    phone: user?.phone || "",
+    bio: user?.bio || ""
   })
   const navigate = useNavigate()
 
-
   const save = () => {
-    login({ name: form.name, email: form.email, role: user?.role })
+    login({ 
+      ...user,
+      name: form.name, 
+      email: form.email, 
+      phone: form.phone,
+      bio: form.bio
+    })
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <Card className="p-6 lg:col-span-2">
-        <div className="text-sm text-slate-600">Buyer</div>
-        <h1 className="mt-1 text-2xl font-extrabold text-slate-950 tracking-tight">
-          Profile
-        </h1>
-        <p className="mt-2 text-slate-700">
-          Update details .
-        </p>
-
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Field label="Name">
-            <Input
-              value={form.name}
-              onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            />
-          </Field>
-          <Field label="Email">
-            <Input
-              value={form.email}
-              onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            />
-          </Field>
-        </div>
-
-        <div className="mt-6">
-          <Button onClick={save}>Save changes</Button>
-        </div>
-      </Card>
-
-      <Card className="p-6">
-        <div className="text-sm font-extrabold text-slate-950">Addresses</div>
-        <div className="mt-2 text-sm text-slate-600">
- 
-        </div>
-        <div className="mt-5 space-y-2">
-          <div className="rounded-2xl border border-slate-200/70 bg-white p-4">
-          <div className="flex items-start gap-3 justify-center">
-            <House size={20} className="text-blue-600 bg-blue-100 rounded " />
-  <div className="text-sm font-extrabold text-slate-950"> Home</div>
+    <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* Profile Header */}
+      <div className="relative h-48 md:h-64 rounded-3xl overflow-hidden bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 shadow-xl">
+        <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div>
+        <div className="absolute -bottom-16 left-8 flex items-end gap-6">
+          <div className="relative group">
+            <div className="h-32 w-32 md:h-40 md:w-40 rounded-3xl border-4 border-white bg-white shadow-2xl overflow-hidden">
+              <img 
+                src={`https://ui-avatars.com/api/?name=${encodeURIComponent(form.name || "User")}&background=f1f5f9&color=3b82f6&size=200&font-size=0.33&bold=true`} 
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
-          
-            <div className="mt-1 text-sm text-slate-600 flex justify-center">
-              Rishikesh , Dehradun ~ India
-            </div>
+            <button className="absolute bottom-2 right-2 p-2 rounded-xl bg-white shadow-lg text-blue-600 hover:scale-110 transition-transform">
+              <Camera size={18} />
+            </button>
           </div>
-          <button
-            onClick={() => navigate("/buyer/add-address")}
-            className="w-full mt-4 px-4 py-3 rounded-xl border text-sm font-semibold hover:bg-slate-100"
-          >
-            Add new address
-          </button>
+          <div className="mb-20">
+            <h1 className="text-2xl md:text-4xl font-black text-white drop-shadow-md">
+              {form.name || "Set your name"}
+            </h1>
+            <p className="text-white/80 font-medium flex items-center gap-1.5">
+              <ShieldCheck size={16} /> Verified Buyer
+            </p>
+          </div>
         </div>
-      </Card>
+      </div>
+
+      <div className="pt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="p-8 shadow-2xl shadow-slate-200/50 border-slate-100/80">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
+                <User size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900">Personal Information</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Field label="Full Name" icon={<User size={16} />}>
+                <Input
+                  placeholder="Enter your full name"
+                  value={form.name}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                />
+              </Field>
+              <Field label="Email Address" icon={<Mail size={16} />}>
+                <Input
+                  type="email"
+                  placeholder="name@example.com"
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                />
+              </Field>
+              <Field label="Phone Number" icon={<Phone size={16} />}>
+                <Input
+                  placeholder="+91 00000 00000"
+                  value={form.phone}
+                  onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                />
+              </Field>
+              <Field label="Join Date" icon={<Calendar size={16} />}>
+                <div className="w-full rounded-2xl border border-slate-200/70 bg-slate-50/50 px-4 py-3 text-sm text-slate-500 font-medium cursor-not-allowed">
+                  April 26, 2026
+                </div>
+              </Field>
+            </div>
+
+            <div className="mt-6">
+              <Field label="Bio" icon={<AlignLeft size={16} />}>
+                <textarea
+                  placeholder="Tell us a bit about yourself..."
+                  className="w-full min-h-[120px] rounded-2xl border border-slate-200/70 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-300/50 focus:border-blue-400 transition-all resize-none"
+                  value={form.bio}
+                  onChange={(e) => setForm((f) => ({ ...f, bio: e.target.value }))}
+                />
+              </Field>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-slate-100 flex justify-end">
+              <Button 
+                onClick={save}
+                className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-200"
+              >
+                Save Changes
+              </Button>
+            </div>
+          </Card>
+        </div>
+
+        <div className="space-y-6">
+          <Card className="p-8 shadow-2xl shadow-slate-200/50 border-slate-100/80">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <div className="p-2 rounded-xl bg-indigo-50 text-indigo-600">
+                  <House size={20} />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900">Saved Addresses</h2>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="group relative rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="p-2.5 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <House size={20} />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-slate-900">Home Address</div>
+                    <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+                      Rishikesh, Dehradun<br />Uttarakhand, India
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => navigate("/buyer/add-address")}
+                className="w-full mt-4 group flex items-center justify-center gap-2 px-4 py-4 rounded-2xl border-2 border-dashed border-slate-200 text-sm font-bold text-slate-500 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50/50 transition-all"
+              >
+                <div className="p-1 rounded-md bg-slate-100 group-hover:bg-blue-100 transition-colors">
+                  <User size={14} />
+                </div>
+                Add New Address
+              </button>
+            </div>
+          </Card>
+
+          <Card className="p-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white border-none shadow-xl shadow-blue-200">
+            <h3 className="text-lg font-bold">Premium Member</h3>
+            <p className="mt-2 text-sm text-blue-100/80 leading-relaxed">
+              Enjoy free delivery on all orders above ₹499 and exclusive deals.
+            </p>
+            <button className="mt-6 w-full py-3 rounded-xl bg-white text-blue-600 text-sm font-bold hover:bg-blue-50 transition-colors">
+              View Benefits
+            </button>
+          </Card>
+        </div>
+      </div>
     </div>
   )
 }
 
-function Field({ label, children }) {
+function Field({ label, icon, children }) {
   return (
-    <div>
-      <div className="mb-2 text-sm font-semibold text-slate-800">{label}</div>
+    <div className="space-y-2">
+      <label className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
+        {icon}
+        {label}
+      </label>
       {children}
     </div>
   )

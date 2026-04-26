@@ -27,12 +27,14 @@ export function AuthProvider({ children }) {
     }
   }, [user])
 
-  const login = ({ name, email, role, token }) => {
+  const login = ({ name, email, role, token, phone, bio }) => {
     if (token) localStorage.setItem(LS_TOKEN, token)
     setUser({
       name: name || "User",
       email: email || "",
-      role: role || "buyer"
+      role: role || "buyer",
+      phone: phone || "",
+      bio: bio || ""
     })
   }
 
