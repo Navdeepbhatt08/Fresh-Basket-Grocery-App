@@ -9,8 +9,8 @@ import { House } from "lucide-react";
 export default function BuyerProfile() {
   const { user, login } = useAuth()
   const [form, setForm] = useState({
-    name: user?.name || "Navdeep Bhatt",
-    email: user?.email || "navdeep@freshbasket.app"
+    name: user?.name || "",
+    email: user?.email || ""
   })
   const navigate = useNavigate()
 

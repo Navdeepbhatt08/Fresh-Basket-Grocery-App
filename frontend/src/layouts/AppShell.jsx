@@ -2,6 +2,7 @@ import { NavLink, Outlet, useNavigate, useSearchParams } from "react-router-dom"
 import { useMemo, useState, useRef, useEffect } from "react"
 import { useAuth } from "../state/auth"
 import { useCart } from "../state/cart"
+import { useClerk } from "@clerk/clerk-react"
 
 import {
   Bars3Icon,
@@ -73,13 +74,14 @@ const categories = [
 
 export default function AppShell() {
   const { user, logout } = useAuth()
+  const clerk = useClerk()
   const { totals } = useCart()
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [mobileOpen, setMobileOpen] = useState(false)
   const activeCategory = searchParams.get("category") || "All"
-  
+
   const setCategory = (cat) => {
     if (cat === "All") {
       searchParams.delete("category")
@@ -100,10 +102,9 @@ export default function AppShell() {
       if (currentScrollY <= 0) {
         setIsBarVisible(true)
       } else if (currentScrollY < lastScrollY) {
-        // Scrolling up - HIDE as per user request
+
         setIsBarVisible(false)
       } else {
-        // Scrolling down - SHOW
         setIsBarVisible(true)
       }
       setLastScrollY(currentScrollY)
@@ -129,8 +130,13 @@ export default function AppShell() {
     )
   }, [user?.role])
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     logout()
+    try {
+      await clerk.signOut()
+    } catch (err) {
+      console.error("Clerk signout failed", err)
+    }
     navigate("/login")
   }
 
@@ -209,16 +215,16 @@ export default function AppShell() {
                   <div className="py-2">
                     {user?.role === "buyer" && (
                       <>
-                        <button onClick={() => {navigate("/buyer/profile"); setProfileOpen(false)}} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                        <button onClick={() => { navigate("/buyer/profile"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
                           <UserIcon className="w-4 h-4" /> My Profile
                         </button>
-                        <button onClick={() => {navigate("/buyer/orders"); setProfileOpen(false)}} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                        <button onClick={() => { navigate("/buyer/orders"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
                           <CubeIcon className="w-4 h-4" /> My Orders
                         </button>
                       </>
                     )}
                     {user?.role === "seller" && (
-                      <button onClick={() => {navigate("/seller/shops"); setProfileOpen(false)}} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                      <button onClick={() => { navigate("/seller/shops"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
                         <BuildingStorefrontIcon className="w-4 h-4" /> My Shops
                       </button>
                     )}
@@ -307,7 +313,7 @@ export default function AppShell() {
             <NavLink to="/about" className="hover:text-blue-600 transition">About</NavLink>
             <NavLink to="/contact" className="hover:text-blue-600 transition">Contact</NavLink>
           </div>
-          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2026 FreshBasket System</div>
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2026 FreshBasket Team</div>
         </div>
       </footer>
     </div>
