@@ -102,7 +102,8 @@ export default function BuyerCart() {
         <div className="mt-4 space-y-2 text-sm">
           <Row label="Subtotal" value={moneyINR(totals.subtotal)} />
           <Row label="Delivery" value={moneyINR(totals.delivery)} />
-          <Row label="Taxes" value={moneyINR(totals.taxes)} />
+          <Row label="CGST (2.5%)" value={moneyINR(totals.cgst)} />
+          <Row label="SGST (2.5%)" value={moneyINR(totals.sgst)} />
           <div className="my-3 h-px bg-white/10" />
           <Row label="Total" value={moneyINR(totals.total)} strong />
         </div>

@@ -45,6 +45,10 @@ export default function BuyerCheckout() {
           qty: it.qty
         })),
         total: totals.total,
+        subtotal: totals.subtotal,
+        deliveryCharge: totals.delivery,
+        cgst: totals.cgst,
+        sgst: totals.sgst,
         deliveryDetails: {
           name: form.name,
           phone: form.phone,
@@ -205,7 +209,8 @@ export default function BuyerCheckout() {
 
           <Row label="Subtotal" value={moneyINR(totals.subtotal)} />
           <Row label="Delivery" value={moneyINR(totals.delivery)} />
-          <Row label="Taxes" value={moneyINR(totals.taxes)} />
+          <Row label="CGST (2.5%)" value={moneyINR(totals.cgst)} />
+          <Row label="SGST (2.5%)" value={moneyINR(totals.sgst)} />
           <Row label="Total" value={moneyINR(totals.total)} strong />
 
         </div>

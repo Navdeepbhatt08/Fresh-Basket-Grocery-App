@@ -5,10 +5,16 @@ const CartContext = createContext(null)
 function calcTotals(items) {
   const itemsCount = items.reduce((sum, it) => sum + it.qty, 0)
   const subtotal = items.reduce((sum, it) => sum + it.qty * it.price, 0)
-  const delivery = subtotal === 0 ? 0 : subtotal >= 599 ? 0 : 39
-  const taxes = Math.round(subtotal * 0.02)
-  const total = subtotal + delivery + taxes
-  return { itemsCount, subtotal, delivery, taxes, total }
+  // Delivery charge: 30 if subtotal < 100 and items present, else 0
+  const delivery = (subtotal > 0 && subtotal < 100) ? 30 : 0
+  
+  // Calculate GST (5% total - split into 2.5% CGST and 2.5% SGST)
+  const cgst = Math.round(subtotal * 0.025)
+  const sgst = Math.round(subtotal * 0.025)
+  
+  const total = subtotal + delivery + cgst + sgst
+  
+  return { itemsCount, subtotal, delivery, cgst, sgst, total }
 }
 
 function reducer(state, action) {

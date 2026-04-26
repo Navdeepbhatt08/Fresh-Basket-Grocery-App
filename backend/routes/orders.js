@@ -5,7 +5,11 @@ const router = express.Router();
 // Create a new order
 router.post("/", async (req, res) => {
   try {
-    const { buyer, seller, items, total, deliveryDetails, paymentMethod } = req.body;
+    const { 
+      buyer, seller, items, total, 
+      subtotal, deliveryCharge, cgst, sgst,
+      deliveryDetails, paymentMethod 
+    } = req.body;
     
     // Simple order ID generation
     const orderId = "ORD-" + Math.floor(1000 + Math.random() * 9000);
@@ -15,6 +19,10 @@ router.post("/", async (req, res) => {
       buyer,
       seller,
       items,
+      subtotal,
+      deliveryCharge,
+      cgst,
+      sgst,
       total,
       deliveryDetails,
       paymentMethod,

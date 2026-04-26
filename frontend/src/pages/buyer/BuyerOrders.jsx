@@ -200,9 +200,23 @@ export default function BuyerOrders() {
                         <span className="text-slate-900">{moneyINR(it.price * it.qty)}</span>
                       </div>
                     ))}
-                    <div className="border-t border-slate-200 pt-2 flex justify-between text-sm font-black text-blue-600">
-                      <span>Total</span>
-                      <span>{moneyINR(viewDetails.total)}</span>
+                    <div className="border-t border-slate-200 pt-2 space-y-1">
+                      <div className="flex justify-between text-xs font-bold text-slate-500">
+                        <span>Subtotal</span>
+                        <span>{moneyINR(viewDetails.subtotal || viewDetails.total)}</span>
+                      </div>
+                      <div className="flex justify-between text-xs font-bold text-slate-500">
+                        <span>Delivery</span>
+                        <span>{moneyINR(viewDetails.deliveryCharge || 0)}</span>
+                      </div>
+                      <div className="flex justify-between text-xs font-bold text-slate-500">
+                        <span>GST (CGST + SGST)</span>
+                        <span>{moneyINR((viewDetails.cgst || 0) + (viewDetails.sgst || 0))}</span>
+                      </div>
+                      <div className="flex justify-between text-sm font-black text-blue-600 pt-1">
+                        <span>Total</span>
+                        <span>{moneyINR(viewDetails.total)}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -268,11 +282,19 @@ export default function BuyerOrders() {
               <div className="mt-8 border-t-2 border-slate-100 pt-6 space-y-2">
                 <div className="flex justify-between text-sm font-bold text-slate-500">
                   <span>Subtotal</span>
-                  <span>{moneyINR(viewInvoice.total)}</span>
+                  <span>{moneyINR(viewInvoice.subtotal || viewInvoice.total)}</span>
                 </div>
                 <div className="flex justify-between text-sm font-bold text-slate-500">
                   <span>Delivery Fee</span>
-                  <span>{moneyINR(0)}</span>
+                  <span>{moneyINR(viewInvoice.deliveryCharge || 0)}</span>
+                </div>
+                <div className="flex justify-between text-sm font-bold text-slate-500">
+                  <span>CGST (2.5%)</span>
+                  <span>{moneyINR(viewInvoice.cgst || 0)}</span>
+                </div>
+                <div className="flex justify-between text-sm font-bold text-slate-500">
+                  <span>SGST (2.5%)</span>
+                  <span>{moneyINR(viewInvoice.sgst || 0)}</span>
                 </div>
                 <div className="flex justify-between text-xl font-black text-slate-900 pt-2">
                   <span>Total</span>

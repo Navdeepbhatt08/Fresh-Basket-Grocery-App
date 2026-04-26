@@ -13,6 +13,10 @@ const orderSchema = new mongoose.Schema(
         qty: { type: Number },
       },
     ],
+    subtotal: { type: Number },
+    deliveryCharge: { type: Number },
+    cgst: { type: Number },
+    sgst: { type: Number },
     total: { type: Number, required: true },
     status: {
       type: String,

@@ -186,7 +186,7 @@ export default function AppShell() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {user?.role === "buyer" && (
+            {(user?.role === "buyer" || !user) && (
               <button
                 onClick={onCart}
                 className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors shadow-sm"
@@ -212,20 +212,24 @@ export default function AppShell() {
               {profileOpen && (
                 <div className="absolute right-0 mt-2 bg-white/90 backdrop-blur-2xl rounded-2xl shadow-2xl border border-slate-100 w-64 overflow-hidden">
                   <div className="px-4 py-4 border-b border-slate-100 bg-slate-50/50">
-                    <p className="text-sm font-bold text-slate-900">{user?.name || "User"}</p>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{user?.role} Account</p>
-                    <p className="text-xs text-slate-500 truncate mt-1">{user?.email}</p>
+                    <p className="text-sm font-bold text-slate-900">{user?.name || "Guest User"}</p>
+                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
+                      {user?.role ? `${user.role} Account` : "Browsing as Guest"}
+                    </p>
+                    {user?.email && <p className="text-xs text-slate-500 truncate mt-1">{user?.email}</p>}
                   </div>
 
                   <div className="py-2">
-                    {user?.role === "buyer" && (
+                    {(user?.role === "buyer" || !user) && (
                       <>
-                        <button onClick={() => { navigate("/buyer/profile"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
-                          <UserIcon className="w-4 h-4" /> My Profile
+                        <button onClick={() => { navigate(user ? "/buyer/profile" : "/login"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                          <UserIcon className="w-4 h-4" /> {user ? "My Profile" : "Sign In / Register"}
                         </button>
-                        <button onClick={() => { navigate("/buyer/orders"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
-                          <CubeIcon className="w-4 h-4" /> My Orders
-                        </button>
+                        {user && (
+                          <button onClick={() => { navigate("/buyer/orders"); setProfileOpen(false) }} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                            <CubeIcon className="w-4 h-4" /> My Orders
+                          </button>
+                        )}
                       </>
                     )}
                     {user?.role === "seller" && (
@@ -235,15 +239,17 @@ export default function AppShell() {
                     )}
                   </div>
 
-                  <div className="px-3 py-3 border-t border-slate-100">
-                    <button
-                      onClick={handleLogout}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-rose-50 text-rose-600 text-sm font-bold hover:bg-rose-100 transition-colors"
-                    >
-                      <ArrowRightOnRectangleIcon className="w-4 h-4" />
-                      Sign out
-                    </button>
-                  </div>
+                  {user && (
+                    <div className="px-3 py-3 border-t border-slate-100">
+                      <button
+                        onClick={handleLogout}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-rose-50 text-rose-600 text-sm font-bold hover:bg-rose-100 transition-colors"
+                      >
+                        <ArrowRightOnRectangleIcon className="w-4 h-4" />
+                        Sign out
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

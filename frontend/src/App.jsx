@@ -45,12 +45,14 @@ export default function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/dashboard" element={<HomeDashboard />} />
 
-          {/* BUYER ROUTES */}
+          {/* PUBLIC BUYER ROUTES (Browsing) */}
+          <Route path="/buyer/stores" element={<BuyerStores />} />
+          <Route path="/buyer/stores/:storeId" element={<BuyerStoreDetail />} />
+          <Route path="/buyer/products/:productId" element={<BuyerProductDetail />} />
+
+          {/* PROTECTED BUYER ROUTES */}
           <Route path="/buyer/track-order" element={<ProtectedRoute allowedRoles={["buyer"]}><TrackOrder /></ProtectedRoute>} />
-          <Route path="/buyer/stores" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerStores /></ProtectedRoute>} />
-          <Route path="/buyer/stores/:storeId" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerStoreDetail /></ProtectedRoute>} />
-          <Route path="/buyer/products/:productId" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerProductDetail /></ProtectedRoute>} />
-          <Route path="/buyer/cart" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerCart /></ProtectedRoute>} />
+          <Route path="/buyer/cart" element={<BuyerCart />} />
           <Route path="/buyer/checkout" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerCheckout /></ProtectedRoute>} />
           <Route path="/buyer/orders" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerOrders /></ProtectedRoute>} />
           <Route path="/buyer/profile" element={<ProtectedRoute allowedRoles={["buyer"]}><BuyerProfile /></ProtectedRoute>} />
