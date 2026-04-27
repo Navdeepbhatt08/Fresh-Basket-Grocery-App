@@ -113,17 +113,26 @@ export default function BuyerOrders() {
                   )}
                 </div>
 
-                <div className="flex gap-3 border-t border-slate-100 pt-5 mt-auto">
+                <div className="flex flex-wrap gap-3 border-t border-slate-100 pt-5 mt-auto">
                   <button 
                     onClick={() => setViewDetails(o)}
-                    className="flex-1 rounded-xl bg-slate-900 text-white py-2.5 text-xs font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 min-w-[120px] rounded-xl bg-slate-900 text-white py-2.5 text-xs font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
                   >
                     <ChevronRight size={14} />
                     View Details
                   </button>
+                  {o.status !== "Delivered" && o.status !== "Cancelled" && (
+                    <button 
+                      onClick={() => navigate("/buyer/track-order")}
+                      className="flex-1 min-w-[120px] rounded-xl bg-blue-600 text-white py-2.5 text-xs font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-100"
+                    >
+                      <Truck size={14} />
+                      Track
+                    </button>
+                  )}
                   <button 
                     onClick={() => setViewInvoice(o)}
-                    className="flex-1 rounded-xl bg-white border border-slate-200 text-slate-700 py-2.5 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 min-w-[120px] rounded-xl bg-white border border-slate-200 text-slate-700 py-2.5 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
                   >
                     <Receipt size={14} />
                     Invoice
@@ -224,7 +233,16 @@ export default function BuyerOrders() {
             </div>
 
             <div className="px-8 py-6 bg-slate-50 border-t border-slate-100 flex gap-3">
-               <Button className="flex-1" onClick={() => setViewDetails(null)}>Close View</Button>
+               {viewDetails.status !== "Delivered" && viewDetails.status !== "Cancelled" && (
+                 <Button 
+                   className="flex-1 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-100" 
+                   onClick={() => navigate("/buyer/track-order")}
+                 >
+                   <Truck size={16} className="mr-2" />
+                   Track Live Order
+                 </Button>
+               )}
+               <Button variant="subtle" className="flex-1" onClick={() => setViewDetails(null)}>Close View</Button>
             </div>
           </div>
         </div>

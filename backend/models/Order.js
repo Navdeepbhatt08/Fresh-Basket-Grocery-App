@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema(
   {
     orderId: { type: String, required: true, unique: true },
-    buyer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    seller: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    buyer: { type: mongoose.Schema.Types.Mixed, ref: "User", required: true },
+    seller: { type: mongoose.Schema.Types.Mixed, ref: "User", required: true },
     items: [
       {
         product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },

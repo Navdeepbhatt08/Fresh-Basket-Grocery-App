@@ -53,6 +53,7 @@ export default function Login() {
 
   const handleAuthSuccess = () => {
     login({
+      id: user.id, // Clerk user ID
       name: user.fullName || user.username,
       email: user.primaryEmailAddress?.emailAddress,
       role: role,
@@ -82,6 +83,7 @@ export default function Login() {
       }
 
       login({
+        id: data.id,
         name: data.name,
         email: data.email,
         role: data.role,

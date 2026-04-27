@@ -36,11 +36,23 @@ export default function TrackOrder() {
         </p>
       </div>
 
-      {/* Map Placeholder */}
-      <div className="h-60 bg-slate-200 rounded-xl flex items-center justify-center">
-        <span className="text-slate-500 text-sm">
-          Delivery Map (Live Tracking)
-        </span>
+      {/* Map Section */}
+      <div className="relative h-64 md:h-80 w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 group">
+        <iframe
+          title="Delivery Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.74637223467!2d78.21077732483864!3d30.089800201193325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39091726a79857d3%3A0xc39103e6396e95b0!2sRishikesh%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1714184643000!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="grayscale-[0.3] contrast-[1.1] hover:grayscale-0 transition-all duration-700"
+        ></iframe>
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-slate-200 flex items-center gap-2 animate-pulse">
+          <div className="w-2 h-2 rounded-full bg-red-500"></div>
+          <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Live Tracking Active</span>
+        </div>
       </div>
 
 

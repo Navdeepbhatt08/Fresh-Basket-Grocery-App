@@ -8,6 +8,7 @@ const productsRoutes = require("./routes/products");
 const shopsRoutes = require("./routes/shops");
 const ordersRoutes = require("./routes/orders");
 const adminRoutes = require("./routes/admin");
+const addressesRoutes = require("./routes/addresses");
 
 dotenv.config();
 connectDB();
@@ -28,6 +29,7 @@ app.use("/api/products", productsRoutes);
 app.use("/api/shops", shopsRoutes);
 app.use("/api/orders", ordersRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/addresses", addressesRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -1,8 +1,13 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import { useAuth } from "../state/auth"
+import { toast } from "react-toastify"
 
 export default function AddAddress() {
   const navigate = useNavigate()
+  const { user, login } = useAuth()
+  const [loading, setLoading] = useState(false)
 
   const [form, setForm] = useState({
     name: "",
@@ -19,11 +24,38 @@ export default function AddAddress() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(form)
+    setLoading(true)
 
-    navigate("/buyer/profile")
+    try {
+      if (!user?.email) {
+        toast.error("User email not found. Please log in again.")
+        return
+      }
+
+      const payload = {
+        email: user.email,
+        name: form.name,
+        phone: form.phone,
+        house: form.house,
+        area: form.area,
+        city: form.city,
+        state: form.state,
+        pincode: form.pincode,
+        type: form.type
+      }
+
+      await axios.post("http://localhost:5000/api/addresses", payload)
+
+      toast.success("Address saved to your collection!")
+      navigate("/buyer/profile")
+    } catch (error) {
+      console.error("Error adding address:", error)
+      toast.error(error.response?.data?.error || "Failed to add address. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -152,9 +184,10 @@ export default function AddAddress() {
 
           <button
             type="submit"
-            className="w-full mt-2 py-2.5 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition"
+            disabled={loading}
+            className="w-full mt-2 py-2.5 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition disabled:opacity-50"
           >
-            Save Address
+            {loading ? "Saving..." : "Save Address"}
           </button>
 
 

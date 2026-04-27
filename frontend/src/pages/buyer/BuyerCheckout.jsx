@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
@@ -16,11 +17,31 @@ export default function BuyerCheckout() {
   const [loading, setLoading] = useState(false)
 
   const [form, setForm] = useState({
-    name: user?.name || "Navdeep Bhatt",
-    phone: user?.phone || "9999999999",
-    address: user?.address || "Lane no. 6, Rishikesh",
+    name: user?.name || "",
+    phone: user?.phone || "",
+    address: user?.address || "",
     payment: "upi"
   })
+
+  const [savedAddresses, setSavedAddresses] = useState([])
+  const [loadingAddresses, setLoadingAddresses] = useState(false)
+
+  useMemo(() => {
+    if (user?.email) {
+      const fetchAddresses = async () => {
+        setLoadingAddresses(true)
+        try {
+          const res = await axios.get(`http://localhost:5000/api/addresses/${user.email}`)
+          setSavedAddresses(res.data)
+        } catch (error) {
+          console.error("Error fetching addresses:", error)
+        } finally {
+          setLoadingAddresses(false)
+        }
+      }
+      fetchAddresses()
+    }
+  }, [user?.email])
 
   const canPlace = useMemo(() => {
     return items.length > 0 && !loading
@@ -60,11 +81,35 @@ export default function BuyerCheckout() {
       await axios.post("http://localhost:5000/api/orders", payload)
       
       clearCart()
-      navigate("/buyer/orders", { replace: true })
+      
+      toast.success(
+        <div className="flex flex-col gap-1 px-10 py-5 m-5">
+          <span className="font-bold">Order Placed!</span>
+          <button 
+            onClick={() => navigate("/buyer/track-order")}
+            className="text-emerald-600 text-sm font-extrabold hover:underline text-left"
+          >
+            Track Order 
+          </button>
+        </div>,
+        {
+          position: "bottom-right",
+          autoClose: 20000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      )
+
+
+      setTimeout(() => {
+        navigate("/buyer/orders")
+      }, 2000)
 
     } catch (error) {
-      console.error("Error placing order:", error)
-      alert("Failed to place order. Please try again.")
+      console.error("Error placing order:", error.response?.data || error.message)
+      toast.error(error.response?.data?.message || "Failed to place order. Please try again.")
     } finally {
       setLoading(false)
     }
@@ -116,6 +161,37 @@ export default function BuyerCheckout() {
               }
               placeholder="House no, street, city"
             />
+
+            {savedAddresses.length > 0 && (
+              <div className="mt-3">
+                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">
+                  Select Saved Address
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {savedAddresses.map((addr) => (
+                    <button
+                      key={addr._id}
+                      type="button"
+                      onClick={() => setForm(f => ({ 
+                        ...f, 
+                        address: addr.fullAddress,
+                        name: addr.name || f.name,
+                        phone: addr.phone || f.phone
+                      }))}
+                      className={[
+                        "text-xs px-3 py-2 rounded-xl border transition-all text-left max-w-[200px]",
+                        form.address === addr.fullAddress
+                          ? "border-emerald-400 bg-emerald-50 text-emerald-900 ring-2 ring-emerald-400/20"
+                          : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                      ].join(" ")}
+                    >
+                      <div className="font-bold truncate">{addr.type}</div>
+                      <div className="mt-0.5 line-clamp-1 opacity-70">{addr.fullAddress}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </Field>
 
           <Field label="Payment method" className="sm:col-span-2">

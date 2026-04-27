@@ -2,8 +2,10 @@ import Card from "../../components/ui/Card"
 import Button from "../../components/ui/Button"
 import Input from "../../components/ui/Input"
 import { useAuth } from "../../state/auth"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import { toast } from "react-toastify"
 import { 
   House, 
   User, 
@@ -18,21 +20,80 @@ import {
 export default function BuyerProfile() {
   const { user, login } = useAuth()
   const [form, setForm] = useState({
-    name: user?.name || "",
-    email: user?.email || "",
-    phone: user?.phone || "",
-    bio: user?.bio || ""
+    name: "",
+    email: "",
+    phone: "",
+    bio: "",
+    address: ""
   })
+
+  const [addresses, setAddresses] = useState([])
+  const [loadingAddresses, setLoadingAddresses] = useState(false)
+
+  // Sync form with user data from DB/Auth
+  useEffect(() => {
+    if (user) {
+      setForm({
+        name: user.name || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        bio: user.bio || "",
+        address: user.address || ""
+      })
+      fetchAddresses()
+    }
+  }, [user])
+
+  const fetchAddresses = async () => {
+    if (!user?.email) return
+    setLoadingAddresses(true)
+    try {
+      const res = await axios.get(`http://localhost:5000/api/addresses/${user.email}`)
+      setAddresses(res.data)
+    } catch (error) {
+      console.error("Error fetching addresses:", error)
+    } finally {
+      setLoadingAddresses(false)
+    }
+  }
+
+  const deleteAddress = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/addresses/${id}`)
+      setAddresses(addresses.filter(a => a._id !== id))
+      toast.success("Address removed")
+    } catch (error) {
+      toast.error("Failed to delete address")
+    }
+  }
   const navigate = useNavigate()
 
-  const save = () => {
-    login({ 
-      ...user,
-      name: form.name, 
-      email: form.email, 
-      phone: form.phone,
-      bio: form.bio
-    })
+  const save = async () => {
+    if (!user?.id) {
+      toast.error("You must be logged in to update your profile.")
+      return
+    }
+
+    try {
+      const res = await axios.patch(`http://localhost:5000/api/users/${user.id}`, {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        bio: form.bio,
+        address: form.address
+      })
+
+      login({ 
+        ...user,
+        ...res.data,
+        id: res.data._id || res.data.id // Sync both MongoDB _id and custom id
+      })
+      
+      toast.success("Profile updated successfully!")
+    } catch (error) {
+      console.error("Error updating profile:", error.response?.data || error.message)
+      toast.error(error.response?.data?.error || "Failed to update profile. Please try again.")
+    }
   }
 
   return (
@@ -40,7 +101,7 @@ export default function BuyerProfile() {
       {/* Profile Header */}
       <div className="relative h-48 md:h-64 rounded-3xl overflow-hidden bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 shadow-xl">
         <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div>
-        <div className="absolute -bottom-16 left-8 flex items-end gap-6">
+        <div className="absolute -bottom-5 left-8 flex items-end gap-6">
           <div className="relative group">
             <div className="h-32 w-32 md:h-40 md:w-40 rounded-3xl border-4 border-white bg-white shadow-2xl overflow-hidden">
               <img 
@@ -102,6 +163,13 @@ export default function BuyerProfile() {
                   April 26, 2026
                 </div>
               </Field>
+              <Field label="Full Address" icon={<House size={16} />} className="md:col-span-2">
+                <Input
+                  placeholder="House no, street, landmark, city, state"
+                  value={form.address}
+                  onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
+                />
+              </Field>
             </div>
 
             <div className="mt-6">
@@ -138,19 +206,49 @@ export default function BuyerProfile() {
             </div>
             
             <div className="space-y-4">
-              <div className="group relative rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <House size={20} />
+              {loadingAddresses ? (
+                <div className="text-center py-4 text-xs font-bold text-slate-400 animate-pulse">
+                  Loading addresses...
+                </div>
+              ) : addresses.length > 0 ? (
+                addresses.map((addr) => (
+                  <div key={addr._id} className="group relative rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-300">
+                    <div className="flex items-start gap-4">
+                      <div className="p-2.5 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <House size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm font-bold text-slate-900">{addr.type} Address</div>
+                          <button 
+                            onClick={() => deleteAddress(addr._id)}
+                            className="text-[10px] font-black text-rose-500 uppercase tracking-widest hover:underline"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <p className="mt-1 text-xs text-slate-500 leading-relaxed italic">
+                          {addr.fullAddress}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-900">Home Address</div>
-                    <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                      Rishikesh, Dehradun<br />Uttarakhand, India
-                    </p>
+                ))
+              ) : (
+                <div className="group relative rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2.5 rounded-xl bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <House size={20} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-slate-900">Primary Address</div>
+                      <p className="mt-1 text-xs text-slate-500 leading-relaxed italic">
+                        {user?.address || "No primary address set yet"}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <button
                 onClick={() => navigate("/buyer/add-address")}
@@ -163,25 +261,15 @@ export default function BuyerProfile() {
               </button>
             </div>
           </Card>
-
-          <Card className="p-8 bg-gradient-to-br from-blue-600 to-indigo-700 text-white border-none shadow-xl shadow-blue-200">
-            <h3 className="text-lg font-bold">Premium Member</h3>
-            <p className="mt-2 text-sm text-blue-100/80 leading-relaxed">
-              Enjoy free delivery on all orders above ₹499 and exclusive deals.
-            </p>
-            <button className="mt-6 w-full py-3 rounded-xl bg-white text-blue-600 text-sm font-bold hover:bg-blue-50 transition-colors">
-              View Benefits
-            </button>
-          </Card>
         </div>
       </div>
     </div>
   )
 }
 
-function Field({ label, icon, children }) {
+function Field({ label, icon, children, className = "" }) {
   return (
-    <div className="space-y-2">
+    <div className={`space-y-2 ${className}`}>
       <label className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
         {icon}
         {label}
