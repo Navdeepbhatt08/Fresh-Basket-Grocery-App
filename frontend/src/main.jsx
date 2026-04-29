@@ -6,6 +6,7 @@ import App from "./App";
 import "./index.css";
 import { AuthProvider } from "./state/auth";
 import { CartProvider } from "./state/cart";
+import "leaflet/dist/leaflet.css"
 
 // 1. Ensure the key is loaded correctly
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;

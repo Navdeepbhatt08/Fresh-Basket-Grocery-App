@@ -4,14 +4,14 @@ import Button from "../../components/ui/Button"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../state/auth"
 import { moneyINR } from "../../lib/format"
-import { 
-  Package, 
-  Truck, 
-  CheckCircle, 
-  XCircle, 
-  Receipt, 
-  Clock, 
-  MapPin, 
+import {
+  Package,
+  Truck,
+  CheckCircle,
+  XCircle,
+  Receipt,
+  Clock,
+  MapPin,
   Phone,
   Printer,
   ChevronRight,
@@ -51,8 +51,8 @@ export default function BuyerOrders() {
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">Order History</h1>
           <p className="mt-1 text-slate-500 font-medium">Track your deliveries and view past purchases.</p>
         </div>
-        <Button 
-          variant="subtle" 
+        <Button
+          variant="subtle"
           onClick={() => navigate("/buyer/stores")}
           className="rounded-xl shadow-lg shadow-blue-100 border-blue-200"
         >
@@ -114,7 +114,7 @@ export default function BuyerOrders() {
                 </div>
 
                 <div className="flex flex-wrap gap-3 border-t border-slate-100 pt-5 mt-auto">
-                  <button 
+                  <button
                     onClick={() => setViewDetails(o)}
                     className="flex-1 min-w-[120px] rounded-xl bg-slate-900 text-white py-2.5 text-xs font-bold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
                   >
@@ -122,7 +122,7 @@ export default function BuyerOrders() {
                     View Details
                   </button>
                   {o.status !== "Delivered" && o.status !== "Cancelled" && (
-                    <button 
+                    <button
                       onClick={() => navigate("/buyer/track-order")}
                       className="flex-1 min-w-[120px] rounded-xl bg-blue-600 text-white py-2.5 text-xs font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-100"
                     >
@@ -130,7 +130,7 @@ export default function BuyerOrders() {
                       Track
                     </button>
                   )}
-                  <button 
+                  <button
                     onClick={() => setViewInvoice(o)}
                     className="flex-1 min-w-[120px] rounded-xl bg-white border border-slate-200 text-slate-700 py-2.5 text-xs font-bold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
                   >
@@ -149,7 +149,7 @@ export default function BuyerOrders() {
               </div>
               <h3 className="text-xl font-bold text-slate-900">No orders yet</h3>
               <p className="text-slate-500 max-w-xs mx-auto mt-2">Looks like you haven't placed any orders. Start shopping at your local stores!</p>
-              <Button 
+              <Button
                 onClick={() => navigate("/buyer/stores")}
                 className="mt-8"
               >
@@ -199,7 +199,7 @@ export default function BuyerOrders() {
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                   <div className="flex items-center gap-2 text-blue-600 font-black text-[10px] uppercase tracking-widest mb-3">
+                  <div className="flex items-center gap-2 text-blue-600 font-black text-[10px] uppercase tracking-widest mb-3">
                     <Package size={12} /> Items Summary
                   </div>
                   <div className="space-y-2">
@@ -233,16 +233,16 @@ export default function BuyerOrders() {
             </div>
 
             <div className="px-8 py-6 bg-slate-50 border-t border-slate-100 flex gap-3">
-               {viewDetails.status !== "Delivered" && viewDetails.status !== "Cancelled" && (
-                 <Button 
-                   className="flex-1 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-100" 
-                   onClick={() => navigate("/buyer/track-order")}
-                 >
-                   <Truck size={16} className="mr-2" />
-                   Track Live Order
-                 </Button>
-               )}
-               <Button variant="subtle" className="flex-1" onClick={() => setViewDetails(null)}>Close View</Button>
+              {viewDetails.status !== "Delivered" && viewDetails.status !== "Cancelled" && (
+                <Button
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-100"
+                  onClick={() => navigate("/buyer/track-order")}
+                >
+                  <Truck size={16} className="mr-2" />
+                  Track Live Order
+                </Button>
+              )}
+              <Button variant="subtle" className="flex-1" onClick={() => setViewDetails(null)}>Close View</Button>
             </div>
           </div>
         </div>
@@ -322,13 +322,13 @@ export default function BuyerOrders() {
             </div>
 
             <div className="p-8 bg-slate-50 border-t border-slate-100 flex gap-3">
-              <button 
+              <button
                 className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-slate-900 text-white py-3 text-xs font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
                 onClick={() => window.print()}
               >
                 <Printer size={16} /> Print Invoice
               </button>
-              <button 
+              <button
                 className="rounded-xl border border-slate-200 bg-white px-6 py-3 text-xs font-bold text-slate-600 hover:bg-slate-50 transition-all"
                 onClick={() => setViewInvoice(null)}
               >
@@ -348,10 +348,10 @@ function Status({ status }) {
   const isPending = !isCancelled && !isDelivered
 
   const cls = isDelivered
-      ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
-      : isCancelled
-        ? "bg-rose-500/10 text-rose-600 border-rose-500/20"
-        : "bg-amber-500/10 text-amber-600 border-amber-500/20"
+    ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+    : isCancelled
+      ? "bg-rose-500/10 text-rose-600 border-rose-500/20"
+      : "bg-amber-500/10 text-amber-600 border-amber-500/20"
 
   const Icon = isDelivered ? CheckCircle : isCancelled ? XCircle : Clock
 
