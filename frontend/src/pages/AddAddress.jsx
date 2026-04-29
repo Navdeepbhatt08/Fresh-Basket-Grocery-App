@@ -170,11 +170,10 @@ export default function AddAddress() {
                   type="button"
                   key={type}
                   onClick={() => setForm({ ...form, type })}
-                  className={`flex-1 px-3 py-2 rounded-xl border text-sm font-semibold transition ${
-                    form.type === type
+                  className={`flex-1 px-3 py-2 rounded-xl border text-sm font-semibold transition ${form.type === type
                       ? "bg-green-100 text-green-700 border-green-300"
                       : "bg-white hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   {type}
                 </button>

@@ -21,19 +21,17 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Update user profile
+
 router.patch("/:id", async (req, res) => {
   try {
     const { name, email, phone, address, bio } = req.body;
     
-    // Try updating by MongoDB ID
     let updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       { name, email, phone, address, bio },
       { new: true }
     ).select("-password");
     
-    // Fallback: If ID didn't match (e.g. Clerk ID used instead of Mongo ID), try matching by email
     if (!updatedUser && email) {
       updatedUser = await User.findOneAndUpdate(
         { email: email.toLowerCase() },

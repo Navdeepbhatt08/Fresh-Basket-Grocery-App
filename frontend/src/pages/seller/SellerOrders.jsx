@@ -18,8 +18,8 @@ export default function SellerOrders() {
 
   const fetchOrders = async () => {
     try {
-      const sellerId = user?.id || "6449f8a3c8e4a5a123456789"
-      const res = await axios.get(`http://localhost:5000/api/orders/seller/${sellerId}`)
+      if (!user?.id) return
+      const res = await axios.get(`http://localhost:5000/api/orders/seller/${user.id}`)
       setOrders(res.data)
     } catch (error) {
       console.error("Error fetching seller orders:", error)

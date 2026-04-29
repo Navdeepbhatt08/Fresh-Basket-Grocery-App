@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get addresses by email
+
 router.get("/:email", async (req, res) => {
   try {
     const addresses = await Address.find({ email: req.params.email.toLowerCase() }).sort({ createdAt: -1 });
@@ -41,7 +41,6 @@ router.get("/:email", async (req, res) => {
   }
 });
 
-// Delete an address
 router.delete("/:id", async (req, res) => {
   try {
     await Address.findByIdAndDelete(req.params.id);

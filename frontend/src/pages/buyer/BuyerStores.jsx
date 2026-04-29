@@ -37,7 +37,7 @@ export default function BuyerStores() {
   const [searchParams] = useSearchParams()
   const categoryFilter = searchParams.get("category") || "All"
   const { addToCart } = useCart()
-  
+
   const [stores, setStores] = useState([])
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -82,7 +82,7 @@ export default function BuyerStores() {
             {categoryFilter === "All" ? "Discover Stores" : `${categoryFilter} Catalog`}
           </h1>
           <p className="mt-2 text-slate-700">
-            {categoryFilter === "All" 
+            {categoryFilter === "All"
               ? "Pick a store to browse products and schedule delivery."
               : `Showing ${categoryFilter} across all nearby stores.`}
           </p>
@@ -109,8 +109,8 @@ export default function BuyerStores() {
                 <Link key={s._id} to={`/buyer/stores/${s._id}`} className="group">
                   <Card className="p-6 hover:bg-white/[0.06] transition h-full flex flex-col overflow-hidden">
                     <div className="aspect-video w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
-                      <img 
-                        src={s.image || "https://via.placeholder.com/400x300?text=Shop"} 
+                      <img
+                        src={s.image || "https://via.placeholder.com/400x300?text=Shop"}
                         alt={s.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
@@ -159,8 +159,8 @@ export default function BuyerStores() {
                   className="group rounded-2xl border border-white/70 bg-white/50 backdrop-blur-md shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-blue-100/60 hover:bg-white/65 transition-all duration-200 p-4 overflow-hidden flex flex-col"
                 >
                   <div className="aspect-square w-full rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 relative">
-                    <img 
-                      src={p.image || "https://via.placeholder.com/400?text=Product"} 
+                    <img
+                      src={p.image || "https://via.placeholder.com/400?text=Product"}
                       alt={p.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -190,9 +190,9 @@ export default function BuyerStores() {
                   <div className="mt-4 flex gap-2">
                     <button
                       disabled={p.stock === 0}
-                      onClick={() => addToCart({ 
-                        id: p._id, 
-                        name: p.name, 
+                      onClick={() => addToCart({
+                        id: p._id,
+                        name: p.name,
                         price: p.price,
                         seller: p.seller?._id || p.seller,
                         store: p.store?._id || p.store

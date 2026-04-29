@@ -10,8 +10,24 @@ const steps = [
 
 export default function TrackOrder() {
   const [currentStep, setCurrentStep] = useState(0)
+  const [location, setLocation] = useState({ lat: 30.089800201193325, lng: 78.21077732483864 }) // Default: Rishikesh
 
   useEffect(() => {
+    // Get current location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          })
+        },
+        (error) => {
+          console.error("Error getting location:", error)
+        }
+      )
+    }
+
     const interval = setInterval(() => {
       setCurrentStep((prev) => {
         if (prev < steps.length - 1) return prev + 1
@@ -23,6 +39,15 @@ export default function TrackOrder() {
   }, [])
 
   const progress = ((currentStep + 1) / steps.length) * 100
+
+  // Calculate a dummy destination ~2km away for tracking visualization
+  const destLocation = {
+    lat: location.lat + 0.015,
+    lng: location.lng + 0.015
+  }
+
+  // Dynamic Map URL with Route (Source to Destination)
+  const mapUrl = `https://maps.google.com/maps?saddr=${location.lat},${location.lng}&daddr=${destLocation.lat},${destLocation.lng}&z=14&output=embed`
 
   return (
     <div className="p-6 space-y-6">
@@ -40,7 +65,7 @@ export default function TrackOrder() {
       <div className="relative h-64 md:h-80 w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 group">
         <iframe
           title="Delivery Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110204.74637223467!2d78.21077732483864!3d30.089800201193325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39091726a79857d3%3A0xc39103e6396e95b0!2sRishikesh%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1714184643000!5m2!1sen!2sin"
+          src={mapUrl}
           width="100%"
           height="100%"
           style={{ border: 0 }}

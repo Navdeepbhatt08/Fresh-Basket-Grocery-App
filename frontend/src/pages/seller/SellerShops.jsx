@@ -28,8 +28,8 @@ export default function SellerShops() {
 
   const fetchShops = async () => {
     try {
-      const sellerId = user?.id || "6449f8a3c8e4a5a123456789"
-      const res = await axios.get(`http://localhost:5000/api/shops/seller/${sellerId}`)
+      if (!user?.id) return
+      const res = await axios.get(`http://localhost:5000/api/shops/seller/${user.id}`)
       setShops(res.data)
     } catch (error) {
       console.error("Error fetching shops:", error)
@@ -79,10 +79,10 @@ export default function SellerShops() {
     e.preventDefault()
 
     try {
-      const sellerId = user?.id || "6449f8a3c8e4a5a123456789"
+      if (!user?.id) return
       const payload = {
         ...form,
-        seller: sellerId,
+        seller: user.id,
         tags: form.tags.split(",").map(t => t.trim()),
         distanceKm: Number(form.distanceKm),
         etaMin: Number(form.etaMin)

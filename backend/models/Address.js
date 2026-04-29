@@ -10,7 +10,7 @@ const addressSchema = new mongoose.Schema(
     city: { type: String, required: true },
     state: { type: String, required: true },
     pincode: { type: String, required: true },
-    type: { type: String, default: "Home" }, // Home, Work, etc.
+    type: { type: String, default: "Home" }, 
     fullAddress: { type: String }
   },
   { timestamps: true }

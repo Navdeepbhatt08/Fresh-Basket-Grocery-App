@@ -30,16 +30,16 @@ export default function SellerProducts() {
 
   const fetchInitialData = async () => {
     try {
-      const sellerId = user?.id || "6449f8a3c8e4a5a123456789"
-      
+      if (!user?.id) return
+
       const [shopsRes, productsRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/shops/seller/${sellerId}`),
-        axios.get(`http://localhost:5000/api/products/seller/${sellerId}`)
+        axios.get(`http://localhost:5000/api/shops/seller/${user.id}`),
+        axios.get(`http://localhost:5000/api/products/seller/${user.id}`)
       ])
 
       setShops(shopsRes.data)
       setRows(productsRes.data)
-      
+
       if (shopsRes.data.length > 0) {
         setForm(f => ({ ...f, store: shopsRes.data[0]._id }))
       }
@@ -83,10 +83,10 @@ export default function SellerProducts() {
     e.preventDefault()
 
     try {
-      const sellerId = user?.id || "6449f8a3c8e4a5a123456789"
+      if (!user?.id) return
       const payload = {
         ...form,
-        seller: sellerId,
+        seller: user.id,
         price: Number(form.price),
         stock: Number(form.stock),
       }
@@ -156,7 +156,7 @@ export default function SellerProducts() {
             </h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              
+
               <div className="space-y-1">
                 <label className="text-xs font-semibold text-slate-500 uppercase">Select Shop</label>
                 <select
@@ -271,8 +271,8 @@ export default function SellerProducts() {
                     <td className="py-4">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-lg overflow-hidden border border-slate-100 flex-shrink-0">
-                          <img 
-                            src={r.image || "https://via.placeholder.com/100?text=P"} 
+                          <img
+                            src={r.image || "https://via.placeholder.com/100?text=P"}
                             alt={r.name}
                             className="h-full w-full object-cover"
                           />

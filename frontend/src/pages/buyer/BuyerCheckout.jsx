@@ -52,9 +52,18 @@ export default function BuyerCheckout() {
     setLoading(true)
 
     try {
-      const buyerId = user?.id || "6449f8a3c8e4a5a123456789"
-      // Assume all items from same seller for now, or pick the first one's seller
-      const sellerId = items[0]?.seller || "6449f8a3c8e4a5a123456789"
+      if (!user?.id) {
+        toast.error("Please login to place an order")
+        return
+      }
+      
+      const buyerId = user.id
+      const sellerId = items[0]?.seller 
+
+      if (!sellerId) {
+        toast.error("Invalid seller information in cart")
+        return
+      }
 
       const payload = {
         buyer: buyerId,
